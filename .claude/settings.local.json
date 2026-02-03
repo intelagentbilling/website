@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.intelagent.ca)",
+      "WebFetch(domain:intelagentbilling.github.io)"
+    ]
+  }
+}
