@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - IntelAGENT OHIP Billing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="fonts/plus-jakarta-sans.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5a5e78',
+                        'primary-dark': '#3d4055',
+                        'primary-darker': '#2a2d3d',
+                        accent: '#52bf9f',
+                        'accent-dark': '#3da882',
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient { background: #CDE4E4; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(90, 94, 120, 0.1); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(90, 94, 120, 0.2); }
+        .btn-primary { background: linear-gradient(135deg, #52bf9f 0%, #3da882 100%); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(82, 191, 159, 0.4); }
+        .btn-dark { background: linear-gradient(135deg, #2a2d3d 0%, #1a1c26 100%); transition: all 0.3s ease; }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(42, 45, 61, 0.4); }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s ease; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .text-gradient { background: linear-gradient(135deg, #52bf9f 0%, #3da882 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-tag { display: inline-block; padding: 6px 16px; border: 2px solid #52bf9f; border-radius: 8px; font-size: 14px; font-weight: 600; color: #52bf9f; text-transform: uppercase; letter-spacing: 0.05em; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-transform duration-300 hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://www.intelagent.ca/img/intelagent_logo_written.svg" alt="IntelAGENT" class="h-12">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-gray-600 hover:text-primary font-medium transition">
+                            Products
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 pt-2 w-64">
+                            <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2 overflow-hidden">
+                                <a href="mobile.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Mobile App</div>
+                                        <div class="text-sm text-gray-500">Bill on-the-go</div>
+                                    </div>
+                                </a>
+                                <a href="web.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Web Portal</div>
+                                        <div class="text-sm text-gray-500">Full-featured billing</div>
+                                    </div>
+                                </a>
+                                <a href="emr-clinic.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">EMR & Clinic</div>
+                                        <div class="text-sm text-gray-500">Enterprise solutions</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pricing.html" class="text-gray-600 hover:text-primary font-medium transition">Pricing</a>
+                    <a href="https://www.intelagent.ca/docs" class="text-gray-600 hover:text-primary font-medium transition">Documentation</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition">Contact</a>
+                    <a href="https://app.intelagent.ca/login" class="text-gray-600 hover:text-primary font-medium transition">Login</a>
+                    <a href="https://app.intelagent.ca/register" class="btn-dark text-white px-6 py-2.5 rounded-lg font-semibold">Start Free</a>
+                </div>
+                <button class="md:hidden p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="mobile.html" class="block py-2 text-gray-600">Mobile App</a>
+                <a href="web.html" class="block py-2 text-gray-600">Web Portal</a>
+                <a href="emr-clinic.html" class="block py-2 text-gray-600">EMR & Clinic</a>
+                <a href="pricing.html" class="block py-2 text-gray-600">Pricing</a>
+                <a href="https://www.intelagent.ca/docs" class="block py-2 text-gray-600">Documentation</a>
+                <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
+                <a href="https://app.intelagent.ca/login" class="block py-2 text-gray-600">Login</a>
+                <a href="https://app.intelagent.ca/register" class="block mt-2 btn-dark text-white px-6 py-2.5 rounded-lg font-semibold text-center">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-16 lg:pt-40 lg:pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="section-tag mb-6">Contact Us</span>
+                <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-6 text-gray-900">
+                    Get in Touch
+                </h1>
+                <p class="text-xl text-gray-700">
+                    Have questions about IntelAGENT? Want to schedule a demo? We're here to help.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-2xl font-bold text-primary-dark mb-6">Send us a message</h2>
+                    <form class="space-y-6" action="https://formspree.io/f/adam@intelagent.ca" method="POST">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" name="first_name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" name="last_name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">I'm interested in...</label>
+                            <select name="interest" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition bg-white">
+                                <option value="">Select an option</option>
+                                <option value="demo">Scheduling a demo</option>
+                                <option value="personal">Personal plan information</option>
+                                <option value="premium">Premium plan information</option>
+                                <option value="enterprise">Enterprise/clinic solutions</option>
+                                <option value="support">Technical support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition resize-none" placeholder="Tell us how we can help..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-xl font-bold text-lg">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-2xl font-bold text-primary-dark mb-6">Other ways to reach us</h2>
+
+                    <div class="space-y-6">
+                        <!-- Email -->
+                        <a href="mailto:agent@intelagent.ca" class="flex items-start p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition card-shadow card-hover">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-dark mb-1">Email</h3>
+                                <p class="text-gray-600">agent@intelagent.ca</p>
+                                <p class="text-sm text-gray-500 mt-1">We typically respond within 24 hours</p>
+                            </div>
+                        </a>
+
+                        <!-- Phone -->
+                        <a href="tel:+16478126678" class="flex items-start p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition card-shadow card-hover">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-dark mb-1">Phone</h3>
+                                <p class="text-gray-600">(647) 812-6678</p>
+                                <p class="text-sm text-gray-500 mt-1">Monday to Friday, 9am - 5pm EST</p>
+                            </div>
+                        </a>
+
+                        <!-- In-App Chat -->
+                        <button onclick="Intercom('show')" class="flex items-start p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition card-shadow card-hover w-full text-left">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-dark mb-1">In-App Support</h3>
+                                <p class="text-gray-600">Chat with us directly</p>
+                                <p class="text-sm text-gray-500 mt-1">Fastest way to get help</p>
+                            </div>
+                        </button>
+
+                        <!-- Documentation -->
+                        <a href="/docs" class="flex items-start p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition card-shadow card-hover">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary-dark mb-1">Documentation</h3>
+                                <p class="text-gray-600">Browse our help guides</p>
+                                <p class="text-sm text-gray-500 mt-1">Step-by-step tutorials and FAQs</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Quick Start -->
+                    <div class="mt-8 p-8 bg-primary-darker rounded-2xl text-white">
+                        <h3 class="font-bold text-xl mb-3">Ready to get started?</h3>
+                        <p class="text-gray-300 mb-6">Skip the form and start your free trial right now.</p>
+                        <a href="https://app.intelagent.ca/register" class="btn-primary text-white px-6 py-3 rounded-xl font-bold inline-block">Start Free Trial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-6">FAQ</span>
+                <h2 class="text-3xl font-extrabold text-primary-dark">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-white rounded-2xl card-shadow group card-hover">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>How long is the free trial?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">You get 60 days free to try IntelAGENT. The trial gives you full access to all features so you can see exactly how it works before committing.</div>
+                </details>
+
+                <details class="bg-white rounded-2xl card-shadow group card-hover">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>Do I need to install software?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">No installation needed for the web portal—just log in from any browser. The mobile app is available on the App Store and Google Play.</div>
+                </details>
+
+                <details class="bg-white rounded-2xl card-shadow group card-hover">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>How do I migrate from another billing service?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">We support bulk import via Excel/CSV. If you have existing claim data, you can upload it directly. Our team can also help with migration—just reach out.</div>
+                </details>
+
+                <details class="bg-white rounded-2xl card-shadow group card-hover">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>Is my data secure?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">Absolutely. Your data is encrypted in transit and at rest. We follow healthcare industry best practices for data security and privacy.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-darker text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <img src="https://www.intelagent.ca/img/intelagent_logo_written.svg" alt="IntelAGENT" class="h-10 mb-6 brightness-0 invert opacity-80">
+                    <p class="text-sm">OHIP billing software for Ontario physicians.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="mobile.html" class="hover:text-white transition">Mobile App</a></li>
+                        <li><a href="web.html" class="hover:text-white transition">Web Portal</a></li>
+                        <li><a href="emr-clinic.html" class="hover:text-white transition">EMR & Clinic</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/docs" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="contact.html" class="text-white font-semibold">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Get the App</h4>
+                    <div class="space-y-3">
+                        <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10 opacity-70 hover:opacity-100 transition"></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.intelagent"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10 opacity-70 hover:opacity-100 transition"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2026 IntelAGENT. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm">
+                    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+                    <a href="mailto:agent@intelagent.ca" class="hover:text-white transition">agent@intelagent.ca</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll-hide nav -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    nav.style.transform = 'translateY(-100%)';
+                } else {
+                    nav.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+            });
+        })();
+    </script>
+
+    <!-- Intercom -->
+    <script>
+        window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "v2fuk9gg" };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/v2fuk9gg';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App - IntelAGENT OHIP Billing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="fonts/plus-jakarta-sans.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5a5e78',
+                        'primary-dark': '#3d4055',
+                        'primary-darker': '#2a2d3d',
+                        accent: '#52bf9f',
+                        'accent-dark': '#3da882',
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient { background: #CDE4E4; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(90, 94, 120, 0.1); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(90, 94, 120, 0.2); }
+        .btn-primary { background: linear-gradient(135deg, #52bf9f 0%, #3da882 100%); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(82, 191, 159, 0.4); }
+        .btn-dark { background: linear-gradient(135deg, #2a2d3d 0%, #1a1c26 100%); transition: all 0.3s ease; }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(42, 45, 61, 0.4); }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s ease; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .section-tag { display: inline-block; padding: 6px 16px; border: 2px solid #52bf9f; border-radius: 8px; font-size: 14px; font-weight: 600; color: #52bf9f; text-transform: uppercase; letter-spacing: 0.05em; }
+        .screenshot-placeholder { background: linear-gradient(135deg, #e8eaf0 0%, #d8dbe5 100%); border: 3px dashed #b0b5c5; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #6b7280; font-weight: 600; }
+        .glow { box-shadow: 0 0 60px rgba(82, 191, 159, 0.3); }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-transform duration-300 hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://www.intelagent.ca/img/intelagent_logo_written.svg" alt="IntelAGENT" class="h-12">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-gray-600 hover:text-primary font-medium transition">
+                            Products
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 pt-2 w-64">
+                            <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2 overflow-hidden">
+                                <a href="mobile.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Mobile App</div>
+                                        <div class="text-sm text-gray-500">Bill on-the-go</div>
+                                    </div>
+                                </a>
+                                <a href="web.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Web Portal</div>
+                                        <div class="text-sm text-gray-500">Full-featured billing</div>
+                                    </div>
+                                </a>
+                                <a href="emr-clinic.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">EMR & Clinic</div>
+                                        <div class="text-sm text-gray-500">Enterprise solutions</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pricing.html" class="text-gray-600 hover:text-primary font-medium transition">Pricing</a>
+                    <a href="https://www.intelagent.ca/docs" class="text-gray-600 hover:text-primary font-medium transition">Documentation</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition">Contact</a>
+                    <a href="https://app.intelagent.ca/login" class="text-gray-600 hover:text-primary font-medium transition">Login</a>
+                    <a href="https://app.intelagent.ca/register" class="btn-dark text-white px-6 py-2.5 rounded-lg font-semibold">Start Free</a>
+                </div>
+                <button class="md:hidden p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="mobile.html" class="block py-2 text-gray-600">Mobile App</a>
+                <a href="web.html" class="block py-2 text-gray-600">Web Portal</a>
+                <a href="emr-clinic.html" class="block py-2 text-gray-600">EMR & Clinic</a>
+                <a href="pricing.html" class="block py-2 text-gray-600">Pricing</a>
+                <a href="https://www.intelagent.ca/docs" class="block py-2 text-gray-600">Documentation</a>
+                <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
+                <a href="https://app.intelagent.ca/login" class="block py-2 text-gray-600">Login</a>
+                <a href="https://app.intelagent.ca/register" class="block mt-2 btn-dark text-white px-6 py-2.5 rounded-lg font-semibold text-center">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-28 pb-20 lg:pt-36 lg:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="section-tag mb-6">Mobile App</span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
+                        Bill OHIP
+                        <span class="block">from anywhere</span>
+                    </h1>
+                    <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+                        Submit claims in seconds, scan health cards instantly, and track your revenue on the go. Available for iOS and Android.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                        <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8" class="inline-block">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on App Store" class="h-12">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.intelagent" class="inline-block">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-12">
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-6 text-sm text-gray-600 mb-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                <svg class="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="font-semibold">Free to download</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                <svg class="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="font-semibold">Bill at point-of-care</span>
+                        </div>
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                        <div class="flex items-center gap-2 bg-white/60 px-3 py-2 rounded-lg">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span>PHIPA Compliant</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/60 px-3 py-2 rounded-lg">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            <span>256-bit SSL</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/60 px-3 py-2 rounded-lg">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+                            <span>Canadian Data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative flex justify-center">
+                    <img src="img/hero-mobile.png" alt="IntelAGENT Mobile App" class="w-72 h-auto rounded-2xl object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="screenshot-placeholder w-72 h-[500px] rounded-2xl" style="display:none;"><span class="text-sm font-mono">img/hero-mobile.png</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="section-tag mb-4">Features</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">Everything you need in your pocket</h2>
+                <p class="text-xl text-gray-600">Designed for physicians who need to bill efficiently while on the move.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 card-shadow card-hover rounded-2xl bg-gray-50">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary-dark mb-2">Fast Claim Entry</h3>
+                    <p class="text-gray-600 text-sm">Submit claims in under 30 seconds with smart templates.</p>
+                </div>
+                <div class="text-center p-6 card-shadow card-hover rounded-2xl bg-gray-50">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary-dark mb-2">Health Card Scanner</h3>
+                    <p class="text-gray-600 text-sm">Scan Ontario health cards with your camera.</p>
+                </div>
+                <div class="text-center p-6 card-shadow card-hover rounded-2xl bg-gray-50">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary-dark mb-2">Roster Management</h3>
+                    <p class="text-gray-600 text-sm">Manage patient rosters and track enrollments.</p>
+                </div>
+                <div class="text-center p-6 card-shadow card-hover rounded-2xl bg-gray-50">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary-dark mb-2">Revenue Tracking</h3>
+                    <p class="text-gray-600 text-sm">See real-time status and revenue projections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Features Layout - COMMENTED OUT
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-lg font-semibold text-sm mb-4">Mobile Features</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">Everything you need in your pocket</h2>
+                    <p class="text-lg text-gray-600 mb-6">Designed for physicians who need to bill efficiently while on the move. Submit claims, scan health cards, and track revenue from anywhere.</p>
+                    <a href="https://app.intelagent.ca/register" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold inline-block">Start Free Trial</a>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <a href="#" class="block p-6 bg-white rounded-2xl card-shadow card-hover">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-dark mb-2">Fast Claim Entry</h3>
+                        <p class="text-gray-600 text-sm">Submit claims in under 30 seconds with smart templates.</p>
+                    </a>
+                    <a href="#" class="block p-6 bg-white rounded-2xl card-shadow card-hover">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-dark mb-2">Health Card Scanner</h3>
+                        <p class="text-gray-600 text-sm">Scan Ontario health cards with your camera.</p>
+                    </a>
+                    <a href="#" class="block p-6 bg-white rounded-2xl card-shadow card-hover">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-dark mb-2">Roster Management</h3>
+                        <p class="text-gray-600 text-sm">Manage patient rosters and track enrollments.</p>
+                    </a>
+                    <a href="#" class="block p-6 bg-white rounded-2xl card-shadow card-hover">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-dark mb-2">Revenue Tracking</h3>
+                        <p class="text-gray-600 text-sm">See real-time status and revenue projections.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Feature Highlights -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-40">
+
+            <!-- Quick Claims -->
+            <div class="bg-gray-100 rounded-3xl p-10 lg:p-14">
+                <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+                    <div class="w-full lg:w-1/2">
+                        <img src="img/quick-claims.png" alt="Quick Claims Entry" class="w-[56%] h-auto rounded-xl mx-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="screenshot-placeholder w-[56%] h-56 rounded-xl mx-auto" style="display:none;"><span class="text-sm font-mono">img/quick-claims.png</span></div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <span class="inline-block text-primary text-xs font-semibold uppercase tracking-wider mb-4 px-3 py-1.5 border-2 border-primary rounded-lg">Quick Claims</span>
+                        <h2 class="text-4xl sm:text-5xl font-bold text-primary-dark mb-6">Submit claims in <span style="background: linear-gradient(to top, #52bf9f 30%, transparent 30%);">seconds</span></h2>
+                        <p class="text-gray-600 mb-10">Enter patient info, select service codes, and submit directly to OHIP. Our smart templates remember your common procedures so you can bill faster.</p>
+                        <ul class="space-y-5">
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">15-second claim entry</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Smart templates for common procedures</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Submit directly to OHIP</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Card Scanner -->
+            <div class="bg-gray-100 rounded-3xl p-10 lg:p-14">
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-20">
+                    <div class="w-full lg:w-1/2">
+                        <img src="img/health-card-scan.png" alt="Health Card Scanner" class="w-full h-auto rounded-xl" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="screenshot-placeholder w-full h-96 rounded-xl" style="display:none;"><span class="text-sm font-mono">img/health-card-scan.png</span></div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <span class="inline-block text-primary text-xs font-semibold uppercase tracking-wider mb-4 px-3 py-1.5 border-2 border-primary rounded-lg">Health Card Scanner</span>
+                        <h2 class="text-4xl sm:text-5xl font-bold text-primary-dark mb-6">Scan health cards <span style="background: linear-gradient(to top, #52bf9f 30%, transparent 30%);">instantly</span></h2>
+                        <p class="text-gray-600 mb-10">Use your camera to capture Ontario health card information. Auto-fills patient details so you never have to type them manually.</p>
+                        <ul class="space-y-5">
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Camera capture in one tap</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Auto-fill patient info</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">No manual data entry</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Tracking -->
+            <div class="bg-gray-100 rounded-3xl p-10 lg:p-14">
+                <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+                    <div class="w-full lg:w-1/2">
+                        <img src="img/revenue-tracking.png" alt="Revenue Tracking" class="w-full h-auto rounded-xl" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="screenshot-placeholder w-full h-96 rounded-xl" style="display:none;"><span class="text-sm font-mono">img/revenue-tracking.png</span></div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <span class="inline-block text-primary text-xs font-semibold uppercase tracking-wider mb-4 px-3 py-1.5 border-2 border-primary rounded-lg">Revenue Tracking</span>
+                        <h2 class="text-4xl sm:text-5xl font-bold text-primary-dark mb-6">Track your earnings in <span style="background: linear-gradient(to top, #52bf9f 30%, transparent 30%);">real-time</span></h2>
+                        <p class="text-gray-600 mb-10">See claim statuses, monitor payments, and project your monthly revenue. Know exactly where your money is at all times.</p>
+                        <ul class="space-y-5">
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Real-time claim status updates</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Revenue projections</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-800 font-semibold">Payment monitoring at a glance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Point-of-Care Section -->
+    <section class="py-20 bg-primary-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="section-tag mb-4" style="border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);">Point-of-Care</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6">Bill right at the bedside</h2>
+                    <p class="text-xl text-gray-300 mb-8">Hospital rounds, nursing home visits, house calls—bill immediately while the encounter is fresh. No more forgotten claims or end-of-day catch-up.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Bill during patient encounters</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Never forget to bill a visit</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span>Capture every billable service</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="inline-block bg-white/10 rounded-3xl p-8 card-hover">
+                        <svg class="w-32 h-32 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <p class="mt-4 text-gray-300">Bill Anywhere</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="section-tag mb-4">Get Started</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">Ready to bill from anywhere?</h2>
+            <p class="text-xl text-gray-600 mb-8">Download the IntelAGENT mobile app and start your free trial today.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-14">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.intelagent">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-14">
+                </a>
+            </div>
+            <p class="text-gray-500">Or <a href="web.html" class="text-primary font-semibold hover:underline">explore the Web Portal</a> for desktop billing.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-darker text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <img src="https://www.intelagent.ca/img/intelagent_logo_written.svg" alt="IntelAGENT" class="h-8 mb-4 brightness-0 invert opacity-80">
+                    <p class="text-sm">OHIP billing software for Ontario physicians.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mobile.html" class="text-white">Mobile App</a></li>
+                        <li><a href="web.html" class="hover:text-white transition">Web Portal</a></li>
+                        <li><a href="emr-clinic.html" class="hover:text-white transition">EMR & Clinic</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/docs" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Get the App</h4>
+                    <div class="space-y-2">
+                        <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8" class="block"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.intelagent" class="block"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2026 IntelAGENT. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm">
+                    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Intercom -->
+    <script>
+        window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "v2fuk9gg" };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/v2fuk9gg';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+
+    <!-- Hide nav on scroll down -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    nav.style.transform = 'translateY(-100%)';
+                } else {
+                    nav.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+            });
+        })();
+    </script>
+
+</body>
+</html>

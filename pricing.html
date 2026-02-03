@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - IntelAGENT OHIP Billing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="fonts/plus-jakarta-sans.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5a5e78',
+                        'primary-dark': '#3d4055',
+                        'primary-darker': '#2a2d3d',
+                        accent: '#52bf9f',
+                        'accent-dark': '#3da882',
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient { background: #CDE4E4; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(90, 94, 120, 0.1); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(90, 94, 120, 0.2); }
+        .btn-primary { background: linear-gradient(135deg, #52bf9f 0%, #3da882 100%); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(82, 191, 159, 0.4); }
+        .btn-dark { background: linear-gradient(135deg, #2a2d3d 0%, #1a1c26 100%); transition: all 0.3s ease; }
+        .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(42, 45, 61, 0.4); }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s ease; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .section-tag { display: inline-block; padding: 6px 16px; border: 2px solid #52bf9f; border-radius: 8px; font-size: 14px; font-weight: 600; color: #52bf9f; text-transform: uppercase; letter-spacing: 0.05em; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-transform duration-300 hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center">
+                    <img src="https://www.intelagent.ca/img/intelagent_logo_written.svg" alt="IntelAGENT" class="h-12">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <button class="flex items-center text-gray-600 hover:text-primary font-medium transition">
+                            Products
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu absolute top-full left-0 pt-2 w-64">
+                            <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2 overflow-hidden">
+                                <a href="mobile.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Mobile App</div>
+                                        <div class="text-sm text-gray-500">Bill on-the-go</div>
+                                    </div>
+                                </a>
+                                <a href="web.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Web Portal</div>
+                                        <div class="text-sm text-gray-500">Full-featured billing</div>
+                                    </div>
+                                </a>
+                                <a href="emr-clinic.html" class="flex items-center px-4 py-3 hover:bg-gray-50 transition">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">EMR & Clinic</div>
+                                        <div class="text-sm text-gray-500">Enterprise solutions</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pricing.html" class="text-gray-600 hover:text-primary font-medium transition">Pricing</a>
+                    <a href="https://www.intelagent.ca/docs" class="text-gray-600 hover:text-primary font-medium transition">Documentation</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition">Contact</a>
+                    <a href="https://app.intelagent.ca/login" class="text-gray-600 hover:text-primary font-medium transition">Login</a>
+                    <a href="https://app.intelagent.ca/register" class="btn-dark text-white px-6 py-2.5 rounded-lg font-semibold">Start Free</a>
+                </div>
+                <button class="md:hidden p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="mobile.html" class="block py-2 text-gray-600">Mobile App</a>
+                <a href="web.html" class="block py-2 text-gray-600">Web Portal</a>
+                <a href="emr-clinic.html" class="block py-2 text-gray-600">EMR & Clinic</a>
+                <a href="pricing.html" class="block py-2 text-gray-600">Pricing</a>
+                <a href="https://www.intelagent.ca/docs" class="block py-2 text-gray-600">Documentation</a>
+                <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
+                <a href="https://app.intelagent.ca/login" class="block py-2 text-gray-600">Login</a>
+                <a href="https://app.intelagent.ca/register" class="block mt-2 btn-dark text-white px-6 py-2.5 rounded-lg font-semibold text-center">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-16 lg:pt-40 lg:pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="inline-block px-4 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold text-sm mb-6">Pricing</span>
+                <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-6 text-gray-900">
+                    Simple, transparent pricing
+                </h1>
+                <p class="text-xl text-gray-700">
+                    Start with a 3-month free trial. <span style="background: linear-gradient(to top, #fef08a 15%, transparent 15%);">Cancel anytime.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Personal Plan -->
+                <div class="bg-accent/5 rounded-2xl p-8 card-shadow border-2 border-accent relative">
+                    <div class="absolute -top-3 left-6 bg-accent text-white text-sm font-semibold px-3 py-1 rounded-full">MOST POPULAR</div>
+                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Personal</h3>
+                    <p class="text-gray-600 mb-4">Perfect for individual physicians who want full control.</p>
+                    <div class="text-5xl font-bold text-primary-dark">0.25%<span class="text-lg font-normal text-gray-500"> of paid claims</span></div>
+                    <div class="text-sm text-gray-500 mb-6">Up to $39.99/month max</div>
+                    <a href="https://app.intelagent.ca/register" class="btn-primary block w-full text-center text-white px-6 py-4 rounded-lg font-semibold text-lg mb-8">
+                        Start Free Trial
+                    </a>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Unlimited claims processing</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Web portal & mobile app access</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Health card scanning & validation</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Real-time billing code suggestions</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Detailed revenue reporting & analytics</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Error detection & alerts</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Bulk claims upload via spreadsheet</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">In-app support chat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-2xl p-8 card-shadow border border-gray-200">
+                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Premium</h3>
+                    <p class="text-gray-600 mb-4">For physicians who want hands-off billing management.</p>
+                    <div class="text-5xl font-bold text-primary-dark">2%<span class="text-lg font-normal text-gray-500"> of paid claims</span></div>
+                    <div class="text-sm text-gray-500 mb-6">Billed monthly based on revenue</div>
+                    <a href="https://app.intelagent.ca/register" class="block w-full text-center border-2 border-primary text-primary px-6 py-4 rounded-lg font-semibold text-lg hover:bg-primary hover:text-white transition mb-8">
+                        Start Free Trial
+                    </a>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700"><strong>Everything in Personal, plus:</strong></span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Dedicated billing agent</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Claims review & optimization</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Rejection management & appeals</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Specialty billing expertise</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Revenue recovery services</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Priority phone & email support</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-primary-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-gray-700">Monthly billing consultations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise CTA -->
+            <div class="mt-12 bg-primary-darker rounded-2xl p-8 text-center text-white">
+                <h3 class="text-2xl font-bold mb-2">Clinic or Hospital Department?</h3>
+                <p class="text-gray-300 mb-6 max-w-2xl mx-auto">We offer custom enterprise solutions with EMR integration, multi-physician management, and dedicated account support.</p>
+                <a href="contact.html" class="inline-block bg-white text-primary-dark px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Comparison Table -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold text-sm mb-6">Compare</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary-dark">Feature Comparison</h2>
+            </div>
+
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-5 px-6 font-bold text-primary-dark">Feature</th>
+                            <th class="text-center py-5 px-6 font-bold text-primary-dark">Personal</th>
+                            <th class="text-center py-5 px-6 font-bold text-primary-dark">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Unlimited claims</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50/50">
+                            <td class="py-4 px-6 text-gray-700">Web portal access</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Mobile app (iOS & Android)</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50/50">
+                            <td class="py-4 px-6 text-gray-700">Health card scanning</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Billing code suggestions</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50/50">
+                            <td class="py-4 px-6 text-gray-700">Revenue reporting & analytics</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Bulk claims upload</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50/50">
+                            <td class="py-4 px-6 text-gray-700">Error detection & alerts</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">In-app support chat</td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50/50">
+                            <td class="py-4 px-6 text-gray-700 font-semibold">Dedicated billing agent</td>
+                            <td class="py-4 px-6 text-center"><span class="text-gray-400">—</span></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700 font-semibold">Claims optimization</td>
+                            <td class="py-4 px-6 text-center"><span class="text-gray-400">—</span></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50/50">
+                            <td class="py-4 px-6 text-gray-700 font-semibold">Rejection management & appeals</td>
+                            <td class="py-4 px-6 text-center"><span class="text-gray-400">—</span></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700 font-semibold">Specialty billing expertise</td>
+                            <td class="py-4 px-6 text-center"><span class="text-gray-400">—</span></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 text-gray-700 font-semibold">Priority support</td>
+                            <td class="py-4 px-6 text-center"><span class="text-gray-400">—</span></td>
+                            <td class="py-4 px-6 text-center"><svg class="w-6 h-6 text-accent mx-auto" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold text-sm mb-6">FAQ</span>
+                <h2 class="text-3xl font-extrabold text-primary-dark">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-gray-50 rounded-2xl card-shadow group">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>How does the 3-month free trial work?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">Sign up and use IntelAGENT completely free for 3 months. At the end of your trial, you can choose to continue with a paid plan or cancel with no obligation.</div>
+                </details>
+
+                <details class="bg-gray-50 rounded-2xl card-shadow group">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>How is the 0.25% fee calculated?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">The fee is calculated based on your total paid claims for the billing cycle. For example, if you receive $10,000 in paid claims, your fee would be $25. The maximum monthly fee is capped at $39.99, regardless of your billing volume.</div>
+                </details>
+
+                <details class="bg-gray-50 rounded-2xl card-shadow group">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>Can I switch between plans?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle. If you upgrade mid-cycle, you'll have immediate access to Premium features.</div>
+                </details>
+
+                <details class="bg-gray-50 rounded-2xl card-shadow group">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>What's included with the dedicated billing agent?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">Your dedicated billing agent reviews all your claims before submission, optimizes billing codes to maximize revenue, handles rejections and appeals, and provides monthly consultations to discuss your billing performance.</div>
+                </details>
+
+                <details class="bg-gray-50 rounded-2xl card-shadow group">
+                    <summary class="px-6 py-5 font-bold text-primary-dark cursor-pointer flex justify-between items-center">
+                        <span>Is there a contract or commitment?</span>
+                        <svg class="w-5 h-5 text-accent transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-5 text-gray-600">No contracts or long-term commitments. Both plans are billed monthly and you can cancel anytime. Your data remains accessible for export even after cancellation.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">Ready to simplify your billing?</h2>
+            <p class="text-xl text-gray-600 mb-8">Start your 3-month free trial today.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://app.intelagent.ca/register" class="btn-dark text-white px-8 py-4 rounded-lg font-semibold text-lg">
+                    Start Free Trial
+                </a>
+                <a href="contact.html" class="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 hover:text-white transition">
+                    Book a Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-darker text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <img src="https://www.intelagent.ca/img/intelagent_logo_written.svg" alt="IntelAGENT" class="h-10 mb-6 brightness-0 invert opacity-80">
+                    <p class="text-sm">OHIP billing software for Ontario physicians.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="mobile.html" class="hover:text-white transition">Mobile App</a></li>
+                        <li><a href="web.html" class="hover:text-white transition">Web Portal</a></li>
+                        <li><a href="emr-clinic.html" class="hover:text-white transition">EMR & Clinic</a></li>
+                        <li><a href="pricing.html" class="text-white font-semibold">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/docs" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Get the App</h4>
+                    <div class="space-y-3">
+                        <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10 opacity-70 hover:opacity-100 transition"></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.intelagent"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10 opacity-70 hover:opacity-100 transition"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2026 IntelAGENT. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm">
+                    <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+                    <a href="mailto:agent@intelagent.ca" class="hover:text-white transition">agent@intelagent.ca</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll-hide nav -->
+    <script>
+        (function() {
+            let lastScrollY = window.scrollY;
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    nav.style.transform = 'translateY(-100%)';
+                } else {
+                    nav.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+            });
+        })();
+    </script>
+
+    <!-- Intercom -->
+    <script>
+        window.intercomSettings = { api_base: "https://api-iam.intercom.io", app_id: "v2fuk9gg" };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/v2fuk9gg';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+</body>
+</html>
