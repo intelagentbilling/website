@@ -2,7 +2,22 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:www.intelagent.ca)",
-      "WebFetch(domain:intelagentbilling.github.io)"
+      "WebFetch(domain:intelagentbilling.github.io)",
+      "Bash(dig:*)",
+      "Bash(curl:*)",
+      "Bash(host:*)",
+      "Bash(sudo dscacheutil:*)",
+      "Bash(sudo killall:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "WebFetch(domain:www.mintlify.com)",
+      "Bash(ls:*)",
+      "WebFetch(domain:brief.brightthemes.com)"
     ]
   }
 }
