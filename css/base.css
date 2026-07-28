@@ -279,6 +279,16 @@ a.card:hover .link-more .arrow { transform: translateX(3px); }
   transition: all 0.18s ease;
 }
 .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* Mobile menu panel — solid so it's readable over the hero. */
+#mobile-menu {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 38px rgba(20, 22, 31, 0.14);
+  padding: 8px 16px 14px;
+  margin-top: 10px;
+}
 .dropdown-panel {
   background: #fff;
   border: 1px solid var(--line);
@@ -600,6 +610,12 @@ a.card:hover .link-more .arrow { transform: translateX(3px); }
   .section { padding: 64px 0; }
   .hero { padding: 116px 0 56px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  /* Home hero: single column (text first, image below) with the desktop
+     scale/offset transforms reset so the image sits naturally. */
+  .hero--sm .hero-grid { grid-template-columns: 1fr; }
+  .hero--sm .hero-media { transform: none; }
+  .hero--sm .row { justify-content: center; }
+  .hero--sm .hero-proof { justify-content: center; }
   .nav-links { display: none; }
   .logo-wall { grid-template-columns: repeat(2, 1fr); }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
