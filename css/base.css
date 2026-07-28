@@ -152,7 +152,7 @@ button { font: inherit; }
   justify-content: center;
   gap: 8px;
   padding: 12px 22px;
-  border-radius: var(--radius);
+  border-radius: 999px;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: -0.01em;
@@ -165,25 +165,44 @@ button { font: inherit; }
 .btn--lg { padding: 15px 28px; font-size: 16px; }
 .btn--block { display: flex; width: 100%; }
 
-/* Subtle tactility: micro-gradient + tight shadow + inset top highlight. */
+/* Tactile fill buttons: layered shadow (raised), a top highlight + bottom "lip"
+   for thickness, and a lift on hover / press on click. */
 .btn--primary {
-  background: linear-gradient(180deg, #363b49 0%, #262a35 100%);
+  background: linear-gradient(180deg, #313a4b 0%, #1e222d 100%);
   color: #fff;
-  box-shadow: 0 2px 5px rgba(20, 22, 31, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  box-shadow:
+    0 1px 1px rgba(20, 22, 31, 0.20),
+    0 3px 8px rgba(20, 22, 31, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.28);
 }
 .btn--primary:hover {
-  background: linear-gradient(180deg, #2c313d 0%, #1c1f28 100%);
-  box-shadow: 0 4px 12px rgba(20, 22, 31, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #384358 0%, #232834 100%);
+  box-shadow:
+    0 2px 3px rgba(20, 22, 31, 0.22),
+    0 9px 20px rgba(20, 22, 31, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.28);
 }
 
 .btn--brand {
-  background: linear-gradient(180deg, #248a6c 0%, var(--brand) 100%);
+  background: linear-gradient(180deg, #299277 0%, #1c7359 100%);
   color: #fff;
-  box-shadow: 0 2px 5px rgba(31, 122, 96, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 1px 1px rgba(23, 96, 74, 0.22),
+    0 3px 8px rgba(31, 122, 96, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.20);
 }
 .btn--brand:hover {
-  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-ink) 100%);
-  box-shadow: 0 4px 12px rgba(31, 122, 96, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #2ea082 0%, #1f7a60 100%);
+  box-shadow:
+    0 2px 3px rgba(23, 96, 74, 0.24),
+    0 9px 20px rgba(31, 122, 96, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.20);
 }
 
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
@@ -294,7 +313,10 @@ a.card:hover .link-more .arrow { transform: translateX(3px); }
 /* Compact hero variant (home page) */
 .hero--sm { padding: 112px 0 44px; }
 .hero--sm .h1 { font-size: clamp(36px, 4.4vw, 56px); }
-.hero--sm .hero-media { transform: scale(1.2) translateX(-52px); }
+/* Home hero: give the image column more room so it can be large without
+   crossing the right margin; anchor its right edge to the content line. */
+.hero--sm .hero-grid { grid-template-columns: 0.88fr 1.12fr; }
+.hero--sm .hero-media { transform-origin: right center; transform: scale(1.07) translateY(-18px); }
 
 .hero-grid {
   display: grid;
