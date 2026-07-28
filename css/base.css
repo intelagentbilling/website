@@ -1,0 +1,607 @@
+/**
+ * IntelAGENT — design tokens + base components
+ * Prototype: shared layer intended to replace the per-page <style> blocks
+ * and the cdn.tailwindcss.com runtime build.
+ */
+
+:root {
+  /* Ink */
+  --ink: #14161f;
+  --ink-2: #2a2d3d;
+  --muted: #5a5e78;
+  --muted-2: #868aa1;
+
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-2: #f7f8f9;
+  --bg-3: #eef1f2;
+  --ink-surface: #24273a;
+
+  /* Lines — structure comes from these, not shadows */
+  --line: #e4e7ea;
+  --line-2: #eef0f2;
+  --line-strong: #d3d8dc;
+
+  /* Brand */
+  --brand: #1f7a60;          /* accessible mint for text/links (5.9:1 on white) */
+  --brand-ink: #17604a;      /* hover / pressed */
+  --brand-fill: #52bf9f;     /* the original mint — fills and dark-bg text only */
+  --brand-wash: #b6dcdc;     /* the hero mint */
+  --brand-soft: #e4f2ee;
+
+  /* Geometry */
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+  --max: 1200px;
+  --pad: 28px;
+}
+
+/* ---------- reset ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink-2);
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: 96px 0; }
+.section--tight { padding: 72px 0; }
+.section--paper { background: var(--bg-2); }
+.section--ink { background: var(--ink-surface); color: #fff; }
+
+/* ---------- type ---------- */
+/* The system: sans for everything, one italic serif for a single accent word. */
+/* Accent: subtle two-tone. On a heading, the accent word sits a shade lighter
+   than the rest — quieter than an italic. Elsewhere (display numbers) .serif is
+   inert and the element's own colour shows through. */
+/* Weight two-tone: the accent word sits a shade lighter than the rest of the
+   heading. Quiet emphasis, all-sans. */
+.serif {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+.h1 .serif,
+.h2 .serif { font-weight: 400; color: var(--muted); }
+.hero .h1 { font-weight: 700; }
+
+.h1 {
+  font-size: clamp(40px, 5.2vw, 66px);
+  line-height: 1.04;
+  letter-spacing: -0.032em;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+.h2 {
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.lede {
+  font-size: clamp(17px, 1.3vw, 19px);
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.muted { color: var(--muted); }
+.small { font-size: 14px; }
+
+/* Eyebrow — a pill, replacing the yellow tag blocks.
+   Asymmetric padding seats the leading dot optically. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 11px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink-2);
+  margin: 0 0 16px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--brand);
+  flex: none;
+}
+/* On the paper sections the default --bg-2 fill would vanish; go white. */
+.section--paper .eyebrow { background: var(--bg); }
+.eyebrow--on-ink {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.82);
+}
+.eyebrow--on-ink::before { background: var(--brand-fill); }
+
+/* ---------- buttons ---------- */
+/* Solid fills, no gradients, no lift-on-hover. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+              box-shadow 0.18s ease, transform 0.08s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn--lg { padding: 15px 28px; font-size: 16px; }
+.btn--block { display: flex; width: 100%; }
+
+/* Subtle tactility: micro-gradient + tight shadow + inset top highlight. */
+.btn--primary {
+  background: linear-gradient(180deg, #363b49 0%, #262a35 100%);
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(20, 22, 31, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+.btn--primary:hover {
+  background: linear-gradient(180deg, #2c313d 0%, #1c1f28 100%);
+  box-shadow: 0 4px 12px rgba(20, 22, 31, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+.btn--brand {
+  background: linear-gradient(180deg, #248a6c 0%, var(--brand) 100%);
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(31, 122, 96, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.btn--brand:hover {
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-ink) 100%);
+  box-shadow: 0 4px 12px rgba(31, 122, 96, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn--ghost:hover { border-color: var(--ink); background: var(--bg-2); }
+
+.btn--on-ink { background: #fff; color: var(--ink); }
+.btn--on-ink:hover { background: rgba(255, 255, 255, 0.88); }
+
+.btn .arrow { transition: transform 0.18s ease; }
+.btn:hover .arrow { transform: translateX(2px); }
+
+/* ---------- cards ---------- */
+/* Hairline borders instead of 64px shadows. */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+.card--paper { background: var(--bg-2); }
+a.card:hover { border-color: var(--line-strong); }
+a.card:hover .link-more { color: var(--brand-ink); }
+a.card:hover .link-more .arrow { transform: translateX(3px); }
+
+.link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand);
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.18s ease;
+}
+.link-more .arrow { transition: transform 0.18s ease; }
+
+/* ---------- nav ---------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+/* Transparent over the hero mint; frosted white once you scroll past it. */
+.nav.is-scrolled {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom-color: var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.18s ease;
+}
+.nav-link:hover { color: var(--ink); }
+
+.dropdown { position: relative; }
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  padding-top: 10px;
+  width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: all 0.18s ease;
+}
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(20, 22, 31, 0.08);
+}
+.dropdown-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+}
+.dropdown-item:hover { background: var(--bg-2); }
+
+/* ---------- hero ---------- */
+/* The mint is a wash that dissolves into white, not a 1100px block. */
+.hero {
+  position: relative;
+  padding: 148px 0 72px;
+  overflow: hidden;
+  background:
+    radial-gradient(980px 460px at 76% 12%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 62%),
+    linear-gradient(180deg,
+      var(--brand-wash) 0%,
+      #c4e2e2 40%,
+      rgba(196, 226, 226, 0.5) 72%,
+      var(--bg) 96%);
+}
+/* Compact hero variant (home page) */
+.hero--sm { padding: 112px 0 44px; }
+.hero--sm .h1 { font-size: clamp(36px, 4.4vw, 56px); }
+.hero--sm .hero-media { transform: scale(1.2) translateX(-52px); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 40px;
+  align-items: center;
+}
+/* Let the product shot bleed toward the right edge and scale up past its
+   column — the hero clips overflow, so this reads bigger without breaking layout. */
+.hero-media {
+  transform: scale(1.34);
+  transform-origin: center left;
+}
+.hero-media img { width: 100%; height: auto; }
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(20, 22, 31, 0.08);
+  font-size: 14px;
+  color: var(--muted);
+}
+.proof-item { display: inline-flex; align-items: center; gap: 9px; font-weight: 500; color: var(--ink-2); }
+.proof-item svg {
+  color: var(--brand);
+  flex: none;
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+  background: #fff;
+  border-radius: 999px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(20, 22, 31, 0.08);
+}
+
+/* ---------- numbered steps (text, no screenshots) ---------- */
+.how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.how-step { position: relative; padding-top: 6px; }
+.how-num {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  border: 1px solid rgba(31, 122, 96, 0.18);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.how-step h3 { font-size: 18px; margin-bottom: 6px; }
+.how-step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
+
+/* ---------- reward band ---------- */
+.reward {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--brand-soft);
+  border: 1px solid rgba(31, 122, 96, 0.16);
+}
+.reward-num {
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--brand-ink);
+}
+.reward-num .serif { color: var(--brand-ink); }
+
+/* Redesigned hero reward card — a "credit" card that shows the stacking */
+.ref-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: 0 18px 48px rgba(20, 22, 31, 0.07);
+}
+.ref-card-ico {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  border: 1px solid rgba(31, 122, 96, 0.16);
+  margin-bottom: 18px;
+}
+.ref-card-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.ref-card .reward-num { font-size: 50px; margin: 6px 0 8px; }
+.ref-stack { display: grid; gap: 10px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.ref-stack-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; }
+.ref-stack-row .rs-l { color: var(--muted); }
+.ref-stack-row .rs-r { color: var(--brand-ink); font-weight: 700; }
+.ref-stack-row.is-more .rs-l,
+.ref-stack-row.is-more .rs-r { color: var(--muted-2); font-weight: 500; font-style: italic; }
+
+/* ---------- logo wall ---------- */
+.logo-wall { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+.logo-cell { background: var(--bg); display: flex; align-items: center; justify-content: center; padding: 26px 18px; min-height: 96px; }
+.logo-cell img { max-height: 38px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.62; transition: opacity 0.2s ease, filter 0.2s ease; }
+.logo-cell:hover img { filter: grayscale(0); opacity: 1; }
+
+/* ---------- stats ---------- */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--radius-lg); overflow: hidden; }
+.stat { background: var(--ink-surface); padding: 30px 22px; }
+.stat-num { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; color: #fff; line-height: 1.1; }
+.stat-num .serif { color: var(--brand-fill); }
+.stat-label { font-size: 13px; color: rgba(255, 255, 255, 0.55); margin-top: 4px; }
+
+/* ---------- pricing ---------- */
+.price-num { font-size: 42px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); line-height: 1.1; }
+.price-unit { font-size: 16px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+/* The cap is the payoff — give it a brand pill, not muted fine print. */
+.price-cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  border: 1px solid rgba(31, 122, 96, 0.18);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.price-cap svg { flex: none; }
+/* Aligned plan cards: same slots top-to-bottom, buttons pinned to a shared baseline. */
+.plan { display: flex; flex-direction: column; }
+.plan .price-num { margin-bottom: 16px; }
+.plan-sub { min-height: 32px; display: flex; align-items: center; margin: 0 0 20px; }
+.plan-desc { margin: 0 0 24px; }
+.plan .btn { margin-top: auto; }
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-ink);
+  background: var(--brand-soft);
+  border: 1px solid rgba(47, 143, 115, 0.22);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* ---------- comparison table ---------- */
+.cmp-wrap { position: relative; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.cmp { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 15px; }
+.cmp th, .cmp td { padding: 15px 18px; text-align: center; border-bottom: 1px solid var(--line-2); vertical-align: middle; }
+.cmp thead th { font-size: 13px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); white-space: nowrap; }
+/* IntelAGENT is the highlighted column */
+.cmp .col-us { background: var(--brand-soft); color: var(--brand-ink); font-weight: 700; border-left: 1px solid rgba(31,122,96,0.16); border-right: 1px solid rgba(31,122,96,0.16); text-align: center; }
+.cmp td.col-us { font-weight: 600; }
+.cmp tbody th { font-weight: 600; color: var(--ink); }
+.cmp td { text-align: center; color: var(--muted); }
+.cmp td:first-child, .cmp th:first-child { text-align: left; }
+.cmp tbody tr:last-child td, .cmp tbody tr:last-child th { border-bottom: 0; }
+.cmp .yes { color: var(--brand); font-weight: 600; }
+.cmp .no { color: var(--muted-2); }
+.cmp .neg { color: #c0392b; font-weight: 600; }
+.cmp-note { font-size: 12.5px; color: var(--muted-2); margin-top: 14px; line-height: 1.5; }
+.cmp thead .col-us { position: relative; }
+.cmp-badge {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--brand);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+/* icon ticks in cells */
+.tick { display: inline-grid; place-items: center; width: 27px; height: 27px; border-radius: 999px; }
+.tick svg { display: block; }
+.tick--yes { background: var(--brand); color: #fff; }
+.tick--yes.on-us { background: var(--brand-ink); }
+.tick--no { background: var(--bg-3); color: var(--muted-2); }
+.tick-cap { display: block; font-size: 11.5px; color: var(--muted-2); margin-top: 5px; line-height: 1.3; }
+
+/* value/highlight cards with icons */
+.feat-ico {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  border: 1px solid rgba(31, 122, 96, 0.16);
+  margin-bottom: 16px;
+}
+.feat-ico svg { display: block; }
+
+/* ---------- faq ---------- */
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  list-style: none;
+  padding: 22px 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary svg { flex: none; color: var(--muted-2); transition: transform 0.2s ease; }
+.faq-item[open] summary svg { transform: rotate(180deg); }
+.faq-item p { margin: 0 0 22px; color: var(--muted); max-width: 68ch; }
+
+/* ---------- footer ---------- */
+.footer { background: var(--ink); color: rgba(255, 255, 255, 0.55); padding: 64px 0 32px; }
+.footer h4 { color: #fff; font-size: 14px; font-weight: 600; margin: 0 0 14px; }
+.footer a { transition: color 0.15s ease; }
+.footer a:hover { color: #fff; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer-bot {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+
+/* ---------- section grids ---------- */
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.split-grid--trust { grid-template-columns: 0.9fr 1.1fr; }
+.price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto; }
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.quad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.media-card { padding: 28px; display: flex; gap: 20px; align-items: center; }
+
+/* ---------- utilities ---------- */
+.stack > * + * { margin-top: var(--stack, 16px); }
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+.center { text-align: center; }
+.mx-auto { margin-inline: auto; }
+.narrow { max-width: 760px; }
+.hide-mobile { display: initial; }
+.show-mobile { display: none; }
+/* visually hidden but readable by crawlers, LLMs, and screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  :root { --pad: 20px; }
+  .section { padding: 64px 0; }
+  .hero { padding: 116px 0 56px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .nav-links { display: none; }
+  .logo-wall { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-grid,
+  .split-grid,
+  .split-grid--trust,
+  .price-grid { grid-template-columns: 1fr; gap: 20px; }
+  .split-grid { gap: 36px; }
+  .how { grid-template-columns: 1fr; gap: 26px; }
+  .trio { grid-template-columns: 1fr; gap: 16px; }
+  .quad { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .reward { padding: 28px; }
+  .media-card { flex-direction: column; align-items: flex-start; }
+  .media-card img { align-self: center; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-bot { flex-direction: column; align-items: flex-start; }
+  .hide-mobile { display: none; }
+  .show-mobile { display: initial; }
+}
+
+@media (max-width: 560px) {
+  .quad { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

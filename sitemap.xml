@@ -21,6 +21,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.intelagent.ca/referrals.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.intelagent.ca/compare.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.intelagent.ca/contact.html</loc>
     <priority>0.7</priority>
   </url>
