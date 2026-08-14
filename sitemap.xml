@@ -13,6 +13,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.intelagent.ca/departments-and-groups.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.intelagent.ca/clinics.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.intelagent.ca/emr-clinic.html</loc>
     <priority>0.8</priority>
   </url>
