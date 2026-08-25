@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Help - IntelAGENT Mobile</title>
+
+    <!-- In-app help. Deliberately self-contained: no site navigation, no
+         pricing page, no sign-up or checkout link. This page is opened inside
+         the iOS and Android apps, where linking out to a purchase flow is not
+         permitted. Keep every link on this page either an anchor or a mailto. -->
+    <style>
+        /* Self-contained on purpose: this page is opened inside the mobile apps
+           and must not depend on the marketing site's stylesheet, fonts or
+           navigation, so it can be deployed and restyled independently. */
+        :root {
+            --ink: #14161f;
+            --muted: #5a5e78;
+            --line: #e4e7ea;
+            --bg: #ffffff;
+            --bg-2: #f7f8f9;
+            --brand: #1f7a60;
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                         "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .page { max-width: 720px; margin: 0 auto; padding: 28px 20px 64px; }
+        .eyebrow {
+            display: inline-block; margin: 0 0 10px; padding: 4px 12px;
+            border: 1px solid var(--line); border-radius: 999px;
+            background: var(--bg-2); color: var(--muted);
+            font-size: 12px; font-weight: 600; letter-spacing: .02em;
+            text-transform: uppercase;
+        }
+        h1 { font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 650; margin: 0 0 8px; }
+        h2 { font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 650; margin: 36px 0 10px; }
+        h3 { font-size: 17px; font-weight: 650; margin: 24px 0 6px; }
+        p, li { color: var(--muted); }
+        .lede { font-size: 17px; color: var(--muted); margin: 0 0 24px; }
+        .small { font-size: 14px; }
+        .muted { color: var(--muted); }
+        ul, ol { padding-left: 22px; margin: 10px 0; display: grid; gap: 8px; }
+        strong { color: var(--ink); font-weight: 600; }
+        a { color: var(--brand); }
+        .box {
+            display: grid; gap: 6px; padding: 14px 16px; margin: 12px 0;
+            border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2);
+        }
+        .toc { display: grid; gap: 8px; padding: 16px 18px; margin: 24px 0 8px;
+               border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+        .toc a { text-decoration: none; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+        th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+        th { font-weight: 600; color: var(--ink); white-space: nowrap; }
+        td { color: var(--muted); }
+        .footer-note { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--line);
+                       font-size: 13px; color: var(--muted); }
+        @media (prefers-color-scheme: dark) {
+            :root { --ink: #f2f3f7; --muted: #a9adc2; --line: #2c2f3d; --bg: #14161f;
+                    --bg-2: #1c1f2b; --brand: #52bf9f; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <span class="eyebrow">Help</span>
+        <h1>Using the app</h1>
+        <p class="lede">A quick reference for billing from your phone. For anything not covered here, tap <strong>Settings &rarr; Ask us a question</strong> to chat with the IntelAGENT team.</p>
+
+        <nav class="toc">
+            <a href="#tabs" class="muted">The five tabs</a>
+            <a href="#claim" class="muted">Submitting a claim</a>
+            <a href="#hcv" class="muted">Health card validation</a>
+            <a href="#records" class="muted">Records, errors and rejections</a>
+            <a href="#rosters" class="muted">Rosters and bulk billing</a>
+            <a href="#scanning" class="muted">Scanning cards and documents</a>
+            <a href="#revenue" class="muted">Revenue</a>
+            <a href="#activation" class="muted">Account activation</a>
+            <a href="#support" class="muted">Getting help</a>
+        </nav>
+
+        <h2  id="tabs">The five tabs</h2>
+        <table>
+            <tr><th>Claims</th><td>Create and submit a claim</td></tr>
+            <tr><th>Records</th><td>Your claim history, and any Ministry errors to fix</td></tr>
+            <tr><th>Revenue</th><td>What you have billed and what has been paid</td></tr>
+            <tr><th>Rosters</th><td>Patient lists for rounding and bulk billing</td></tr>
+            <tr><th>Settings</th><td>Your profile, billing service, banking and account activation</td></tr>
+        </table>
+
+        <h2  id="claim">Submitting a claim</h2>
+        <ol class="muted">
+            <li><strong>Patient</strong> — type the 10-digit health card number and 2-character version code, or tap the camera icon to scan the card. Details auto-fill for patients already in your records.</li>
+            <li><strong>Service details</strong> — service date (defaults to today), facility and physician.</li>
+            <li><strong>Billing codes</strong> — search or pick from your recent codes, set the quantity, then tap <strong>Add Code</strong> for each additional code. The fee comes from the OHIP schedule.</li>
+            <li><strong>Diagnostic code</strong> — the diagnosis that justifies the services billed.</li>
+            <li><strong>Comments</strong> (optional) — notes for your own reference; they are not sent to the Ministry.</li>
+            <li>Tap <strong>Submit</strong>. The claim goes to the Ministry on the next transmission.</li>
+        </ol>
+
+        <h2  id="hcv">Health card validation</h2>
+        <p class="muted">Health cards are checked against the Ministry's validation service as you enter them. A card that comes back invalid or expired is worth correcting before you submit — an invalid card is one of the most common reasons a claim is rejected.</p>
+
+        <h2  id="records">Records, errors and rejections</h2>
+        <p class="muted">The <strong>Records</strong> tab lists every claim with its current status. When the Ministry rejects a claim, the error is reported back here with the reason code, so you can correct the claim and resubmit it. Filter the list by status to see just what needs attention.</p>
+
+        <h2  id="rosters">Rosters and bulk billing</h2>
+        <ul class="muted">
+            <li>Build a roster of the patients you are following, then bill the whole list for a service date in one pass.</li>
+            <li>Each patient row holds its own codes and quantities; submit them individually or all at once.</li>
+            <li>Rosters can be shared with a colleague using a share code, so a group can round off the same list.</li>
+        </ul>
+
+        <h2  id="scanning">Scanning cards and documents</h2>
+        <ul class="muted">
+            <li><strong>Health cards</strong> — tap the camera icon on the claim form to read the number and version code off the card.</li>
+            <li><strong>Batch scanning</strong> — scan a stack of cards in one go and save them as a roster.</li>
+            <li><strong>Documents</strong> — capture an operative note or supporting document with the camera and attach it to the claim.</li>
+        </ul>
+
+        <h2  id="revenue">Revenue</h2>
+        <p class="muted">The <strong>Revenue</strong> tab shows what you have submitted and what the Ministry has paid, by day, week, month and year, drawn from the remittance advices we retrieve on your behalf.</p>
+
+        <h2  id="activation">Account activation</h2>
+        <p class="muted">Before claims can be transmitted, the Ministry needs to know we are acting for you. Open <strong>Settings &rarr; Account Activation</strong> and work through the steps: choose which billing programs you use, choose a billing service, and complete your MC EDT designation so we can submit on your behalf. Activation follows automatically once those are done. You can use the app and enter claims at any time before that is finished.</p>
+
+        <h2  id="support">Getting help</h2>
+        <p class="muted">Tap <strong>Settings &rarr; Ask us a question</strong> to reach the IntelAGENT team from inside the app, or email <a href="mailto:agent@intelagent.ca">agent@intelagent.ca</a>. We answer billing questions as well as app questions.</p>
+
+        <p class="footer-note">1876513 Ontario Inc. &middot; Toronto, Ontario</p>
+    </div>
+
+</body>
+</html>
