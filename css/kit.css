@@ -1,0 +1,530 @@
+/**
+ * IntelAGENT — design-kit proposal, layered on top of base.css
+ * ------------------------------------------------------------
+ * Load AFTER base.css. Everything here is an override, so the diff between
+ * the current site and the proposal is exactly this file. If it's adopted,
+ * fold it into base.css and delete the originals it replaces.
+ *
+ * Five moves:
+ *   1. A monospace, used only for data — codes, money, dates, counts.
+ *   2. Warm paper instead of the mint gradient.
+ *   3. One green, doing one job.
+ *   4. Hairline rows instead of icon-and-tick bullet lists.
+ *   5. Flat, squarer surfaces — an instrument, not a brochure.
+ */
+
+:root {
+  /* 1. The mono. Data only — never body copy; monospaced paragraphs are a
+     real reading cost. System stack here so the prototype downloads nothing;
+     in production self-host JetBrains Mono or IBM Plex Mono next to Jakarta. */
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* 2. Warm paper. Cold grey reads as "dashboard"; warm reads as "document",
+     which is what a billing tool should feel like. */
+  --bg:   #ffffff;
+  --bg-2: #faf9f6;
+  --bg-3: #f2efe9;
+
+  --line:        #e7e4dd;
+  --line-2:      #efedE7;
+  --line-strong: #d6d2c8;
+
+  /* 3. One green. --brand is the only interactive colour; --brand-soft is a
+     rare highlight fill. --brand-wash and --brand-fill are retired: mint was
+     doing five different jobs and so meant nothing. */
+  --brand:      #1f7a60;
+  --brand-ink:  #17604a;
+  --brand-soft: #ecf3f0;
+  --brand-fill: #6ecfae;   /* kept for dark sections only */
+
+  /* 5. Squarer. 16px reads consumer-friendly; 8px reads precise. */
+  --radius:    8px;
+  --radius-sm: 5px;
+  --radius-lg: 10px;
+}
+
+/* ---------- 1. mono for data ---------- */
+/* Data, not prose. The comparison table opts in per cell via .mono — blanket
+   .cmp td/.cmp th put row labels and sentences like "All specialties" in Menlo,
+   which read as code rather than as precision. */
+.mono,
+.figure-num,
+.price-num,
+.stat-num,
+.how-num,
+.spec-key {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+/* A code, a card number, a dollar figure sitting inside a sentence. */
+.mono-inline {
+  font-family: var(--mono);
+  font-size: 0.94em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 2. flat paper hero ---------- */
+/* The mint-to-white wash was on every page and dated the whole site. Gone;
+   the product shot is now the only colour above the fold. */
+.hero {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+  padding: 132px 0 76px;
+}
+.hero--sm { padding: 108px 0 48px; }
+
+/* The product shot used to be scaled past its column and cropped by the
+   gradient hero's overflow. On flat paper it sits inside the grid. */
+.hero-media,
+.hero--sm .hero-media { transform: none; }
+
+/* Hero proof row: the ticks are gone, so these are plain claims separated by
+   a middot rather than a row of green checkmarks. */
+.hero-proof { border-top-color: var(--line); font-size: 14px; gap: 8px 20px; }
+.proof-item { font-weight: 500; color: var(--muted); }
+.proof-item + .proof-item::before {
+  content: "·";
+  margin-right: 20px;
+  color: var(--line-strong);
+}
+
+/* Frosted glass was the other 2021 tell. Solid paper, one hairline. */
+.nav.is-scrolled {
+  background: var(--bg-2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: var(--line);
+}
+
+/* ---------- eyebrow: a label, not a pill ---------- */
+/* The dot-in-a-pill is the most generic element in the kit. A mono label with
+   a rule costs nothing and is legible as ours at a glance. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  margin: 0 0 18px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.eyebrow::before { content: none; }
+.eyebrow::after {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--line-strong);
+  flex: none;
+}
+/* Centred headings get a rule on both sides so the label stays optically centred. */
+.center > .eyebrow::before,
+.center .eyebrow::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--line-strong);
+  border-radius: 0;
+  flex: none;
+}
+.eyebrow--on-ink {
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.55);
+}
+.eyebrow--on-ink::after,
+.center .eyebrow--on-ink::before { background: rgba(255, 255, 255, 0.24); }
+.section--paper .eyebrow { background: none; }
+
+/* ---------- accent word ---------- */
+/* base.css calls this ".serif" and it is not a serif — it's the same sans at a
+   lighter weight. Renamed honestly; .serif stays aliased so no page breaks. */
+.h1 .accent,
+.h2 .accent { font-weight: 400; color: var(--muted); }
+.accent { font-family: inherit; font-style: normal; color: inherit; }
+
+/* ---------- 4. hairline rows instead of ticks ---------- */
+/* A green tick beside "Revenue projections" carries no information. These
+   read as a spec sheet, which is what they are. */
+.spec {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.spec > li {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding: 15px 2px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.spec-key {
+  flex: none;
+  width: 116px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.spec--on-ink { border-top-color: rgba(255, 255, 255, 0.16); }
+.spec--on-ink > li {
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.88);
+}
+.spec--on-ink .spec-key { color: rgba(255, 255, 255, 0.42); }
+
+/* ---------- cards: hairline, square, no icon ---------- */
+.card { border-radius: var(--radius-lg); }
+/* A numbered index instead of a decorative glyph — it also gives the reader
+   a count, which the icon never did. */
+.card-idx {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--muted-2);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---------- 5. flat buttons ---------- */
+/* The gradient-plus-layered-shadow button is a skeuomorphic revival that
+   fights a flat document system. Solid fill, one hairline, no lift. */
+.btn { border-radius: var(--radius); letter-spacing: 0; }
+.btn:active { transform: none; }
+.btn--primary,
+.btn--primary:hover {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+.btn--primary:hover { background: var(--ink-2); }
+.btn--brand,
+.btn--brand:hover {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+.btn--brand:hover { background: var(--brand-ink); }
+.btn--ghost { border-color: var(--line-strong); }
+
+/* ---------- step numbers ---------- */
+.how-num {
+  border-radius: var(--radius-sm);
+  background: var(--bg-3);
+  border-color: var(--line);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---------- tables as a first-class component ---------- */
+/* Needed on FAQ, security, pricing and comparison pages across the site.
+   Hairline rows read as documentation; documentation reads as trustworthy. */
+.sheet { width: 100%; border-collapse: collapse; font-size: 15px; }
+.sheet th,
+.sheet td {
+  text-align: left;
+  padding: 15px 18px 15px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.sheet th {
+  width: 190px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+.sheet td { color: var(--ink-2); }
+.sheet tr:last-child th,
+.sheet tr:last-child td { border-bottom: 0; }
+
+/* ---------- reusable device frames ---------- */
+/* Desktop screenshots were bare PNGs sitting beside phone-framed mobile ones,
+   which read as borderless and floating. One frame system for both. The phone
+   frame currently also lives inline in mobile.html; fold that in when the kit
+   is adopted. */
+.browser {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 18px 44px rgba(20, 22, 31, 0.10);
+}
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px;
+  background: var(--bg-3);
+  border-bottom: 1px solid var(--line);
+}
+.browser-bar i { width: 10px; height: 10px; border-radius: 999px; background: var(--line-strong); flex: none; }
+.browser-bar span {
+  margin-left: 10px; flex: 1; height: 18px; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--line);
+}
+.browser > img { width: 100%; height: auto; display: block; }
+
+/* on the dark hero the light chrome would glare; invert it */
+.browser--on-ink {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 34px 80px rgba(0, 0, 0, 0.55);
+}
+.browser--on-ink .browser-bar { background: #1b1f2c; border-bottom-color: rgba(255,255,255,0.10); }
+.browser--on-ink .browser-bar i { background: rgba(255, 255, 255, 0.22); }
+.browser--on-ink .browser-bar span { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.10); }
+
+/* ---------- hero, dark ---------- */
+/* Flat paper was right for the body and wrong for the hero — it made the top
+   of the page the quietest thing on it. Dark inverts that without going back
+   to the mint gradient, and a light product screenshot glows against it. */
+.hero--ink {
+  background: radial-gradient(900px 520px at 78% 8%, #2b3145 0%, #1c2030 55%, #171a26 100%);
+  border-bottom: 0;
+  padding: 152px 0 96px;
+}
+.hero--ink .h1 { color: #fff; }
+.hero--ink .h1 .accent, .hero--ink .h1 .serif { color: var(--brand-fill); font-weight: 600; }
+.hero--ink .lede { color: rgba(255, 255, 255, 0.66); }
+.hero--ink .eyebrow { color: rgba(255, 255, 255, 0.55); }
+.hero--ink .eyebrow::after, .hero--ink .center .eyebrow::before { background: rgba(255, 255, 255, 0.24); }
+.hero--ink .hero-figures { border-top-color: rgba(255, 255, 255, 0.14); color: rgba(255,255,255,0.60); }
+.hero--ink .hero-figures .mono, .hero--ink .figure-num { color: #fff; }
+.hero--ink .hero-proof { border-top-color: rgba(255, 255, 255, 0.14); }
+.hero--ink .proof-item { color: rgba(255, 255, 255, 0.72); }
+.hero--ink .proof-item + .proof-item::before { color: rgba(255, 255, 255, 0.30); }
+.hero--ink .btn--primary, .hero--ink .btn--primary:hover { background: #fff; color: var(--ink); }
+.hero--ink .btn--ghost { color: #fff; border-color: rgba(255, 255, 255, 0.30); }
+.hero--ink .btn--ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255,255,255,0.5); }
+
+/* hero figure line — a quiet fact line, not a stat row */
+.hero-figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.hero-figures .mono { color: var(--ink); font-weight: 600; }
+
+/* Over the dark hero the nav sits on ink until you scroll, so its links and
+   logo have to invert — and change back once the bar goes solid paper. */
+body[data-hero="ink"] .nav:not(.is-scrolled) .nav-link { color: rgba(255, 255, 255, 0.72); }
+body[data-hero="ink"] .nav:not(.is-scrolled) .nav-link:hover { color: #fff; }
+body[data-hero="ink"] .nav:not(.is-scrolled) img[alt="IntelAGENT"] { filter: brightness(0) invert(1); }
+body[data-hero="ink"] .nav:not(.is-scrolled) .btn--primary { background: #fff; color: var(--ink); }
+
+/* ---------- hero, brand green ---------- */
+/* The original mint wash was the right colour and the wrong execution — a flat
+   band that stopped dead. Same green, given depth: a light source top-right,
+   more saturation at the top-left, dissolving into paper at the fold. */
+.hero--mint {
+  background:
+    radial-gradient(820px 460px at 82% 4%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(158deg, #b9ded0 0%, #cfe8de 34%, #e8f2ee 68%, var(--bg-2) 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 150px 0 92px;
+  overflow: visible;
+}
+.hero--mint .h1 { color: var(--ink); }
+.hero--mint .h1 .accent, .hero--mint .h1 .serif { color: var(--brand-ink); font-weight: 400; }
+.hero--mint .lede { color: #35564c; }
+.hero--mint .eyebrow { color: #3f6459; }
+.hero--mint .eyebrow::after, .hero--mint .center .eyebrow::before { background: rgba(23, 96, 74, 0.28); }
+.hero--mint .hero-figures { border-top-color: rgba(23, 96, 74, 0.20); color: #3f6459; }
+.hero--mint .hero-figures .mono { color: var(--ink); }
+.hero--mint .btn--ghost { border-color: rgba(23, 96, 74, 0.34); color: var(--brand-ink); }
+.hero--mint .btn--ghost:hover { background: rgba(255, 255, 255, 0.6); border-color: var(--brand-ink); }
+.hero--mint .browser { box-shadow: 0 26px 60px rgba(20, 50, 42, 0.20); }
+
+/* desktop + phone together, the way the old hero showed both */
+.hero-combo { position: relative; padding-bottom: 26px; }
+.hero-combo .browser { width: 100%; }
+.hero-combo .phone {
+  position: absolute;
+  right: -46px;
+  bottom: -40px;
+  width: 146px;
+  border-width: 7px;
+  border-radius: 30px;
+  box-shadow: 0 22px 44px rgba(20, 50, 42, 0.28);
+}
+.hero-combo .phone-notch { width: 46px; height: 12px; top: 5px; }
+@media (max-width: 900px) {
+  .hero-combo .phone { width: 108px; right: -14px; bottom: -24px; }
+}
+
+/* ---------- phone frame (promoted out of mobile.html) ---------- */
+.phone {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  aspect-ratio: 390 / 848;
+  background: #10131c;
+  border: 9px solid #10131c;
+  border-radius: 44px;
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.25) inset, 0 26px 60px rgba(20, 22, 31, 0.22);
+  overflow: hidden;
+}
+.phone > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.phone--lg { width: 344px; }
+.phone--on-ink {
+  border-color: #2f3346;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+.phone-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88px;
+  height: 22px;
+  border-radius: 999px;
+  background: #10131c;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   COLOUR SYSTEM — matched to the product
+   --------------------------------------------------------------------------
+   The site was mint green while every screenshot on it is indigo: the revenue
+   card, New Claim, the sidebar active state and the chart bars all sample to
+   #4F60E1 / #7586E9. A green frame around a violet screenshot reads as two
+   brands. These are the app's own values, so the product shots now sit in a
+   page the same colour as themselves.
+
+   #4F60E1 is 5.13:1 on white and carries white text at 5.13:1, so it works as
+   a text colour as well as a fill — no separate "accessible" variant needed.
+   ========================================================================== */
+:root {
+  --brand:      #4f60e1;  /* the app's New Claim button, verbatim */
+  --brand-ink:  #4348be;  /* hover / pressed — 7.22:1 */
+  --brand-fill: #7586e9;  /* fills, and text on dark */
+  --brand-soft: #eef0fd;  /* rare highlight fill */
+
+  /* Cool neutrals to sit under a cool accent. --bg-2 is the app's own canvas
+     (#F5F8FB), so the page and the screenshots share a ground. */
+  --bg:   #ffffff;
+  --bg-2: #f6f8fb;
+  --bg-3: #eceff6;
+
+  --line:        #e3e7f0;
+  --line-2:      #eef1f7;
+  --line-strong: #ccd3e2;
+}
+
+/* ---------- hero: neutral ground, one soft light source ---------- */
+/* Replaces the mint band. The glow is the thing worth keeping from that
+   treatment — a light source, not a stripe of colour that stops dead. */
+.hero--glow {
+  position: relative;
+  background:
+    radial-gradient(760px 420px at 74% 2%, rgba(79, 96, 225, 0.16) 0%, rgba(79, 96, 225, 0) 62%),
+    radial-gradient(620px 380px at 12% 12%, rgba(117, 134, 233, 0.10) 0%, rgba(117, 134, 233, 0) 60%),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 88%);
+  border-bottom: 1px solid var(--line);
+  padding: 150px 0 92px;
+  overflow: visible;
+}
+.hero--glow .h1 { color: var(--ink); }
+.hero--glow .h1 .accent, .hero--glow .h1 .serif { color: var(--brand); font-weight: 400; }
+.hero--glow .browser { box-shadow: 0 28px 64px rgba(37, 46, 92, 0.16); }
+.hero--glow .phone { box-shadow: 0 22px 44px rgba(37, 46, 92, 0.30); }
+
+/* ---------- browser frame: no fake chrome ---------- */
+/* Traffic lights and a dummy URL pill are decoration that says nothing, and
+   they are the most skeuomorphic thing on the page. A hairline and a radius
+   is what the screenshot actually needs. */
+.browser-bar { display: none; }
+.browser { border-radius: 12px; }
+
+/* ==========================================================================
+   PHONE FRAME — thin bezel, no drawn notch
+   --------------------------------------------------------------------------
+   The old frame was a 9px slab of black with a fake notch painted on top of a
+   screenshot that already contains the real dynamic island — two notches, one
+   of them wrong. This is a 5px bezel with a brushed edge and a light rim, and
+   the island in the capture is left to be the island.
+   ========================================================================== */
+:root { --bezel: 3px; --screen-radius: 42px; }
+
+.phone {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  aspect-ratio: 390 / 848;
+  box-sizing: border-box;
+  padding: var(--bezel);
+  border: 0;
+  border-radius: 45px;
+  background: linear-gradient(152deg, #5b6377 0%, #1c202b 22%, #14171f 74%, #474e60 100%);
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.16),
+    0 18px 40px rgba(37, 46, 92, 0.24);
+  overflow: hidden;
+}
+.phone > img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--screen-radius);
+  object-fit: cover;
+  object-position: top;
+}
+.phone--lg { width: 344px; }
+.phone--on-ink {
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.26),
+    0 30px 70px rgba(0, 0, 0, 0.5);
+}
+.phone-notch { display: none; }
+
+/* the hero's small phone needs the bezel and radius scaled with it */
+.hero-combo .phone {
+  --bezel: 3px;
+  --screen-radius: 27px;
+  border-radius: 30px;
+  border-width: 0;
+}
+@media (max-width: 900px) {
+  .hero-combo .phone { --bezel: 3px; --screen-radius: 21px; border-radius: 23px; }
+}
+
+/* The accent word is --muted, which is a mid slate — legible on paper, nearly
+   invisible on ink. Give it a light value on dark sections instead. */
+.section--ink .h1 .accent,
+.section--ink .h2 .accent { color: rgba(255, 255, 255, 0.46); }

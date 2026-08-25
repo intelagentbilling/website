@@ -3,13 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OHIP Billing Mobile App for Ontario Physicians | IntelAGENT</title>
-    <meta name="description" content="Submit OHIP claims from your phone in 15 seconds. IntelAGENT's mobile app features health card scanning, offline mode, and real-time revenue tracking. Free for iOS and Android.">
+    <title>OHIP Billing on the Go | IntelAGENT Mobile App</title>
+    <meta name="description" content="Bill OHIP from the hospital in about ten seconds a patient. Your rounding list is already loaded, your codes are one tap, and claims go straight to the Ministry. iOS and Android.">
     <link rel="canonical" href="https://www.intelagent.ca/mobile.html" />
 
     <link href="fonts/plus-jakarta-sans.css" rel="stylesheet">
     <link href="fonts/fraunces.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
+    <link href="css/kit.css?v=22" rel="stylesheet"><!-- design-kit proposal, overrides base -->
+    <style>
+        /* This hero's headline is longer than the shared one, so give the text
+           column more room and let it wrap on its own terms. */
+        .hero .hero-grid { grid-template-columns: 1.04fr 0.96fr; }
+        .hero .hero-media { transform: none; }
+        .hero .h1 { font-size: clamp(38px, 4.6vw, 58px); text-wrap: balance; }
+
+        /* --- hero: numbers instead of unfalsifiable checkmarks --- */
+        .hero-figures {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 28px;
+            list-style: none;
+            margin: 26px 0 0;
+            padding: 20px 0 0;
+            border-top: 1px solid var(--line);
+            font-size: 14.5px;
+            color: var(--muted);
+        }
+        .hero-figures .mono { color: var(--ink); font-weight: 600; }
+
+        /* --- a real screenshot, framed --- */
+        .shot { display: flex; justify-content: center; }
+        .shot img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+        }
+        .shot--on-ink img {
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 26px 64px rgba(0, 0, 0, 0.34);
+        }
+
+        /* illustration that fills its card edge to edge */
+        .shot-flush { padding: 0; overflow: hidden; display: flex; }
+        .shot-flush img { width: 100%; height: auto; display: block; }
+
+        /* --- the ten seconds, played back --- */
+        .demo { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+
+        .demo-steps { display: grid; gap: 10px; align-content: start; }
+        .demo-step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            text-align: left;
+            width: 100%;
+            padding: 20px 22px;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+            opacity: 0.62;
+        }
+        .demo-step:hover { opacity: 1; border-color: var(--line-strong); }
+        .demo-step.is-active {
+            opacity: 1;
+            background: var(--brand-soft);
+            border-color: rgba(31, 122, 96, 0.28);
+        }
+        .demo-step .how-num {
+            margin-bottom: 0;
+            flex: none;
+            width: 36px;
+            height: 36px;
+            font-size: 14px;
+            background: var(--bg);
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .demo-step.is-active .how-num { background: var(--brand); color: #fff; border-color: var(--brand); }
+        .demo-step-body { display: block; }
+        .demo-step-title {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+        /* stage */
+        .demo-stage { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+        /* Must out-specify `.phone > img` in kit.css (0,1,1), which lays the
+           single-screenshot phones out statically. These three stack. */
+        .phone > img.demo-frame {
+            position: absolute;
+            /* Not `inset` + `width:auto`: for an absolutely positioned replaced
+               element, auto width resolves to the image's intrinsic width, so
+               `right` is dropped as over-constrained and the screen overhangs
+               the bezel on the right. Size it explicitly instead. */
+            top: var(--bezel);
+            left: var(--bezel);
+            width: calc(100% - var(--bezel) * 2);
+            height: calc(100% - var(--bezel) * 2);
+            border-radius: var(--screen-radius);
+            object-fit: cover;
+            object-position: top;
+            opacity: 0;
+            transition: opacity 0.22s ease;
+        }
+        .phone > img.demo-frame.is-on { opacity: 1; }
+        .demo-tap {
+            position: absolute;
+            z-index: 4;
+            width: 46px;
+            height: 46px;
+            margin: -23px 0 0 -23px;
+            border-radius: 999px;
+            background: rgba(82, 191, 159, 0.32);
+            border: 2px solid #52bf9f;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .demo-tap.is-firing { animation: demo-tap 0.62s ease-out; }
+        @keyframes demo-tap {
+            0%   { opacity: 0;    transform: scale(0.35); }
+            22%  { opacity: 1;    transform: scale(1); }
+            100% { opacity: 0;    transform: scale(1.75); }
+        }
+
+        .demo-done {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--brand-ink);
+            background: var(--brand-soft);
+            border: 1px solid rgba(31, 122, 96, 0.22);
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .demo-done.is-on { opacity: 1; transform: none; }
+
+        @media (max-width: 900px) {
+            .demo { grid-template-columns: 1fr; gap: 36px; }
+            .demo-stage { order: -1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .demo-frame { transition: none; }
+            .demo-tap.is-firing { animation: none; }
+        }
+    </style>
 </head>
 <body>
 
@@ -88,6 +241,7 @@
         </div>
     </nav>
 
+
     <!-- Hero -->
     <section class="hero">
         <div class="container">
@@ -95,10 +249,10 @@
                 <div>
                     <span class="eyebrow">Mobile App</span>
                     <h1 class="h1">
-                        Bill OHIP<br>from <span class="serif">anywhere</span>
+                        Ten seconds<br>a patient, <span class="accent">on&nbsp;the&nbsp;go</span>
                     </h1>
-                    <p class="lede" style="max-width:34ch">
-                        Submit claims in seconds, scan health cards instantly, and track your revenue on the go. Available for iOS and Android.
+                    <p class="lede" style="max-width:38ch">
+                        Your rounding list is already on your phone. Tap a patient, tap your codes, submit straight to OHIP &mdash; between rooms, not after dinner.
                     </p>
                     <div class="row">
                         <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8">
@@ -109,90 +263,125 @@
                         </a>
                     </div>
 
-                    <div class="hero-proof">
-                        <span class="proof-item">
-                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            Free to download
-                        </span>
-                        <span class="proof-item">
-                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            Bill at point-of-care
-                        </span>
-                        <span class="proof-item">
-                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            PHIPA compliant
-                        </span>
-                    </div>
+                    <ul class="hero-figures">
+                        <li><span class="mono">2,000+</span> Ontario physicians billing</li>
+                        <li>Submitting to OHIP since <span class="mono">2016</span></li>
+                    </ul>
                 </div>
                 <div class="hero-media hide-mobile" style="display:flex;justify-content:center">
-                    <img src="img/hero-mobile.png" alt="IntelAGENT Mobile App" style="width:290px;height:auto;border-radius:var(--radius-lg)">
+                    <div class="phone phone--lg">
+                        <img src="img/mobile-records-phone.png" alt="The Records screen in the IntelAGENT app: 212 claims totalling $12,006.80 billed and $2,495.93 paid, grouped by service date with each patient's billing code and status">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Features -->
-    <section class="section">
-        <div class="container">
-            <div class="center narrow mx-auto" style="margin-bottom:44px">
-                <span class="eyebrow">Features</span>
-                <h2 class="h2">Everything you need in your <span class="serif">pocket</span></h2>
-                <p class="lede" style="margin-bottom:0">Designed for physicians who need to bill efficiently while on the move.</p>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
-                <div class="card" style="padding:28px">
-                    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--brand);margin-bottom:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    <h3 class="h3">Fast Claim Entry</h3>
-                    <p class="muted small" style="margin:0">Submit claims in under 15 seconds with smart templates.</p>
-                </div>
-                <div class="card" style="padding:28px">
-                    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--brand);margin-bottom:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    <h3 class="h3">Health Card Scanner</h3>
-                    <p class="muted small" style="margin:0">Scan Ontario health cards with your camera.</p>
-                </div>
-                <div class="card" style="padding:28px">
-                    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--brand);margin-bottom:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    <h3 class="h3">Roster Management</h3>
-                    <p class="muted small" style="margin:0">Manage patient rosters and track enrollments.</p>
-                </div>
-                <div class="card" style="padding:28px">
-                    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--brand);margin-bottom:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    <h3 class="h3">Revenue Tracking</h3>
-                    <p class="muted small" style="margin:0">See real-time status and revenue projections.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feature Highlight: Quick Claims -->
-    <section class="section section--paper">
+    <!-- Point-of-Care (moved up: this is the ground the product is actually fought on) -->
+    <section class="section section--ink">
         <div class="container">
             <div class="split-grid">
-                <div>
-                    <span class="eyebrow">Quick Claims</span>
-                    <h2 class="h2">Submit claims in <span class="serif">seconds</span></h2>
-                    <p class="lede">Enter patient info, select service codes, and submit directly to OHIP. Our smart templates remember your common procedures so you can bill faster.</p>
-                    <div style="display:grid;gap:14px;margin-bottom:24px">
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">15-second claim entry</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Smart templates for common procedures</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Submit directly to OHIP</span>
-                        </div>
+                <div style="display:flex;justify-content:center">
+                    <div class="phone phone--on-ink">
+                        <img src="img/mobile-roster-phone.png" alt="A patient roster in the IntelAGENT app: eight patients on a long-term care ward, each showing its claim status for today">
                     </div>
-                    <a href="https://docs.intelagent.ca/docs/mobile-app/claims/submitting-claims" class="link-more">
-                        Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                    </a>
                 </div>
-                <div class="card" style="padding:28px;display:flex;justify-content:center">
-                    <img src="img/quick-claims.png" alt="Quick Claims Entry" style="width:56%;height:auto;border-radius:var(--radius)">
+                <div>
+                    <span class="eyebrow eyebrow--on-ink">Point-of-Care</span>
+                    <h2 class="h2" style="color:#fff">Your rounding list, already <span class="accent">loaded</span></h2>
+                    <p class="lede" style="color:rgba(255,255,255,0.62)">Hospital rounds, nursing homes, house calls, ER shifts. Your roster carries over from one day to the next, so the ward you're working is the list on your phone. Tap a name and the claim is already filled in.</p>
+
+                    <ul class="spec spec--on-ink" style="margin-top:32px">
+                        <li><span class="spec-key">Carry-over</span>Patients carry over day to day &mdash; you never rebuild the list</li>
+                        <li><span class="spec-key">Pre-filled</span>Health card, date of birth, facility and diagnosis come with the patient</li>
+                        <li><span class="spec-key">No doubles</span>Every name shows whether it has been claimed today &mdash; no duplicates on a shared ward</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works / the 10 seconds, demonstrated -->
+    <section class="section">
+        <div class="container">
+            <div class="center narrow mx-auto" style="margin-bottom:52px">
+                <span class="eyebrow" style="margin-inline:auto">How it works</span>
+                <h2 class="h2">One patient. About <span class="accent">ten seconds</span>.</h2>
+                <p class="lede" style="margin-bottom:0">Not a claim form. Three taps against a list you already have.</p>
+            </div>
+
+            <div class="demo" id="demo">
+                <div class="demo-steps">
+                    <button class="demo-step is-active" type="button" data-step="0" aria-pressed="true">
+                        <span class="how-num">01</span>
+                        <span class="demo-step-body">
+                            <span class="demo-step-title">Validate the patient</span>
+                            <span class="demo-step-copy">Scan or tap the card and it is checked against the Ministry on the spot. A green tick means the number, version code and eligibility are all good.</span>
+                        </span>
+                    </button>
+                    <button class="demo-step" type="button" data-step="1" aria-pressed="false">
+                        <span class="how-num">02</span>
+                        <span class="demo-step-body">
+                            <span class="demo-step-title">Tap your codes</span>
+                            <span class="demo-step-copy">Your favourite diagnosis and your favourite billing codes are one tap each &mdash; no searching, no scrolling a fee schedule.</span>
+                        </span>
+                    </button>
+                    <button class="demo-step" type="button" data-step="2" aria-pressed="false">
+                        <span class="how-num">03</span>
+                        <span class="demo-step-body">
+                            <span class="demo-step-title">Submit</span>
+                            <span class="demo-step-copy">Straight to the Ministry, and the claim is in your records before you have left the room. No export, no second system.</span>
+                        </span>
+                    </button>
+
+                    <p class="small muted" style="margin:20px 0 0">Three real screens from the IntelAGENT iOS app &mdash; pick one to see it. Patient details are fictional.</p>
+                </div>
+
+                <div class="demo-stage">
+                    <div class="phone demo-phone" id="demo-phone">
+                        <img class="demo-frame is-on" src="img/demo-1.png" data-step="0" alt="The claim screen with the health card validated against the Ministry — a green tick beside the card number, and the patient details filled in">
+                        <img class="demo-frame" src="img/demo-2.png" data-step="1" alt="Favourite diagnostic codes and favourite billing codes, one of each tapped and applied to the claim">
+                        <img class="demo-frame" src="img/demo-3.png" data-step="2" alt="The submitted claim in Records, marked successful">
+                        <span class="demo-tap" id="demo-tap" aria-hidden="true"></span>
+                    </div>
+                    <div class="demo-done" id="demo-done" aria-hidden="true">
+                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        Sent to OHIP
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features — claims, not labels -->
+    <section class="section section--paper">
+        <div class="container">
+            <div class="center narrow mx-auto" style="margin-bottom:44px">
+                <span class="eyebrow" style="margin-inline:auto">Features</span>
+                <h2 class="h2">Claims that go in right the <span class="accent">first time</span></h2>
+                <p class="lede" style="margin-bottom:0">Four checks between you and a rejection, every one of them run on the phone before the claim leaves it.</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+                <div class="card" style="padding:28px">
+                    <span class="card-idx">01 / HEALTH CARD</span>
+                    <h3 class="h3">The card is checked, not assumed</h3>
+                    <p class="muted small" style="margin:0">Every card is checked against the Ministry as you enter it &mdash; number, version code and eligibility. A card that would have been rejected fails here, while the patient is still in front of you.</p>
+                </div>
+                <div class="card" style="padding:28px">
+                    <span class="card-idx">02 / BILLING RULES</span>
+                    <h3 class="h3">Every code checked against the rules that reject it</h3>
+                    <p class="muted small" style="margin:0">Nearly 200 billing rules run over the codes you have picked &mdash; limits, required diagnoses, codes that can't be billed together &mdash; and tell you before you submit, not six weeks later.</p>
+                </div>
+                <div class="card" style="padding:28px">
+                    <span class="card-idx">03 / FAVOURITES &amp; SUGGESTIONS</span>
+                    <h3 class="h3">The code you always forget</h3>
+                    <p class="muted small" style="margin:0">Your favourites and your last claim both sit one tap from a new one, and the app suggests the add-ons that belong with what you have billed &mdash; so the premium you keep meaning to add doesn't get left off again.</p>
+                </div>
+                <div class="card" style="padding:28px">
+                    <span class="card-idx">04 / REFERRING PHYSICIANS</span>
+                    <h3 class="h3">The referring number is already right</h3>
+                    <p class="muted small" style="margin:0">Search a name and get the billing number from a checked list of Ontario physicians, rather than copying six digits off a consult letter and hoping.</p>
                 </div>
             </div>
         </div>
@@ -202,30 +391,19 @@
     <section class="section">
         <div class="container">
             <div class="split-grid">
-                <div class="card" style="padding:28px;display:flex;justify-content:center">
-                    <img src="img/health-card-scan.png" alt="Health Card Scanner" style="width:100%;height:auto;border-radius:var(--radius)">
+                <div class="card shot-flush">
+                    <img src="img/health-card-scan.svg" alt="A health card held in the app's camera viewfinder, with the card number, version code and date of birth parsed out beside it and confirmed valid with the Ministry">
                 </div>
                 <div>
                     <span class="eyebrow">Health Card Scanner</span>
-                    <h2 class="h2">Scan health cards <span class="serif">instantly</span></h2>
-                    <p class="lede">Use your camera to capture Ontario health card information. Auto-fills patient details so you never have to type them manually.</p>
-                    <div style="display:grid;gap:14px;margin-bottom:24px">
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Camera capture in one tap</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Auto-fill patient info</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">No manual data entry</span>
-                        </div>
-                    </div>
-                    <a href="https://docs.intelagent.ca/docs/mobile-app/claims/scanning-documents" class="link-more">
-                        Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                    </a>
+                    <h2 class="h2">Scan health cards <span class="accent">instantly</span></h2>
+                    <p class="lede">Point the camera at an Ontario health card and the number, version code and patient details fill themselves in. For a patient who isn't on a roster yet, this is the whole of data entry.</p>
+                    <ul class="spec">
+                        <li><span class="spec-key">Capture</span>Number, version code and date of birth in one tap</li>
+                        <li><span class="spec-key">Check</span>Validated against the Ministry before you bill</li>
+                        <li><span class="spec-key">A whole list</span>Scan a stack of cards in one go &mdash; each one validated as it lands</li>
+                        <li><span class="spec-key">Then decide</span>Save them as patients to bill later, or drop the batch straight into a roster</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -237,63 +415,18 @@
             <div class="split-grid">
                 <div>
                     <span class="eyebrow">Revenue Tracking</span>
-                    <h2 class="h2">Track your earnings in <span class="serif">real-time</span></h2>
-                    <p class="lede">See claim statuses, monitor payments, and project your monthly revenue. Know exactly where your money is at all times.</p>
-                    <div style="display:grid;gap:14px;margin-bottom:24px">
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Real-time claim status updates</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Revenue projections</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink)">Payment monitoring at a glance</span>
-                        </div>
+                    <h2 class="h2">Watch the month <span class="accent">add up</span></h2>
+                    <p class="lede">Every claim you submit moves the number that day. Day, week, month and year, each against the same period before it, over a chart of what you billed and how many claims it took &mdash; so you know where you stand without waiting on a remittance advice.</p>
+                    <ul class="spec">
+                        <li><span class="spec-key">Comparison</span>Every figure against the same period last time</li>
+                        <li><span class="spec-key">Two axes</span>Dollars and claim counts on one chart &mdash; a slow day and a cheap day look different</li>
+                        <li><span class="spec-key">Basis</span>Paid where OHIP has settled, billed where it hasn't</li>
+                    </ul>
                     </div>
-                    <a href="https://docs.intelagent.ca/docs/mobile-app/revenue-tracking" class="link-more">
-                        Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-                <div class="card" style="padding:28px;display:flex;justify-content:center">
-                    <img src="img/revenue-tracking.png" alt="Revenue Tracking" style="width:100%;height:auto;border-radius:var(--radius)">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Point-of-Care -->
-    <section class="section section--ink">
-        <div class="container">
-            <div class="split-grid">
-                <div>
-                    <span class="eyebrow eyebrow--on-ink">Point-of-Care</span>
-                    <h2 class="h2" style="color:#fff">Bill right at the <span class="serif">bedside</span></h2>
-                    <p class="lede" style="color:rgba(255,255,255,0.62)">Hospital rounds, nursing home visits, house calls&mdash;bill immediately while the encounter is fresh. No more forgotten claims or end-of-day catch-up.</p>
-
-                    <div style="display:grid;gap:18px;margin-top:32px">
-                        <div style="display:flex;gap:14px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" style="color:var(--brand-fill);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="color:#fff;font-weight:500">Bill during patient encounters</span>
-                        </div>
-                        <div style="display:flex;gap:14px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" style="color:var(--brand-fill);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="color:#fff;font-weight:500">Never forget to bill a visit</span>
-                        </div>
-                        <div style="display:flex;gap:14px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" style="color:var(--brand-fill);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="color:#fff;font-weight:500">Capture every billable service</span>
-                        </div>
+                <div style="display:flex;justify-content:center">
+                    <div class="phone phone--lg">
+                        <img src="img/mobile-revenue.png" alt="The Revenue screen in the app: day, week, month and year totals with the change on each, above a daily revenue bar chart with a claim-count line over the last fourteen days, and monthly claim revenue below">
                     </div>
-                </div>
-                <div class="center" style="border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:48px 32px;background:rgba(255,255,255,0.04)">
-                    <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--brand-fill);margin:0 auto">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                    <p style="margin-top:16px;color:rgba(255,255,255,0.62)">Bill Anywhere</p>
                 </div>
             </div>
         </div>
@@ -303,7 +436,7 @@
     <section class="section">
         <div class="container center narrow">
             <span class="eyebrow" style="margin-inline:auto">Get Started</span>
-            <h2 class="h2">Ready to bill from <span class="serif">anywhere</span>?</h2>
+            <h2 class="h2">Leave the hospital with the billing <span class="accent">done</span></h2>
             <p class="lede">Download the IntelAGENT mobile app and start your free trial today.</p>
             <div class="row" style="justify-content:center;margin-bottom:16px">
                 <a href="https://itunes.apple.com/ca/app/intelagent-ohip-billing/id1394360074?mt=8">
@@ -391,6 +524,50 @@
             var menu = document.getElementById('mobile-menu');
             btn.addEventListener('click', function () {
                 menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+            });
+        })();
+
+        // "One patient. About ten seconds." — three real screens you step through.
+        // Deliberately not a player: there is no footage here, so there is no
+        // clock and no transport. Clicking a step shows that step.
+        (function () {
+            var root = document.getElementById('demo');
+            if (!root) return;
+
+            // Where the finger lands on each screen, as a fraction of the frame.
+            var TAPS = [null, { x: 0.18, y: 0.30 }, { x: 0.72, y: 0.80 }];
+
+            var frames = Array.prototype.slice.call(root.querySelectorAll('.demo-frame'));
+            var rows   = Array.prototype.slice.call(root.querySelectorAll('.demo-step'));
+            var tap    = document.getElementById('demo-tap');
+            var current = 0;
+
+            function show(i, withTap) {
+                if (i === current) return;
+                current = i;
+                frames.forEach(function (f, n) {
+                    var on = n === i;
+                    f.classList.toggle('is-on', on);
+                    // Inline as well as the class: a class-driven transition can be
+                    // parked at currentTime 0 and strand a frame invisible.
+                    f.style.opacity = on ? '1' : '0';
+                });
+                rows.forEach(function (r, n) {
+                    r.classList.toggle('is-active', n === i);
+                    r.setAttribute('aria-pressed', n === i ? 'true' : 'false');
+                });
+                var spot = TAPS[i];
+                if (withTap && spot) {
+                    tap.style.left = (spot.x * 100) + '%';
+                    tap.style.top  = (spot.y * 100) + '%';
+                    tap.classList.remove('is-firing');
+                    void tap.offsetWidth;
+                    tap.classList.add('is-firing');
+                }
+            }
+
+            rows.forEach(function (row, i) {
+                row.addEventListener('click', function () { show(i, true); });
             });
         })();
     </script>

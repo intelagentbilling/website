@@ -10,6 +10,7 @@
     <link href="fonts/plus-jakarta-sans.css" rel="stylesheet">
     <link href="fonts/fraunces.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
+    <link href="css/kit.css" rel="stylesheet">
 </head>
 <body>
 
@@ -111,19 +112,19 @@
 
                 <div class="hero-proof" style="justify-content:center">
                     <span class="proof-item">
-                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        
                         Per-physician flat pricing
                     </span>
                     <span class="proof-item">
-                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        
                         Group MC EDT handling
                     </span>
                     <span class="proof-item">
-                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        
                         PHIPA Compliant
                     </span>
                     <span class="proof-item">
-                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        
                         Canadian Data
                     </span>
                 </div>
@@ -177,31 +178,19 @@
     <section class="section" id="how">
         <div class="container">
             <div class="split-grid" style="margin-bottom:72px">
-                <div class="card" style="padding:20px">
-                    <img src="img/dept-group-ra.jpg" alt="The group remittance report, showing a per-physician breakdown of one monthly deposit across premium, RMB, WSIB and relativity columns" style="width:100%;border-radius:12px" onerror="this.style.display='none'">
+                <div class="browser">
+                    <img src="img/dept-group-ra-trim.png" alt="The group remittance report: a per-physician breakdown of one monthly deposit across HCP, holiday premium, age premium, RMB, WSIB and relativity columns, with the column totals tying back to the deposit">
                 </div>
                 <div>
                     <span class="eyebrow">Group remittance</span>
-                    <h2 class="h2">One deposit in, every physician <span class="serif">accounted for</span></h2>
+                    <h2 class="h2">One deposit in, every physician <span class="accent">accounted for</span></h2>
                     <p class="lede">The Ministry pays the group as a single lump sum. We take the raw remittance file apart and rebuild it as a per-physician statement that ties back to the cent.</p>
-                    <div style="display:grid;gap:16px;margin-top:8px">
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink-2)">HCP, holiday, age premium, RMB, WSIB and relativity, split by doctor</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink-2)">Column totals reconcile to the deposit &mdash; no manual tie-out</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink-2)">Covers every physician on the file, including non-subscribers</span>
-                        </div>
-                        <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            <span style="font-weight:600;color:var(--ink-2)">A new statement every pay cycle, with the history kept</span>
-                        </div>
-                    </div>
+                    <ul class="spec">
+                        <li><span class="spec-key">Split out</span>HCP, holiday, age premium, RMB, WSIB and relativity, by doctor</li>
+                        <li><span class="spec-key">Ties out</span>Column totals reconcile to the deposit &mdash; no manual tie-out</li>
+                        <li><span class="spec-key">Everyone</span>Covers every physician on the file, including non-subscribers</li>
+                        <li><span class="spec-key">Every cycle</span>A new statement each pay cycle, with the history kept</li>
+                    </ul>
                 </div>
             </div>
 
@@ -213,19 +202,19 @@
                     <p class="lede">Every member is measured against statistically similar physicians in their own specialty &mdash; not against each other. A family physician and an emergency physician are each judged on their own terms.</p>
                     <div style="display:grid;gap:16px;margin-top:8px">
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Revenue per claim against the group, the specialty and the peer cluster</span>
                         </div>
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Add-on codes the cluster bills that your members aren't</span>
                         </div>
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Rejection patterns per physician, so the same error stops repeating</span>
                         </div>
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Thin-volume members are suppressed rather than misrepresented</span>
                         </div>
                     </div>
@@ -246,19 +235,19 @@
                     <p class="lede">Export the tracking board from Epic or Cerner and drop the file in. We read the patients, apply the codes, and flag what won't pay before it reaches the Ministry.</p>
                     <div style="display:grid;gap:16px;margin-top:8px">
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Epic and Cerner templates built in, plus custom column mapping</span>
                         </div>
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Time-of-day and weekend premium rules checked as the file loads</span>
                         </div>
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">WSIB and out-of-province visits routed away from OHIP automatically</span>
                         </div>
                         <div style="display:flex;gap:12px;align-items:center">
-                            <svg width="18" height="18" fill="none" stroke="var(--brand)" stroke-width="2.6" viewBox="0 0 24 24" style="flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <span style="font-weight:600;color:var(--ink-2)">Submit the clean ones now, fix the flagged ones after the shift</span>
                         </div>
                     </div>
@@ -281,36 +270,36 @@
                     <h3 class="h3">Multi-provider management</h3>
                     <p class="muted small" style="margin:0 0 16px">Manage billing for every physician in the department from a single dashboard. Track performance and revenue across providers.</p>
                     <ul class="small muted" style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Unified provider view</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Individual performance metrics</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Role-based access control</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Unified provider view</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Individual performance metrics</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Role-based access control</li>
                     </ul>
                 </div>
                 <div class="card card--paper" style="padding:30px;background:var(--bg)">
                     <h3 class="h3">Consolidated reporting</h3>
                     <p class="muted small" style="margin:0 0 16px">Department-wide insights from reports that aggregate across every provider billing under the group number.</p>
                     <ul class="small muted" style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Department-level analytics</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Exportable to Excel/PDF</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Scheduled report delivery</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Department-level analytics</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Exportable to Excel/PDF</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Scheduled report delivery</li>
                     </ul>
                 </div>
                 <div class="card card--paper" style="padding:30px;background:var(--bg)">
                     <h3 class="h3">EMR integration</h3>
                     <p class="muted small" style="margin:0 0 16px">We read what your hospital already produces. <strong>Epic</strong> and <strong>Cerner</strong> exports are supported out of the box, so a shift's tracking board becomes claims without re-keying a single patient.</p>
                     <ul class="small muted" style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Epic and Cerner templates built in</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Custom column mapping for any export</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>API-based integration where you want it</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Epic and Cerner templates built in</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Custom column mapping for any export</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">API-based integration where you want it</li>
                     </ul>
                 </div>
                 <div class="card card--paper" style="padding:30px;background:var(--bg)">
                     <h3 class="h3">Dedicated support</h3>
                     <p class="muted small" style="margin:0 0 16px">Groups get priority support with a dedicated account manager and training for the administrators who run the billing.</p>
                     <ul class="small muted" style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Dedicated account manager</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>On-site training available</li>
-                        <li style="display:flex;gap:8px;align-items:flex-start"><svg width="16" height="16" fill="none" stroke="var(--brand)" stroke-width="2.4" viewBox="0 0 24 24" style="flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Priority issue resolution</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Dedicated account manager</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">On-site training available</li>
+                        <li style="display:flex;gap:8px;align-items:flex-start">Priority issue resolution</li>
                     </ul>
                 </div>
             </div>

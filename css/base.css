@@ -490,20 +490,28 @@ a.card:hover .link-more .arrow { transform: translateX(3px); }
 
 /* ---------- comparison table ---------- */
 .cmp-wrap { position: relative; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); }
-.cmp { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 15px; }
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  /* One scale for the whole table — it used to run 15/13/12.5/11.5px against a
+     16px page, so nothing lined up. kit.css owns the face. */
+  font-size: 15px;
+  line-height: 1.45;
+}
 .cmp th, .cmp td { padding: 15px 18px; text-align: center; border-bottom: 1px solid var(--line-2); vertical-align: middle; }
-.cmp thead th { font-size: 13px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); white-space: nowrap; }
+.cmp thead th { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; color: var(--muted); border-bottom: 1px solid var(--line); white-space: nowrap; }
 /* IntelAGENT is the highlighted column */
 .cmp .col-us { background: var(--brand-soft); color: var(--brand-ink); font-weight: 700; border-left: 1px solid rgba(31,122,96,0.16); border-right: 1px solid rgba(31,122,96,0.16); text-align: center; }
 .cmp td.col-us { font-weight: 600; }
-.cmp tbody th { font-weight: 600; color: var(--ink); }
+.cmp tbody th { font-weight: 500; color: var(--ink); }
 .cmp td { text-align: center; color: var(--muted); }
 .cmp td:first-child, .cmp th:first-child { text-align: left; }
 .cmp tbody tr:last-child td, .cmp tbody tr:last-child th { border-bottom: 0; }
 .cmp .yes { color: var(--brand); font-weight: 600; }
 .cmp .no { color: var(--muted-2); }
 .cmp .neg { color: #c0392b; font-weight: 600; }
-.cmp-note { font-size: 12.5px; color: var(--muted-2); margin-top: 14px; line-height: 1.5; }
+.cmp-note { font-size: 13px; color: var(--muted-2); margin-top: 14px; line-height: 1.5; }
 .cmp thead .col-us { position: relative; }
 .cmp-badge {
   display: inline-block;
@@ -523,7 +531,7 @@ a.card:hover .link-more .arrow { transform: translateX(3px); }
 .tick--yes { background: var(--brand); color: #fff; }
 .tick--yes.on-us { background: var(--brand-ink); }
 .tick--no { background: var(--bg-3); color: var(--muted-2); }
-.tick-cap { display: block; font-size: 11.5px; color: var(--muted-2); margin-top: 5px; line-height: 1.3; }
+.tick-cap { display: block; font-size: 12px; color: var(--muted-2); margin-top: 5px; line-height: 1.35; }
 
 /* value/highlight cards with icons */
 .feat-ico {

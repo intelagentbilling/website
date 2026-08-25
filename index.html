@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelAGENT - OHIP Billing Software for Ontario Physicians</title>
-    <meta name="description" content="IntelAGENT is OHIP billing software for Ontario physicians. Submit claims in 15 seconds via mobile app or web portal. Used by 2,000+ physicians. Pricing: 0.25% of paid claims (max $39.99/month). Free 3-month trial. Serving Ontario since 2016.">
+    <meta name="description" content="IntelAGENT is OHIP billing software for Ontario physicians. Submit claims in 10 seconds via mobile app or web portal. Used by 2,000+ physicians. Pricing: 0.25% of paid claims (max $39.99/month). Free 3-month trial. Serving Ontario since 2016.">
     <meta name="keywords" content="OHIP billing software, Ontario physician billing, OHIP claims, medical billing software, healthcare billing Ontario, OHIP submission">
     <link rel="canonical" href="https://www.intelagent.ca/" />
 
@@ -43,7 +43,7 @@
         "operatingSystem": "iOS, Android, Web",
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory": "Medical Billing Software",
-        "description": "OHIP billing software that allows Ontario physicians to submit claims in 15 seconds. Features include health card scanning, offline mode, revenue tracking, and bulk claims upload.",
+        "description": "OHIP billing software that allows Ontario physicians to submit claims in 10 seconds. Features include health card scanning, offline mode, revenue tracking, and bulk claims upload.",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -51,7 +51,7 @@
             "description": "0.25% of paid claims, up to $39.99/month maximum. 3-month free trial."
         },
         "featureList": [
-            "OHIP claim submission in 15 seconds",
+            "OHIP claim submission in 10 seconds",
             "Health card scanning with camera",
             "Offline mode - works without internet",
             "Revenue tracking and analytics",
@@ -81,7 +81,7 @@
                 "name": "What is the best OHIP billing software for Ontario physicians?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "IntelAGENT is a leading OHIP billing software used by over 2,000 Ontario physicians. It allows you to submit claims in as little as 15 seconds via mobile app or web portal, with features like health card scanning, offline mode, and real-time revenue tracking. Pricing starts at 0.25% of paid claims with a $39.99/month maximum."
+                    "text": "IntelAGENT is a leading OHIP billing software used by over 2,000 Ontario physicians. It allows you to submit claims in as little as 10 seconds via mobile app or web portal, with features like health card scanning, offline mode, and real-time revenue tracking. Pricing starts at 0.25% of paid claims with a $39.99/month maximum."
                 }
             },
             {
@@ -89,7 +89,7 @@
                 "name": "How much does OHIP billing software cost?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "IntelAGENT offers two pricing tiers: Personal plan at 0.25% of paid claims (maximum $39.99/month), and Premium plan at 2% of paid claims which includes a dedicated billing agent."
+                    "text": "IntelAGENT offers two pricing tiers: Self-Service plan at 0.25% of paid claims (maximum $39.99/month), and Premium plan at 2% of paid claims which includes a dedicated billing agent."
                 }
             },
             {
@@ -105,7 +105,7 @@
                 "name": "How long does it take to submit an OHIP claim with IntelAGENT?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "With IntelAGENT, physicians can submit OHIP claims in as little as 15 seconds on average. Smart templates remember your common procedures, and health card scanning eliminates manual data entry."
+                    "text": "With IntelAGENT, physicians can submit OHIP claims in as little as 10 seconds on average. Smart templates remember your common procedures, and health card scanning eliminates manual data entry."
                 }
             }
         ]
@@ -115,6 +115,7 @@
     <link href="fonts/plus-jakarta-sans.css" rel="stylesheet">
     <link href="fonts/fraunces.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
+    <link href="css/kit.css?v=44" rel="stylesheet">
 </head>
 <body>
 
@@ -194,15 +195,18 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero hero--sm">
+    <section class="hero hero--glow">
         <div class="container">
             <div class="hero-grid">
                 <div>
+                    <span class="eyebrow">OHIP billing software</span>
                     <h1 class="h1">
-                        OHIP billing,<br>made <span class="serif">simple</span>
+                        OHIP billing,<br>made <span class="accent">simple</span>
                     </h1>
-                    <p class="lede" style="max-width:30ch">
-                        Submit claims in seconds, track your revenue, and get paid faster. The all-in-one billing solution for Ontario physicians.
+                    <p class="lede" style="max-width:38ch">
+                        Submit claims in seconds from the ward or the desk, catch the rejections
+                        that cost you money, and see what OHIP actually paid &mdash; before the
+                        remittance lands.
                     </p>
                     <div class="row">
                         <a href="https://app.intelagent.ca/register" class="btn btn--primary btn--lg">
@@ -212,23 +216,21 @@
                         <a href="contact.html" class="btn btn--ghost btn--lg">Book a demo</a>
                     </div>
 
-                    <div class="hero-proof">
-                        <span class="proof-item">
-                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            3 month free trial
-                        </span>
-                        <span class="proof-item">
-                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            Cancel anytime
-                        </span>
-                        <span class="proof-item">
-                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                            PHIPA compliant
-                        </span>
-                    </div>
+                    <ul class="hero-figures">
+                        <li><span class="mono">2,000+</span> Ontario physicians billing</li>
+                        <li>Submitting to OHIP since <span class="mono">2016</span></li>
+                    </ul>
                 </div>
                 <div class="hero-media">
-                    <img src="img/hero-dashboard.png" alt="IntelAGENT dashboard on desktop and mobile">
+                    <div class="hero-combo">
+                        <div class="browser">
+                            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+                            <img src="img/hero-dashboard.png" alt="The IntelAGENT dashboard: month revenue, claims needing attention, a daily claims-activity chart, peer billing comparison and the most recent remittance advice">
+                        </div>
+                        <div class="phone">
+                            <img src="img/mobile-claim-phone.png" alt="A claim on the phone, pre-filled from the roster: health card number and version code, name, date of birth, sex, service date, facility and diagnosis">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -250,7 +252,9 @@
                         <p class="muted small" style="margin:0 0 16px">Bill patients on-the-go with our powerful mobile app for iOS and Android.</p>
                         <span class="link-more">Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
                     </div>
-                    <img src="img/service-mobile.png" alt="IntelAGENT mobile app" style="height:280px;width:auto;object-fit:contain">
+                    <div class="phone" style="width:150px;--screen-radius:20px;border-radius:23px;flex:none">
+                        <img src="img/mobile-roster-phone.png" alt="A patient roster in the IntelAGENT app, showing each patient's claim status for today">
+                    </div>
                 </a>
 
                 <a href="web.html" class="card card--paper media-card">
@@ -259,7 +263,10 @@
                         <p class="muted small" style="margin:0 0 16px">Full-featured web portal with bulk entry and team collaboration tools.</p>
                         <span class="link-more">Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
                     </div>
-                    <img src="img/service-web.png" alt="IntelAGENT web portal" style="height:200px;width:55%;object-fit:contain">
+                    <div class="browser" style="width:56%;flex:none">
+                        <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+                        <img src="img/service-web.png" alt="IntelAGENT web portal">
+                    </div>
                 </a>
             </div>
 
@@ -270,7 +277,9 @@
                         <p class="muted small" style="margin:0 0 16px">Group remittance reconciliation and peer benchmarking for AFA groups, EDs and academic divisions.</p>
                         <span class="link-more">Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
                     </div>
-                    <img src="img/feature-team.png" alt="IntelAGENT group reporting" style="height:200px;width:55%;object-fit:contain">
+                    <div class="browser" style="width:62%;flex:none">
+                        <img src="img/dept-group-ra-trim.png" alt="The group remittance report: one monthly deposit broken out per physician across premium, RMB, WSIB and relativity columns, with the totals tying back">
+                    </div>
                 </a>
 
                 <a href="clinics.html" class="card card--paper media-card">
@@ -279,7 +288,9 @@
                         <p class="muted small" style="margin:0 0 16px">Managed billing for your clinic, plus EMR integration with Epic, Cerner and Arya.</p>
                         <span class="link-more">Learn more <svg class="arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
                     </div>
-                    <img src="img/service-emr.png" alt="IntelAGENT EMR integration" style="height:200px;width:55%;object-fit:contain">
+                    <div class="browser" style="width:62%;flex:none">
+                        <img src="img/service-emr.png" alt="The Claim Import screen reading an EMR export, with the template set to Generic Epic">
+                    </div>
                 </a>
             </div>
         </div>
@@ -326,21 +337,21 @@
 
                     <div style="display:grid;gap:22px;margin-top:32px">
                         <div style="display:flex;gap:14px;align-items:flex-start">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" style="color:var(--brand-fill);flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <div>
                                 <div style="font-weight:600;color:#fff;margin-bottom:3px">Save hours every week</div>
                                 <div class="small" style="color:rgba(255,255,255,0.55)">Smart templates, auto-calculations, and bulk entry tools make billing fast.</div>
                             </div>
                         </div>
                         <div style="display:flex;gap:14px;align-items:flex-start">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" style="color:var(--brand-fill);flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <div>
                                 <div style="font-weight:600;color:#fff;margin-bottom:3px">Reduce rejections</div>
                                 <div class="small" style="color:rgba(255,255,255,0.55)">Built-in validation catches errors before you submit.</div>
                             </div>
                         </div>
                         <div style="display:flex;gap:14px;align-items:flex-start">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" style="color:var(--brand-fill);flex:none;margin-top:3px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            
                             <div>
                                 <div style="font-weight:600;color:#fff;margin-bottom:3px">Expert support</div>
                                 <div class="small" style="color:rgba(255,255,255,0.55)">Premium users get dedicated billing agents who optimize your claims.</div>
@@ -349,17 +360,13 @@
                     </div>
                 </div>
 
-                <div class="stat-grid" style="grid-template-columns:1fr 1fr">
+                <div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">
                     <div class="stat">
                         <div class="stat-num">2,000+</div>
                         <div class="stat-label">Active physicians</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-num">$1B+</div>
-                        <div class="stat-label">Claims processed</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num">15 sec</div>
+                        <div class="stat-num">10 sec</div>
                         <div class="stat-label">Avg. claim time</div>
                     </div>
                     <div class="stat">
@@ -377,16 +384,16 @@
             <div class="center narrow mx-auto" style="margin-bottom:40px">
                 <span class="eyebrow">Pricing</span>
                 <h2 class="h2">Simple, <span class="serif">transparent</span> pricing</h2>
-                <p class="lede" style="margin-bottom:0">Start free, upgrade when you're ready.</p>
+                <p class="lede" style="margin-bottom:0">You only pay on claims the Ministry pays. Free for your first three months.</p>
             </div>
 
             <div class="price-grid">
                 <div class="card plan" style="padding:30px;border-color:var(--brand);position:relative">
                     <span class="badge" style="position:absolute;top:-11px;left:26px;background:#fff">Most popular</span>
-                    <h3 class="h3">Personal</h3>
+                    <h3 class="h3">Self-Service</h3>
                     <div class="price-num">0.25%<span class="price-unit"> of paid claims</span></div>
                     <div class="plan-sub"><span class="price-cap"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Capped at $39.99/month</span></div>
-                    <p class="muted small plan-desc">Full-featured web and mobile app with reporting and error management.</p>
+                    <p class="muted small plan-desc">Your claims, submitted and tracked to payment.</p>
                     <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--block">Get started</a>
                 </div>
                 <div class="card plan" style="padding:30px">
@@ -413,13 +420,13 @@
                     <summary>What is the best OHIP billing software for Ontario physicians?
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p>IntelAGENT is a leading OHIP billing software used by over 2,000 Ontario physicians. It allows you to submit claims in as little as 15 seconds via mobile app or web portal, with features like health card scanning, offline mode, and real-time revenue tracking. Pricing starts at 0.25% of paid claims with a $39.99/month maximum.</p>
+                    <p>IntelAGENT is a leading OHIP billing software used by over 2,000 Ontario physicians. It allows you to submit claims in as little as 10 seconds via mobile app or web portal, with features like health card scanning, offline mode, and real-time revenue tracking. Pricing starts at 0.25% of paid claims with a $39.99/month maximum.</p>
                 </details>
                 <details class="faq-item">
                     <summary>How much does OHIP billing software cost?
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p>IntelAGENT offers two pricing tiers: Personal plan at 0.25% of paid claims (maximum $39.99/month), and Premium plan at 2% of paid claims which includes a dedicated billing agent.</p>
+                    <p>IntelAGENT offers two pricing tiers: Self-Service plan at 0.25% of paid claims (maximum $39.99/month), and Premium plan at 2% of paid claims which includes a dedicated billing agent.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Can I submit OHIP claims from my phone?
@@ -431,7 +438,7 @@
                     <summary>How long does it take to submit an OHIP claim with IntelAGENT?
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p>With IntelAGENT, physicians can submit OHIP claims in as little as 15 seconds on average. Smart templates remember your common procedures, and health card scanning eliminates manual data entry.</p>
+                    <p>With IntelAGENT, physicians can submit OHIP claims in as little as 10 seconds on average. Smart templates remember your common procedures, and health card scanning eliminates manual data entry.</p>
                 </details>
                 <details class="faq-item">
                     <summary>What specialties does IntelAGENT support?

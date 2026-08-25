@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1172 655" role="img"
+     aria-label="An Ontario health card held in the app's camera viewfinder, with the card number, version code and date of birth parsed out beside it and confirmed valid with the Ministry.">
+  <defs>
+    <linearGradient id="hcs-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#272b3d"/>
+      <stop offset="1" stop-color="#181b27"/>
+    </linearGradient>
+    <radialGradient id="hcs-glow" cx="0.36" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#52bf9f" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#52bf9f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hcs-card" x1="0.1" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#f2faf5"/>
+      <stop offset="1" stop-color="#dcefe3"/>
+    </linearGradient>
+    <linearGradient id="hcs-wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fc9a9" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#bfe0cd" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="hcs-sheen" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hcs-scan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#52bf9f" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#8fe3c8" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#52bf9f" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="hcs-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="hcs-soft" x="-60%" y="-300%" width="220%" height="700%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+
+    <!-- three-petal trillium, drawn around its own origin -->
+    <g id="hcs-trillium">
+      <path d="M0 2 C-13 -9 -11 -30 0 -36 C11 -30 13 -9 0 2 Z"/>
+      <path d="M0 2 C-13 -9 -11 -30 0 -36 C11 -30 13 -9 0 2 Z" transform="rotate(120)"/>
+      <path d="M0 2 C-13 -9 -11 -30 0 -36 C11 -30 13 -9 0 2 Z" transform="rotate(240)"/>
+    </g>
+
+    <clipPath id="hcs-card-clip">
+      <rect x="208" y="151" width="560" height="354" rx="26"/>
+    </clipPath>
+  </defs>
+
+  <g font-family="'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif">
+    <rect width="1172" height="655" fill="url(#hcs-bg)"/>
+    <rect width="1172" height="655" fill="url(#hcs-glow)"/>
+
+    <!-- viewfinder corner brackets -->
+    <g stroke="#52bf9f" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9">
+      <path d="M124 176 v-44 a12 12 0 0 1 12 -12 h44"/>
+      <path d="M796 120 h44 a12 12 0 0 1 12 12 v44"/>
+      <path d="M852 479 v44 a12 12 0 0 1 -12 12 h-44"/>
+      <path d="M180 535 h-44 a12 12 0 0 1 -12 -12 v-44"/>
+    </g>
+
+    <!-- the card -->
+    <g transform="rotate(-3.2 488 328)" filter="url(#hcs-shadow)">
+      <rect x="208" y="151" width="560" height="354" rx="26" fill="url(#hcs-card)"/>
+
+      <g clip-path="url(#hcs-card-clip)">
+        <!-- the green wave across the lower half -->
+        <path d="M208 452 C300 420 372 486 470 468 C566 450 640 400 768 424 L768 505 L208 505 Z"
+              fill="url(#hcs-wave)"/>
+        <path d="M208 472 C310 444 380 502 480 484 C580 466 652 424 768 446 L768 505 L208 505 Z"
+              fill="#ffffff" fill-opacity="0.4"/>
+      </g>
+
+      <!-- Ontario wordmark, top left -->
+      <g transform="translate(256 194) scale(0.36)" fill="#1d6b46">
+        <use href="#hcs-trillium"/>
+      </g>
+      <text x="278" y="201" font-size="21" font-weight="600" letter-spacing="0.2" fill="#1d6b46">Ontario</text>
+
+      <!-- trillium, top right -->
+      <g transform="translate(716 198) scale(0.72)" fill="#d2544f">
+        <use href="#hcs-trillium"/>
+      </g>
+
+      <!-- Health • Santé, with its rule -->
+      <text x="740" y="272" text-anchor="end" font-family="Georgia, 'Times New Roman', serif"
+            font-size="44" fill="#1d6b46">Health<tspan font-size="30" dy="-4"> • </tspan><tspan dy="4">Santé</tspan></text>
+      <path d="M396 288 H740" stroke="#1d6b46" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- portrait -->
+      <rect x="246" y="228" width="126" height="162" rx="8" fill="#ffffff" fill-opacity="0.78"
+            stroke="#1d6b46" stroke-opacity="0.18"/>
+      <g fill="#1d6b46" fill-opacity="0.24">
+        <circle cx="309" cy="285" r="30"/>
+        <path d="M309 324c-31 0-50 20-52 47h104c-2-27-21-47-52-47z"/>
+      </g>
+
+      <!-- data block -->
+      <text x="396" y="326" font-size="19" font-weight="700" letter-spacing="0.6" fill="#123f31">DELACROIX, MARGUERITE</text>
+
+      <text x="396" y="372" font-size="30" font-weight="700" letter-spacing="1.6"
+            fill="#123f31" font-variant-numeric="tabular-nums">9910-045-120</text>
+      <text x="676" y="372" font-size="30" font-weight="700" letter-spacing="1.6" fill="#123f31">AB</text>
+
+      <text x="396" y="410" font-size="13" font-weight="700" letter-spacing="1.1"
+            fill="#1d6b46" fill-opacity="0.9">BIRTHDATE / DATE DE NAISSANCE</text>
+      <text x="396" y="440" font-size="21" font-weight="600"
+            fill="#123f31" font-variant-numeric="tabular-nums">1952-03-14</text>
+
+      <rect x="208" y="151" width="560" height="354" rx="26" fill="url(#hcs-sheen)"/>
+      <rect x="208.5" y="151.5" width="559" height="353" rx="25.5" fill="none"
+            stroke="#ffffff" stroke-opacity="0.75"/>
+    </g>
+
+    <!-- scan sweep -->
+    <g>
+      <rect x="120" y="463" width="736" height="26" fill="url(#hcs-scan)" filter="url(#hcs-soft)" opacity="0.7"/>
+      <rect x="120" y="474" width="736" height="3" fill="url(#hcs-scan)"/>
+    </g>
+
+    <!-- connector to the parsed panel -->
+    <path d="M866 328 H906" stroke="#52bf9f" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+    <path d="M898 320 l10 8 -10 8" fill="none" stroke="#52bf9f" stroke-width="3"
+          stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+
+    <!-- what the app pulled off it -->
+    <g>
+      <rect x="920" y="150" width="216" height="356" rx="18"
+            fill="#ffffff" fill-opacity="0.055" stroke="#ffffff" stroke-opacity="0.14"/>
+
+      <text x="948" y="188" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="#8fe3c8">PARSED</text>
+
+      <text x="948" y="228" font-size="12" font-weight="600" letter-spacing="1.2"
+            fill="#ffffff" fill-opacity="0.45">HEALTH CARD</text>
+      <text x="948" y="256" font-size="20" font-weight="700"
+            fill="#ffffff" font-variant-numeric="tabular-nums">9910045120</text>
+
+      <text x="948" y="300" font-size="12" font-weight="600" letter-spacing="1.2"
+            fill="#ffffff" fill-opacity="0.45">VERSION</text>
+      <text x="948" y="328" font-size="20" font-weight="700" fill="#ffffff">AB</text>
+
+      <text x="948" y="372" font-size="12" font-weight="600" letter-spacing="1.2"
+            fill="#ffffff" fill-opacity="0.45">DATE OF BIRTH</text>
+      <text x="948" y="400" font-size="20" font-weight="700"
+            fill="#ffffff" font-variant-numeric="tabular-nums">1952-03-14</text>
+
+      <rect x="948" y="428" width="162" height="42" rx="21"
+            fill="#52bf9f" fill-opacity="0.16" stroke="#52bf9f" stroke-opacity="0.5"/>
+      <path d="M968 449 l7 7 13 -15" fill="none" stroke="#8fe3c8" stroke-width="3.4"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="998" y="455" font-size="14.5" font-weight="700" fill="#8fe3c8">Valid at MOH</text>
+    </g>
+  </g>
+</svg>
