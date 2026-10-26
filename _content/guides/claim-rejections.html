@@ -1,0 +1,237 @@
+<!--meta
+{
+  "url": "guides/ohip-claim-rejections/",
+  "title": "OHIP Claim Rejection Codes and How to Fix Them | IntelAGENT",
+  "h1": "Common OHIP claim rejections, and how to clear them",
+  "breadcrumb": "OHIP Claim Rejections",
+  "eyebrow": "Guide",
+  "description": "The OHIP error codes that stop a claim before adjudication — EH2, VJ7, EQ6, VH8, V22 and the rest — what each one means, and the correction that actually works.",
+  "lede": "A rejected claim is not a reduced claim. It never reached adjudication, it will never appear on a Remittance Advice, and nothing happens to it until someone resubmits it.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "9 min read",
+  "priority": "0.8",
+  "about": ["OHIP claim rejections", "Claims error report", "Medical billing"],
+  "faq": [
+    {
+      "q": "What is the difference between a rejected and a reduced OHIP claim?",
+      "a": "A rejected claim failed the ministry's file validation and never reached adjudication. It appears on the claims error report within a day or two of submission and is worth nothing until it is corrected and resubmitted. A reduced claim was adjudicated and paid at less than you asked; it appears on the monthly Remittance Advice with an explanatory code naming the rule that cut it."
+    },
+    {
+      "q": "How long do I have to resubmit a rejected OHIP claim?",
+      "a": "The practical limit is the ministry's three-month submission period. A service rendered on or after April 1, 2023 has to reach OHIP within three months of the service date, and a claim that arrives later is rejected to the Claims Error Report as VJ7, stale dated. A claim rejected in week one and fixed in week two is routine; the same claim found seven months later needs the ministry's stale dated claim process rather than an ordinary resubmission."
+    },
+    {
+      "q": "What does OHIP error code EH2 mean?",
+      "a": "EH2 means the health card version code on the claim does not match the ministry's records. Version codes change when a card is replaced, and a claim carrying the old one is refused outright. Re-validate the card to get the current version code and resubmit. Lowercase version codes are also a frequent cause, since the ministry expects them uppercase."
+    },
+    {
+      "q": "Why was my claim rejected with VJ7?",
+      "a": "VJ7 is the ministry's stale dated claim rejection: the claim reached OHIP outside the submission period, which is three months from the date of service for services rendered on or after April 1, 2023. What to do next depends on whether the claim was ever submitted on time. If it was submitted inside the window and rejected to an error report, it can be corrected and resubmitted after the window, with the error report as supporting documentation. If it was never submitted in time, the only route is the ministry's stale dated claim request."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>Rejections arrive on the <strong>claims error report</strong> a day or two after submission, not on the monthly Remittance Advice. They mean the ministry's file validation refused the claim before adjudication, so nothing was paid and nothing was reduced — the claim simply does not exist as far as OHIP is concerned. Most rejections come from a small set of causes: a stale health card version, an unregistered referring physician, a date of birth that disagrees with the ministry's record, or a service that arrived outside the submission period.</p>
+          <p class="answer-pitch">IntelAGENT validates claims against the Schedule before submission and turns each refusal into a task with the reason translated. <a href="#software">See how &rarr;</a></p>
+        </div>
+
+        <p>Reductions get all the attention because they show up on the Remittance Advice next to money. Rejections are quieter and cost more, because a rejected claim produces no line anywhere until someone goes looking for it.</p>
+
+        <p>This guide covers the rejection codes that actually turn up, grouped by what is wrong rather than alphabetically, with the correction for each.</p>
+
+        <h2 id="where">Where rejections appear</h2>
+
+        <p>When a claim file is uploaded through MCEDT, the ministry validates it before anything is adjudicated. Two things come back:</p>
+
+        <ul>
+          <li>A <strong>file acknowledgement</strong>, confirming the batch was received and readable.</li>
+          <li>A <strong>claims error report</strong>, listing every claim and every record the validation refused, each with a code.</li>
+        </ul>
+
+        <p>Both are downloaded from MCEDT. If nobody downloads them, nobody finds out. This is the single most common way revenue is lost in Ontario: not a wrong code, but a rejection report nobody read.</p>
+
+        <div class="note note--warn">
+          <p><b>Rejections do not retry themselves.</b> OHIP does not hold a refused claim and try again next cycle. The claim is gone from the ministry's view entirely. It is your obligation to notice, fix and resend — and the submission clock keeps running the whole time.</p>
+        </div>
+
+        <h2 id="health-card">Health card problems</h2>
+
+        <p>The largest group by volume. The patient is real and insured; the identifying detail on the claim does not match the ministry's record.</p>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>Health-card-related OHIP rejection codes and their corrections.</caption>
+            <thead>
+              <tr><th scope="col">Code</th><th scope="col">What it means</th><th scope="col">Fix</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row" class="code">EH2</th><td>Version code does not match ministry records</td><td>Re-validate the card for the current version code and resubmit. Watch for lowercase letters — the ministry expects them uppercase.</td></tr>
+              <tr><th scope="row" class="code">VH8</th><td>Date of birth does not match the health number</td><td>Confirm the date of birth from the card itself, not the chart. Transposed day and month is the usual cause.</td></tr>
+              <tr><th scope="row" class="code">VH9</th><td>Health number is not registered</td><td>The number does not exist in the ministry's file. Re-read it from the card; if it still fails, the patient may be newly registered or out of province.</td></tr>
+              <tr><th scope="row" class="code">VH1</th><td>Health number fails its check digit</td><td>A typo. The last digit of an OHIP number is a checksum, so this one is caught before it ever reaches the ministry by software that validates it.</td></tr>
+              <tr><th scope="row" class="code">EH4</th><td>Date of service is after the patient's eligibility end date</td><td>Coverage had lapsed. Validate the card; if the patient is genuinely uninsured on that date, bill privately.</td></tr>
+              <tr><th scope="row" class="code">EH1</th><td>Health number not eligible on the date of service</td><td>Same family as EH4. Check the eligibility window returned by a health card validation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Nearly all of these are preventable at the point of care by validating the card before the patient leaves. See <a href="/guides/health-card-validation/">health card validation in Ontario</a> for how that works and what the response actually tells you.</p>
+
+        <h2 id="referral">Referral and referring-physician problems</h2>
+
+        <p>Consultations and most specialist assessments require a referring physician number on the claim. If that number is missing, wrong, or belongs to someone not registered to refer, the claim is refused.</p>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>Referral-related OHIP rejection codes.</caption>
+            <thead>
+              <tr><th scope="col">Code</th><th scope="col">What it means</th><th scope="col">Fix</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row" class="code">EQ6</th><td>Referring provider number is not registered with the ministry</td><td>Confirm the number against the ministry's physician list. A digit dropped from a leading zero is a common cause.</td></tr>
+              <tr><th scope="row" class="code">ERF</th><td>Referring physician is not eligible to refer for this service</td><td>The referrer exists but is not entitled to refer for that code. Check who actually made the referral.</td></tr>
+              <tr><th scope="row" class="code">EQD</th><td>Group number is not registered for this provider</td><td>You billed under a group your billing number is not a member of, or the group's registration lapsed. The group administrator fixes this, not you.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <p><b>Leading zeros.</b> Ontario provider numbers are six digits and some genuinely begin with zero. Spreadsheets, EMR exports and hand-typed entries all quietly drop them, and the resulting five-digit number is rejected as unregistered. If a referring number looks one digit short, it probably is.</p>
+        </div>
+
+        <h2 id="coding">Coding and eligibility problems</h2>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>Coding-related OHIP rejection codes.</caption>
+            <thead>
+              <tr><th scope="col">Code</th><th scope="col">What it means</th><th scope="col">Fix</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row" class="code">V22</th><td>Invalid diagnostic code</td><td>The diagnostic code is not in the ministry's list, or was sent in a form the ministry does not accept. Diagnostic codes are not zero-padded.</td></tr>
+              <tr><th scope="row" class="code">V28</th><td>Invalid master number</td><td>The master (group) number on the claim is wrong or not current.</td></tr>
+              <tr><th scope="row" class="code">V66</th><td>Admission date required and missing</td><td>Inpatient services with a hospital service location need the admission date on the claim.</td></tr>
+              <tr><th scope="row" class="code">V68</th><td>Service location indicator is wrong for this service</td><td>The facility type on the claim does not match where the service can be rendered. Correct the SLI and resubmit.</td></tr>
+              <tr><th scope="row" class="code">V5</th><td>Frequency limit exceeded for this service</td><td>A per-period cap was reached. Confirm whether the service genuinely repeated, or whether a duplicate slipped through.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="stale">The one with its own process: VJ7</h2>
+
+        <p><code>VJ7</code> is the stale dated claim rejection. The submission period is <strong>three months from the date of service</strong> for services rendered on or after April 1, 2023; services rendered before that date had six months. A claim that arrives after its window closes is refused as VJ7, and the problem is not the claim — it is the calendar.</p>
+
+        <p>That does not always mean the money is gone, and which route applies depends on one thing: whether the claim ever reached OHIP in time.</p>
+
+        <ul>
+          <li><b>Submitted on time, rejected, corrected late.</b> A claim that was submitted inside the three months and came back on an error report can be corrected and resubmitted after the window has closed. The ministry asks for supporting documentation showing the original claim was on time — the error report and the claim identifying data — with the corrected claims sent in a stale dated claim file through MCEDT, followed by an email to <a href="mailto:ClaimsManagement@ontario.ca">ClaimsManagement@ontario.ca</a>. Resubmit as soon as possible after the rejection date.</li>
+          <li><b>Never submitted in time.</b> This one is a letter, not a resubmission. The ministry will consider paying it only where <strong>extenuating circumstances</strong> prevented submission, which it defines as extraordinary and unusual events arising suddenly and unexpectedly and beyond your control. Administrative or operational errors inside a physician's office do not qualify. The request goes on letterhead to ClaimsManagement@ontario.ca, signed by the physician or a group representative — a billing agent or secretary signature is not accepted.</li>
+        </ul>
+
+        <p>This is why reconciliation cadence matters more than coding accuracy. A wrong diagnostic code costs you nothing if you catch it in week two. A perfect claim that nobody noticed was rejected costs you the whole fee at month seven.</p>
+
+        <div class="note note--check">
+          <p><b>The practical rule.</b> Work your rejections weekly and your Remittance Advice monthly. Inside the window a rejection is an ordinary correction. Outside it, every recovery becomes a letter with documentation attached, and most of them fail.</p>
+        </div>
+
+        <h2 id="process">A working process for rejections</h2>
+
+        <ol class="steps">
+          <li>
+            <h3>See every rejection, not just the ones you notice</h3>
+            <p>There is one error report per submitted batch, and a rejection only exists on the report for its own batch. Miss a report and a whole batch of rejections is invisible. IntelAGENT retrieves them over its own MCEDT connection as they arrive and turns each refused claim into something on your list with the reason attached.</p>
+          </li>
+          <li>
+            <h3>Sort by cause, not by claim</h3>
+            <p>Rejections cluster. Twenty EH2s are usually one stale roster, not twenty separate mistakes, and fixing the roster fixes all twenty.</p>
+          </li>
+          <li>
+            <h3>Fix at the source where you can</h3>
+            <p>A validated health card at the point of care removes the entire EH2 / VH8 / EH4 family. A referring-physician lookup that pads leading zeros removes EQ6. These are configuration problems, not diligence problems.</p>
+          </li>
+          <li>
+            <h3>Resubmit, then confirm it landed</h3>
+            <p>A resubmitted claim can be rejected again, for the same reason or a new one. The job is not done until the claim appears on a Remittance Advice as paid.</p>
+          </li>
+        </ol>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="software">Rejections that arrive as work, not as a file</h2>
+          <p class="pitch-lead">Almost every rejection above is machine-checkable before the file is ever sent. A check-digit failure, an unpadded referring number, a missing admission date, a diagnostic code that is not on the ministry's list — none of these need to reach OHIP to be found.</p>
+
+          <ul class="pitch-list">
+            <li><b>Validated before submission.</b> Claims are checked against the Schedule of Benefits on the way out, so the common rejection families are caught while the claim is still yours to fix.</li>
+            <li><b>Error reports retrieved for you.</b> Every claims error report is pulled back over our own MCEDT connection as it is released. There is no report to remember to download, and no batch whose rejections stay invisible.</li>
+            <li><b>Each refusal becomes a task.</b> A rejected claim appears on your list with the ministry's reason translated, rather than as a line in a file you have to open and decode.</li>
+            <li><b>Health card validation at the point of care.</b> Version codes and eligibility are checked against the ministry's service when you bill, not when the patient first registered — see <a href="/guides/health-card-validation/">health card validation</a>.</li>
+            <li><b>Corrected claims go back out.</b> A fixed claim resubmits through the same channel, inside the three-month window, without being rekeyed.</li>
+          </ul>
+
+          <div class="pitch-cta">
+            <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+            <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+          </div>
+        </section>
+
+        <p>Reductions that survive adjudication are a different problem with a different remedy — see <a href="/guides/ohip-remittance-advice/">how to read an OHIP Remittance Advice</a>.</p>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>What is the difference between a rejected and a reduced OHIP claim?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>A rejected claim failed the ministry's file validation and never reached adjudication. It appears on the claims error report within a day or two of submission and is worth nothing until it is corrected and resubmitted. A reduced claim was adjudicated and paid at less than you asked; it appears on the monthly Remittance Advice with an explanatory code naming the rule that cut it.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long do I have to resubmit a rejected OHIP claim?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>The practical limit is the ministry's three-month submission period. A service rendered on or after April 1, 2023 has to reach OHIP within three months of the service date, and a claim that arrives later is rejected to the Claims Error Report as VJ7, stale dated. A claim rejected in week one and fixed in week two is routine; the same claim found seven months later needs the ministry's stale dated claim process rather than an ordinary resubmission.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does OHIP error code EH2 mean?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>EH2 means the health card version code on the claim does not match the ministry's records. Version codes change when a card is replaced, and a claim carrying the old one is refused outright. Re-validate the card to get the current version code and resubmit. Lowercase version codes are also a frequent cause, since the ministry expects them uppercase.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why was my claim rejected with VJ7?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>VJ7 is the ministry's stale dated claim rejection: the claim reached OHIP outside the submission period, which is three months from the date of service for services rendered on or after April 1, 2023. What to do next depends on whether the claim was ever submitted on time. If it was submitted inside the window and rejected to an error report, it can be corrected and resubmitted after the window, with the error report as supporting documentation. If it was never submitted in time, the only route is the ministry's stale dated claim request.</p>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+
+        <ul class="sources">
+          <li><a href="https://health.gov.on.ca/en/pro/publications/ohip/mcedt_mn.aspx">Medical Claims Electronic Data Transfer (MCEDT)</a> — Ontario Ministry of Health. How error reports are returned.</li>
+          <li><a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees">OHIP Schedule of Benefits and fees</a> — Government of Ontario.</li>
+          <li><a href="https://www.ontario.ca/laws/regulation/900552/v25">R.R.O. 1990, Reg. 552 under the Health Insurance Act</a> — Government of Ontario. The regulation behind insured-service eligibility.</li>
+        </ul>
+
+        <p class="small muted">Code meanings above are the ministry's own, summarised. Ordering reflects how often each code occurs in the claims error reports IntelAGENT processes. Confirm any specific rule against current ministry publications before acting on it.</p>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/guides/health-card-validation/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Health card validation in Ontario</h3>
+            <p>What HCV actually returns, and which rejections it prevents.</p>
+          </a>
+          <a href="/guides/ohip-remittance-advice/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>How to read an OHIP Remittance Advice</h3>
+            <p>The other half of the picture: claims that were adjudicated but reduced.</p>
+          </a>
+          <a href="/guides/reduce-missed-ohip-billings/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>How to reduce missed OHIP billings</h3>
+            <p>Where revenue actually leaks, in the order it is worth fixing.</p>
+          </a>
+          <a href="/web.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>The IntelAGENT web portal</h3>
+            <p>Rejections arrive as work to do, with the reason translated.</p>
+          </a>
+        </div>

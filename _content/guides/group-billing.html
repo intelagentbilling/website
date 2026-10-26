@@ -1,0 +1,171 @@
+<!--meta
+{
+  "url": "guides/ohip-group-billing/",
+  "title": "OHIP Group Billing: Group Numbers Explained | IntelAGENT",
+  "h1": "OHIP group billing and group numbers",
+  "breadcrumb": "Group Billing",
+  "eyebrow": "Guide",
+  "description": "What an OHIP group number is, how payment flows to the group rather than the physician, what changes on each claim, and the failures that show up only in a group.",
+  "lede": "In a group, the claim still belongs to a physician but the money does not go to one. That single difference causes most group billing problems.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "7 min read",
+  "priority": "0.7",
+  "about": ["OHIP group billing", "OHIP group number"],
+  "faq": [
+    {
+      "q": "What is an OHIP group number?",
+      "a": "It is a ministry-issued number identifying a group of physicians who are paid together. Claims submitted under the group number are paid to the group's account rather than to the individual physician, even though each claim still carries the rendering physician's billing number."
+    },
+    {
+      "q": "Does group billing change the fee code I use?",
+      "a": "The fee codes are the same, but some premiums behave differently in a group — a companion code that is payable to a solo physician may be folded into the group's payment instead. Which premiums those are is set out in the Schedule of Benefits."
+    },
+    {
+      "q": "Can one physician bill both solo and in a group?",
+      "a": "Yes, and many do — hospital work under a group number and clinic work solo, for example. Each claim carries the group number or does not, so the two streams stay separate and appear on different Remittance Advices."
+    },
+    {
+      "q": "Who sees a group's Remittance Advice?",
+      "a": "The RA goes to the account the claims were submitted under, so a group RA covers every physician in the group. Splitting it back out per physician is the group's own work, not something the ministry does."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>A group number tells the ministry to pay a set of physicians together. Each claim still names the physician who did the work, but the payment lands in the group's account and arrives on one Remittance Advice covering everybody. Most group billing trouble is one of three things: the group number missing or wrong on a claim, a premium that behaves differently in a group than solo, or nobody able to split the RA back out per physician.</p>
+          <p class="answer-pitch">IntelAGENT carries the group number per claim and keeps each physician’s share tied to the settled position, not to a payment-day snapshot. <a href="#how">See how &rarr;</a></p>
+        </div>
+
+        <h2 id="what">What a group number actually is</h2>
+
+        <p>Two identifiers travel on every claim:</p>
+
+        <ul>
+          <li><b>The billing number</b> — the individual physician who rendered the service. This never changes and is always present.</li>
+          <li><b>The group number</b> — present only when the claim is being billed under a group arrangement. It tells the ministry which account to pay.</li>
+        </ul>
+
+        <p>The group number does not replace the billing number; it sits alongside it. The ministry still knows exactly who did the work, which matters for anything scoped to a physician — per-patient limits, daily caps, and the premiums whose eligibility depends on what else that physician billed that day.</p>
+
+        <h2 id="payment">Where the money goes</h2>
+
+        <p>To the group's account, in one deposit, with one Remittance Advice listing every claim from every physician in the group.</p>
+
+        <p>That is convenient for the ministry and awkward for everyone else, because the thing a physician in a group wants to know — what did <em>my</em> work earn this month — is not what the RA is organised around. Somebody has to break it out by rendering physician, and the breakdown has to survive rejections, adjustments and reversals that arrive on later RAs than the original claims.</p>
+
+        <p>In a small group this is usually done in a spreadsheet, and it works until it does not: the usual failure is a reversal landing two months after the claim, by which point the spreadsheet that allocated the original payment has already been closed and distributed. A spreadsheet records a payment on the day it arrives; it has no way of knowing the payment changed afterwards.</p>
+
+        <div class="note note--check">
+          <p><b>This is the problem IntelAGENT was built around.</b> Each physician's share is read from the settled position of their own claims, not from a snapshot taken on payment day, so an adjustment or reversal arriving two RAs later changes that physician's number instead of landing in a reconciliation pile. See <a href="/departments-and-groups.html">departments and groups</a>.</p>
+        </div>
+
+        <h2 id="premiums">Premiums behave differently in a group</h2>
+
+        <p>This is the part that surprises people, and it is a genuine rule rather than a quirk of any particular software.</p>
+
+        <p>Several premiums exist as a base code plus a companion code. Billed by a solo physician, both lines are payable and both appear. Billed under some group arrangements, the companion is folded into the group's payment rather than paid separately — the work is recognised, but the claim does not show two paid lines the way the solo version does.</p>
+
+        <p>What this means practically:</p>
+
+        <ol class="steps">
+          <li>
+            <h3>A group claim that looks underpaid may be correct</h3>
+            <p>If you compare a group claim against a solo claim for the same service, the line counts can legitimately differ. Chasing it as a rejection wastes time.</p>
+          </li>
+          <li>
+            <h3>Your expected-payment figure has to know about the group</h3>
+            <p>Any estimate that prices a group claim as though it were solo will over-predict, and every month will look like a shortfall. The estimate has to be group-aware or the reconciliation is permanently noisy.</p>
+          </li>
+          <li>
+            <h3>The specific codes are in the Schedule</h3>
+            <p>Which premiums fold and under what arrangement is set out in the <a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">Schedule of Benefits</a>. It is specific enough that it is worth reading for your own group rather than taking from a summary.</p>
+          </li>
+        </ol>
+
+        <h2 id="failures">Failures that only happen in groups</h2>
+
+        <p>Ordered by how often they turn up:</p>
+
+        <ul>
+          <li><b>Group number missing on some claims.</b> Usually a new physician whose profile was set up without it, or a locum covering in the group. The claims pay to the wrong account — the individual rather than the group — which is not a rejection and so is easy to miss until someone reconciles.</li>
+          <li><b>Group number on claims that should be solo.</b> The reverse, and the one that annoys physicians most, because their own clinic work has been paid into the group.</li>
+          <li><b>A new physician billing before being added to the group.</b> The ministry has to know the physician is in the group; claims submitted under a group number for a physician not on record are refused.</li>
+          <li><b>Departures.</b> A physician who has left still has claims in flight. Removing them from the group too early strands those claims.</li>
+          <li><b>One wrong default, dozens of identical rejections.</b> Group and facility defaults are set once and applied to everything, so a single wrong value produces a whole family of rejections that are all fixed the same way. Work them as a batch rather than in arrival order — see <a href="/guides/ohip-claim-rejections/">claim rejections</a>.</li>
+        </ul>
+
+        <h2 id="hospital">Groups and hospital work</h2>
+
+        <p>Most hospital-based groups — emergency departments, hospitalist services, anaesthesia departments, on-call rotas — bill under a group number for the hospital work and not for anything else. A physician in that position has two streams, two Remittance Advices, and two sets of expectations about what should be paid.</p>
+
+        <p>The practical requirement is that your billing setup can hold both without you having to remember which one you are in. Defaults that follow the facility or the shift rather than being set globally per physician are what makes this reliable; defaults set once per physician are what causes the missing-group-number failure above.</p>
+
+        <p><a href="/departments-and-groups.html">Departments and groups</a> covers how IntelAGENT handles the hospital side specifically.</p>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="how">Group billing that survives the next remittance</h2>
+          <p class="pitch-lead">The group number is a payment instruction, and getting it wrong costs the whole group. IntelAGENT carries it per claim and keeps each physician’s share tied to the settled position.</p>
+
+          <ul class="pitch-list">
+            <li><b>Group carried per claim, defaulted per context.</b> Hospital work picks up the group; clinic work does not, without the physician choosing each time.</li>
+            <li><b>Group-aware pricing.</b> The expected payment reflects how premiums behave in a group, so reconciliation is not permanently off by the folded companions.</li>
+            <li><b>Per-physician revenue inside a group.</b> Summaries are kept by physician, period and group, so a physician in a group can see their own position and the group can see the whole.</li>
+            <li><b>Settled position, not a snapshot.</b> A reversal arriving two months late changes the physician's figure rather than landing in a pile.</li>
+          </ul>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>What is an OHIP group number?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>It is a ministry-issued number identifying a group of physicians who are paid together. Claims submitted under the group number are paid to the group's account rather than to the individual physician, even though each claim still carries the rendering physician's billing number.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does group billing change the fee code I use?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>The fee codes are the same, but some premiums behave differently in a group — a companion code that is payable to a solo physician may be folded into the group's payment instead. Which premiums those are is set out in the Schedule of Benefits.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can one physician bill both solo and in a group?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Yes, and many do — hospital work under a group number and clinic work solo, for example. Each claim carries the group number or does not, so the two streams stay separate and appear on different Remittance Advices.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who sees a group's Remittance Advice?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>The RA goes to the account the claims were submitted under, so a group RA covers every physician in the group. Splitting it back out per physician is the group's own work, not something the ministry does.</p>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+
+        <ul class="sources">
+          <li><a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">OHIP Schedule of Benefits and Fees</a> — group arrangements and premium rules.</li>
+          <li><a href="https://health.gov.on.ca/en/pro/programs/ohip/physician_payment.aspx" rel="nofollow">Ministry of Health — physician payment</a>.</li>
+        </ul>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/departments-and-groups.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>Departments and groups</h3>
+            <p>How IntelAGENT handles hospital-based group billing.</p>
+          </a>
+          <a href="/guides/special-visit-premiums/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Special visit premiums</h3>
+            <p>Base codes, companions, and the time bands.</p>
+          </a>
+          <a href="/guides/ohip-remittance-advice/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Reading a Remittance Advice</h3>
+            <p>What a group RA contains and how to reconcile it.</p>
+          </a>
+        </div>

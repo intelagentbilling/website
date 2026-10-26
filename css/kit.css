@@ -49,8 +49,6 @@
    which read as code rather than as precision. */
 .mono,
 .figure-num,
-.price-num,
-.stat-num,
 .how-num,
 .spec-key {
   font-family: var(--mono);
@@ -74,6 +72,21 @@
   padding: 132px 0 76px;
 }
 .hero--sm { padding: 108px 0 48px; }
+/* Home page: the hero fills the first screen. The nav is fixed over it, hence the top padding. */
+.hero.hero--full {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 96px 0 120px;
+  box-sizing: border-box;
+}
+.hero--full > .container { width: 100%; }
+/* Scale the hero with the window height too, so a tall screen isn't mostly
+   empty paper around a small block. Sits a little above centre. */
+/* 88px is the most "OHIP billing," can take on one line in the text column. */
+.hero--full .h1 { font-size: clamp(44px, min(6.4vw, 10vh), 88px); }
+.hero--full .lede { font-size: clamp(17px, 2.2vh, 20px); max-width: 40ch !important; }
 
 /* The product shot used to be scaled past its column and cropped by the
    gradient hero's overflow. On flat paper it sits inside the grid. */
@@ -331,7 +344,7 @@
   font-size: 14.5px;
   color: var(--muted);
 }
-.hero-figures .mono { color: var(--ink); font-weight: 600; }
+.hero-figures .mono { font-family: inherit; color: var(--ink); font-weight: 700; }
 
 /* Over the dark hero the nav sits on ink until you scroll, so its links and
    logo have to invert — and change back once the bar goes solid paper. */
@@ -364,11 +377,11 @@ body[data-hero="ink"] .nav:not(.is-scrolled) .btn--primary { background: #fff; c
 .hero--mint .browser { box-shadow: 0 26px 60px rgba(20, 50, 42, 0.20); }
 
 /* desktop + phone together, the way the old hero showed both */
-.hero-combo { position: relative; padding-bottom: 26px; }
+.hero-combo { position: relative; padding-bottom: 26px; padding-right: 46px; }
 .hero-combo .browser { width: 100%; }
 .hero-combo .phone {
   position: absolute;
-  right: -46px;
+  right: 0;
   bottom: -40px;
   width: 146px;
   border-width: 7px;
@@ -377,7 +390,8 @@ body[data-hero="ink"] .nav:not(.is-scrolled) .btn--primary { background: #fff; c
 }
 .hero-combo .phone-notch { width: 46px; height: 12px; top: 5px; }
 @media (max-width: 900px) {
-  .hero-combo .phone { width: 108px; right: -14px; bottom: -24px; }
+  .hero-combo { padding-right: 14px; }
+  .hero-combo .phone { width: 108px; right: 0; bottom: -24px; }
 }
 
 /* ---------- phone frame (promoted out of mobile.html) ---------- */

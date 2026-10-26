@@ -1,0 +1,197 @@
+<!--meta
+{
+  "url": "guides/special-visit-premiums/",
+  "title": "OHIP Special Visit Premiums Explained | IntelAGENT",
+  "h1": "OHIP special visit premiums, explained",
+  "breadcrumb": "Special Visit Premiums",
+  "eyebrow": "Guide",
+  "description": "How OHIP special visit premiums work: the travel premium, the per-patient premium, the time-of-day bands, and the rejections a wrong base service produces.",
+  "lede": "Special visit premiums are the most commonly under-billed part of the Schedule, and the most commonly mis-billed. The rules are simple; the bookkeeping is not.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "7 min read",
+  "priority": "0.7",
+  "about": ["Special visit premiums", "OHIP Schedule of Benefits", "After-hours billing"],
+  "faq": [
+    {
+      "q": "What is an OHIP special visit premium?",
+      "a": "An additional amount payable when a physician makes a special trip to render an insured service outside the normal course of a scheduled practice — for example being called in at night, on a weekend, or to a hospital from elsewhere. It is billed alongside the service itself, never on its own, and the amount depends on the day, the time band, and the setting."
+    },
+    {
+      "q": "Can I bill a special visit premium if I was already at the hospital?",
+      "a": "Generally no. The premium pays for the special trip, so if you were already on site for other work, the trip did not happen. The General Preamble to the Schedule of Benefits sets out exactly what counts, and the distinction between being called in and already being present is the one most often got wrong."
+    },
+    {
+      "q": "Why was my special visit premium rejected with code V4?",
+      "a": "V4 means the date of service was not a Saturday, Sunday or statutory holiday. A weekend or holiday premium was billed for a weekday. The fix is to rebill with the premium that matches the actual day and time band of the visit."
+    },
+    {
+      "q": "What does rejection code DF mean on a premium?",
+      "a": "DF means the corresponding procedure was invalid, omitted, or paid at zero. A premium is an add-on and has to travel with the base service it attaches to. If the base service was not billed, was rejected, or was paid at nothing, the premium has nothing to attach to and falls away with it."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>A special visit premium is extra payment for making a <strong>special trip</strong> to render an insured service — being called in rather than being there anyway. It always rides alongside a base service, never alone. The amount depends on three things: the <strong>day</strong> (weekday, weekend, statutory holiday), the <strong>time band</strong> (daytime, evening, night), and the <strong>setting</strong> (hospital in-patient, emergency department, office, home). Most premiums pay a travel component for the trip plus a smaller per-patient component for each person seen on it.</p>
+          <p class="answer-pitch">IntelAGENT checks premium eligibility against the Schedule as the claim is built, so a premium that cannot attach is caught before submission. <a href="#intelagent">See how &rarr;</a></p>
+        </div>
+
+        <p>Special visit premiums exist because the Schedule treats a 2 a.m. call-in and a Tuesday afternoon ward round as different kinds of work, even when the clinical service is identical. The base fee pays for the service. The premium pays for the disruption.</p>
+
+        <p>They are also the part of the Schedule most likely to be left on the table. Not because physicians do not know they exist, but because claiming one correctly requires recording three facts at the time — when you were called, when you arrived, and how many patients you saw on that trip — and those facts are gone by the time anyone sits down to bill.</p>
+
+        <h2 id="structure">The two components</h2>
+
+        <p>Most special visit situations pay in two parts:</p>
+
+        <ul>
+          <li><strong>A travel premium</strong> — paid once per trip, for the first patient seen. This is the larger component, and it is what the premium is really for.</li>
+          <li><strong>A per-patient premium</strong> — a smaller amount for each additional patient seen on the same trip.</li>
+        </ul>
+
+        <p>The practical consequence is that a single call-in to see four patients does not pay four travel premiums. It pays one travel premium and three additional-patient premiums. Billing four travel premiums is a reliable way to get three of them reversed on a later Remittance Advice.</p>
+
+        <div class="note">
+          <p><b>The trip is the unit, not the patient.</b> Get this one right and most of the rest follows. The question the Schedule is asking is "how many special trips did you make?", not "how many patients did you see?"</p>
+        </div>
+
+        <h2 id="bands">Day and time bands</h2>
+
+        <p>The Schedule divides the week into bands, and the premium rate follows the band. The structure, in broad terms:</p>
+
+        <ul>
+          <li><strong>Weekday daytime</strong> — the baseline. Special visit premiums here are the smallest, and in many settings do not apply at all.</li>
+          <li><strong>Weekday evenings</strong> — a defined evening window on Monday to Friday.</li>
+          <li><strong>Nights</strong> — the overnight window, which attracts the highest premiums.</li>
+          <li><strong>Saturdays, Sundays and statutory holidays</strong> — daytime hours on these days are treated as premium time in their own right.</li>
+        </ul>
+
+        <p>The exact boundaries of each window, and the exact amounts, are set in the General Preamble to the Schedule of Benefits and change with each fee agreement. Do not carry a remembered cut-off time from a previous year into this one.</p>
+
+        <div class="note note--warn">
+          <p><b>Friday evening is not the weekend.</b> Several premiums group Friday evening with Saturday and Sunday, and several do not. Billing a weekend premium for a Friday evening attracts rejection code <code>V4</code> — "date of service was not a Saturday, Sunday, or a statutory holiday" — which is one of the more common premium rejections.</p>
+        </div>
+
+        <h2 id="settings">Setting matters</h2>
+
+        <p>The same call-in pays differently depending on where you went. The Schedule distinguishes, among others:</p>
+
+        <ul>
+          <li>Hospital in-patient services</li>
+          <li>Emergency department services</li>
+          <li>Office or clinic visits outside normal hours</li>
+          <li>Home visits</li>
+          <li>Long-term care and other institutional settings</li>
+        </ul>
+
+        <p>The service location indicator on the claim has to agree with the premium claimed. A mismatch produces rejection code <code>V68</code> — the service location indicator is wrong for the service.</p>
+
+        <h2 id="rejections">The three rejections premiums produce</h2>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>The rejection and explanatory codes most often attached to special visit premiums.</caption>
+            <thead>
+              <tr><th scope="col">Code</th><th scope="col">Meaning</th><th scope="col">What went wrong</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row" class="code">DF</th><td>Corresponding procedure invalid, omitted or paid at zero</td><td>The premium was billed without its base service, or the base service itself was refused. Resubmit the pair together.</td></tr>
+              <tr><th scope="row" class="code">V4</th><td>Date of service was not a Saturday, Sunday, or a statutory holiday</td><td>A weekend or holiday premium was claimed for a weekday. Rebill with the band that matches the actual visit.</td></tr>
+              <tr><th scope="row" class="code">V68</th><td>Service location indicator is incorrect for this service</td><td>The setting on the claim does not match the premium. Correct the SLI.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Full lists of both rejection and explanatory codes are in <a href="/guides/ohip-claim-rejections/">common OHIP claim rejections</a> and <a href="/guides/ohip-remittance-advice/">how to read an OHIP Remittance Advice</a>.</p>
+
+        <h2 id="groups">Groups and hospital departments</h2>
+
+        <p>Premiums get more complicated when the claim is submitted under a ministry group number rather than by a solo physician. Some premiums fold their companion codes differently for group submissions, and a premium billed as though it were solo work can be reduced or refused when the same service under a group would have been paid.</p>
+
+        <p>If you bill through an emergency group, a hospitalist service or an academic department, the group's billing conventions are part of the rules, not an administrative detail. See <a href="/departments-and-groups.html">departments and groups</a> for how group billing works in practice.</p>
+
+        <h2 id="capture">Capturing the facts at the time</h2>
+
+        <p>Every premium problem traces back to information that was available at 3 a.m. and gone by the following Tuesday. Three facts, recorded when they happen, solve almost all of it:</p>
+
+        <ol class="steps">
+          <li>
+            <h3>The time you were called and the time you arrived</h3>
+            <p>Not the time you wrote the note. The band is determined by the visit, and a note written at 7 a.m. about a 2 a.m. call-in will quietly be billed as a morning visit.</p>
+          </li>
+          <li>
+            <h3>Which patient was first on the trip</h3>
+            <p>The travel premium attaches to one of them. If the order is not recorded, it gets guessed, and a guess that puts the travel premium on the wrong encounter is hard to unpick later.</p>
+          </li>
+          <li>
+            <h3>Whether you were already on site</h3>
+            <p>The distinction between being called in and being there anyway is the whole basis of the premium. It is also the distinction nobody writes down.</p>
+          </li>
+        </ol>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="intelagent">Premiums offered, not remembered</h2>
+          <p class="pitch-lead">Special visit premiums are worth more than the visits they attach to and are the easiest money in the Schedule to leave on the table.</p>
+
+          <p>Premium eligibility is checked against the Schedule when the claim is built, so a premium that cannot attach to the base service you entered is flagged before submission rather than refused a month later. Billing from the phone at the time of the encounter — rather than from a list the following week — is what makes the time bands accurate in the first place.</p>
+
+          <p>For groups, claims submitted under a ministry group number are priced with the group's own rules rather than the solo ones, and remittance lines come back split by the physician who rendered the service.</p>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>What is an OHIP special visit premium?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>An additional amount payable when a physician makes a special trip to render an insured service outside the normal course of a scheduled practice — for example being called in at night, on a weekend, or to a hospital from elsewhere. It is billed alongside the service itself, never on its own, and the amount depends on the day, the time band, and the setting.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I bill a special visit premium if I was already at the hospital?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Generally no. The premium pays for the special trip, so if you were already on site for other work, the trip did not happen. The General Preamble to the Schedule of Benefits sets out exactly what counts, and the distinction between being called in and already being present is the one most often got wrong.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why was my special visit premium rejected with code V4?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>V4 means the date of service was not a Saturday, Sunday or statutory holiday. A weekend or holiday premium was billed for a weekday. The fix is to rebill with the premium that matches the actual day and time band of the visit.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does rejection code DF mean on a premium?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>DF means the corresponding procedure was invalid, omitted, or paid at zero. A premium is an add-on and has to travel with the base service it attaches to. If the base service was not billed, was rejected, or was paid at nothing, the premium has nothing to attach to and falls away with it.</p>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+
+        <ul class="sources">
+          <li><a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees">OHIP Schedule of Benefits and fees</a> — Government of Ontario. The General Preamble defines special visits, the time bands and the travel/per-patient structure.</li>
+          <li><a href="https://health.gov.on.ca/en/pro/programs/ohip/physician_payment.aspx">Physician payment</a> — Ontario Ministry of Health.</li>
+        </ul>
+
+        <p class="small muted">Premium amounts and the boundaries of each time band are set in the Schedule of Benefits and change with each fee agreement. This guide describes the structure; confirm current amounts and windows against the Schedule before billing.</p>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/specialties/emergency-medicine/" class="rel-card">
+            <span class="rel-kind">Specialty</span>
+            <h3>OHIP billing for emergency medicine</h3>
+            <p>Where premiums carry the largest share of the income.</p>
+          </a>
+          <a href="/guides/reduce-missed-ohip-billings/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>How to reduce missed OHIP billings</h3>
+            <p>Unclaimed premiums are the biggest line on the list.</p>
+          </a>
+          <a href="/departments-and-groups.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>Departments and groups</h3>
+            <p>How group submission changes premium handling and remittance splitting.</p>
+          </a>
+        </div>

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# Refuses a commit when the generated pages or sitemap.xml are out of date with
+# _content/ or _build/layout.html. Installed by _build/install-hooks.sh.
+#
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+[ -d _content ] || exit 0
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit: node is not on PATH, skipping the staleness check" >&2
+  exit 0
+fi
+
+if ! node _build/build.js --check --quiet; then
+  cat >&2 <<'MSG'
+
+The site in the working tree does not match _content/.
+
+  node _build/build.js     # regenerate, then stage the result
+
+Or, to publish properly in one step:
+
+  ./_build/release.sh --publish -m "your message"
+
+MSG
+  exit 1
+fi

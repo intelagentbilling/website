@@ -1,0 +1,203 @@
+<!--meta
+{
+  "url": "guides/start-billing-ohip/",
+  "title": "How to Start Billing OHIP in Ontario | IntelAGENT",
+  "h1": "How to start billing OHIP",
+  "breadcrumb": "Start Billing OHIP",
+  "eyebrow": "Guide",
+  "description": "The sequence from billing number to first paid claim: MCEDT registration, choosing how to submit, building a claim, and the monthly cycle afterwards.",
+  "lede": "Nothing in residency prepares you for this. It is a sequence of about six steps, most of them administrative, and the waiting happens at the front.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "9 min read",
+  "priority": "0.9",
+  "about": ["OHIP billing", "New physicians", "Medical billing Ontario"],
+  "faq": [
+    {
+      "q": "How do new physicians start billing OHIP in Ontario?",
+      "a": "Apply to the Ministry of Health for an OHIP billing number, wait for the registration letter, create a GO Secure account and enrol for EDT, then designate whoever will submit claims on your behalf. Only after that can a claim reach the ministry. The online steps take about an hour; the ministry paperwork ahead of them usually takes weeks."
+    },
+    {
+      "q": "How long after submitting a claim does OHIP pay?",
+      "a": "Between about three weeks and seven, depending on when in the cycle you submit. Claims that reach OHIP by the 18th of a month are adjudicated in that month's run, the Remittance Advice is released in the first days of the following month, and the deposit lands mid-month. A claim sent on the 19th waits for the next cycle."
+    },
+    {
+      "q": "What does billing software actually do for me?",
+      "a": "It builds the claim and validates it before it goes, submits it through your MCEDT designation, retrieves the error reports and remittance advices, and reconciles what OHIP paid against what you sent. The part that pays for itself is the last one: it is how you find claims that were rejected or never settled while there is still time to fix them."
+    },
+    {
+      "q": "What happens if I bill the wrong OHIP code?",
+      "a": "One of three things. The ministry's file validation refuses the claim before adjudication, and it appears on a claims error report. Or it is adjudicated and reduced, with an explanatory code on the Remittance Advice. Or it is paid as billed, in which case the error is yours to find — billing a code you were not entitled to is recoverable by the ministry later."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>Billing OHIP requires, in order: an <strong>OHIP billing number</strong> from the Ministry of Health, the ministry's <strong>registration letter</strong>, a <strong>GO Secure</strong> account, <strong>EDT enrolment</strong>, and a <strong>designee</strong> authorised to submit on your behalf. Once that is in place, claims go to the ministry through MCEDT, rejections come back within a day or two, and payment arrives on a monthly cycle that pays claims received by the 18th in the middle of the following month.</p>
+          <p class="answer-pitch">IntelAGENT handles the MCEDT designation with you and is free for the first three months. <a href="#intelagent">See how &rarr;</a></p>
+        </div>
+
+        <p>The hard part of OHIP billing is not the codes. It is that nothing tells you the sequence, every step is gated on the one before it, and the two longest waits are at the very start where you cannot do anything about them.</p>
+
+        <p>This guide is the whole arc. Each step links out to a deeper guide where there is one.</p>
+
+        <h2 id="billing-number">Step 1: Get a billing number</h2>
+
+        <p>The OHIP billing number is issued by the Ministry of Health to physicians licensed by the CPSO. It identifies you on every claim and everything downstream depends on it.</p>
+
+        <p>Two things catch new physicians out:</p>
+
+        <ul>
+          <li>It is not automatic. Nobody applies for you, including your hospital.</li>
+          <li>It takes time. Start the application before you need it, not when you start seeing patients.</li>
+        </ul>
+
+        <p>If you will be working within a hospital department or a group practice, you will also need to be registered as a member of that group's ministry <strong>group number</strong>. That is arranged by the group's administrator and is separate from your own registration.</p>
+
+        <h2 id="mcedt">Step 2: Register for MCEDT</h2>
+
+        <p>MCEDT — Medical Claims Electronic Data Transfer — is the channel every electronic OHIP claim travels through. Registration means a GO Secure account, EDT enrolment using the two identifiers on your ministry registration letter, and then designating whoever will submit for you.</p>
+
+        <p>The physician has to do this personally. A billing company can be designated once you are enrolled, but it cannot enrol on your behalf.</p>
+
+        <p>Full walkthrough: <a href="/guides/mcedt-registration/">how to register for MCEDT</a>.</p>
+
+        <div class="note">
+          <p><b>You can prepare while you wait.</b> Setting up a billing account, building a patient roster and learning the software do not require the designation to be live. Nothing transmits until it is.</p>
+        </div>
+
+        <h2 id="how">Step 3: Set up how you will submit</h2>
+
+        <p>Your MCEDT designation is the channel. What travels down it still has to be built, validated, sent, retrieved and reconciled, and that is what a billing service does for you:</p>
+
+        <ul>
+          <li>builds the claim and checks it before it goes, so the avoidable rejections never happen;</li>
+          <li>submits it through your designation on a continuous basis rather than in a month-end push;</li>
+          <li>retrieves the error reports and remittance advices as they arrive, and turns a rejection into something on your list with the reason attached;</li>
+          <li>reconciles what OHIP paid against what you submitted, which is the only way to find claims that never settled at all.</li>
+        </ul>
+
+        <p>IntelAGENT is priced as a percentage of what you are actually paid: self-service is 0.25% of paid claims, capped at $39.99 a month, and the first three months are free. Where you would rather have a person doing the billing — because fee-code selection needs judgement, or because you want the work entirely off your desk — there is a tier with a dedicated billing agent instead. See <a href="/guides/billing-software-vs-billing-agent/">billing software vs a billing agent</a> and <a href="/pricing.html">pricing</a>.</p>
+
+        <h2 id="claim">Step 4: What a claim actually contains</h2>
+
+        <p>However it is submitted, every OHIP claim carries the same core facts:</p>
+
+        <ul>
+          <li><strong>The patient</strong> — health number, version code, date of birth and sex, matching the ministry's record exactly. See <a href="/guides/health-card-validation/">health card validation</a>.</li>
+          <li><strong>The service</strong> — one or more fee schedule codes, with a quantity, and the date each was rendered.</li>
+          <li><strong>A diagnostic code</strong> — the ministry's own three-digit list, not ICD-10, and not zero-padded.</li>
+          <li><strong>The setting</strong> — a service location indicator, and for hospital services a facility number and sometimes an admission date.</li>
+          <li><strong>The referring physician</strong>, where the service requires one. Six digits, including any leading zero.</li>
+          <li><strong>The group number</strong>, if you are billing under one.</li>
+        </ul>
+
+        <p>Getting any of these wrong produces a rejection rather than a reduction, which is the better of the two outcomes because you find out in days instead of weeks.</p>
+
+        <h2 id="cycle">Step 5: The monthly cycle</h2>
+
+        <p>OHIP does not pay continuously. Three dates define the rhythm:</p>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>The OHIP payment cycle.</caption>
+            <thead>
+              <tr><th scope="col">When</th><th scope="col">What happens</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Within a day or two of submission</th><td>The claims error report comes back, listing anything the ministry's file validation refused. These claims were never adjudicated.</td></tr>
+              <tr><th scope="row">The 18th of the month</th><td>The ministry's cut-off. Claims received by then are adjudicated in that month's run; later ones wait for the next.</td></tr>
+              <tr><th scope="row">First days of the following month</th><td>The Remittance Advice is released, showing what was paid, what was reduced and why.</td></tr>
+              <tr><th scope="row">Mid-month</th><td>The EFT deposit lands in the bank account registered with the ministry.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>A claim submitted on the 19th of January is therefore paid in mid-March. That gap, not a lost claim, is the usual explanation when a new physician thinks something has gone wrong.</p>
+
+        <h2 id="monthly">Step 6: The work that recurs</h2>
+
+        <p>Once you are running, OHIP billing settles into two recurring jobs.</p>
+
+        <p><strong>Weekly:</strong> clear your rejections. Every submitted batch has an error report, and a rejected claim sits at zero until somebody fixes and resends it. See <a href="/guides/ohip-claim-rejections/">common OHIP claim rejections</a>.</p>
+
+        <p><strong>Monthly:</strong> reconcile the Remittance Advice against what you submitted. This is the only way to find claims that were neither paid nor rejected — the ones that were never actually sent. See <a href="/guides/ohip-remittance-advice/">how to read an OHIP Remittance Advice</a>.</p>
+
+        <div class="note note--warn">
+          <p><b>The three-month wall.</b> A service rendered on or after April 1, 2023 has to reach OHIP within three months of the service date. Inside that window a problem is a correction; outside it, recovery means a documented request to the ministry that is refused for anything resembling an office oversight. That is why doing both jobs on a cadence beats doing either one thoroughly but late.</p>
+        </div>
+
+        <h2 id="mistakes">The five mistakes new billers make</h2>
+
+        <ul>
+          <li><strong>Waiting to apply for the billing number.</strong> The ministry's timeline is not yours.</li>
+          <li><strong>Deferring the billing to the weekend.</strong> Encounters billed days later lose the premiums, and some lose the encounter entirely.</li>
+          <li><strong>Never downloading the error reports.</strong> A rejection you have not read is indistinguishable from a claim that was never made.</li>
+          <li><strong>Assuming the deposit is the answer.</strong> The deposit is net of reversals. It tells you what arrived, not what was paid for.</li>
+          <li><strong>Leaving group billing to the group.</strong> Group totals can be right while your individual share is wrong, and nothing flags it.</li>
+        </ul>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="intelagent">Starting with IntelAGENT</h2>
+          <p class="pitch-lead">The ministry paperwork takes weeks. Everything on your side can be ready before it clears.</p>
+
+          <p>IntelAGENT has been submitting OHIP claims since 2016 and is used by more than 2,000 physicians across Ontario. Onboarding walks through the MCEDT designation screens, and self-service pricing is <strong>0.25% of paid claims, capped at $39.99 a month</strong> — so the cost stops growing once your billings do. A Premium tier adds a dedicated billing agent at 2%.</p>
+
+          <p>The first three months are free, and you can build your account and your patient roster while the ministry paperwork is still in flight. Full details on <a href="/pricing.html">pricing</a>.</p>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>How do new physicians start billing OHIP in Ontario?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Apply to the Ministry of Health for an OHIP billing number, wait for the registration letter, create a GO Secure account and enrol for EDT, then designate whoever will submit claims on your behalf. Only after that can a claim reach the ministry. The online steps take about an hour; the ministry paperwork ahead of them usually takes weeks.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long after submitting a claim does OHIP pay?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Between about three weeks and seven, depending on when in the cycle you submit. Claims that reach OHIP by the 18th of a month are adjudicated in that month's run, the Remittance Advice is released in the first days of the following month, and the deposit lands mid-month. A claim sent on the 19th waits for the next cycle.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does billing software actually do for me?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>It builds the claim and validates it before it goes, submits it through your MCEDT designation, retrieves the error reports and remittance advices, and reconciles what OHIP paid against what you sent. The part that pays for itself is the last one: it is how you find claims that were rejected or never settled while there is still time to fix them.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What happens if I bill the wrong OHIP code?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>One of three things. The ministry's file validation refuses the claim before adjudication, and it appears on a claims error report. Or it is adjudicated and reduced, with an explanatory code on the Remittance Advice. Or it is paid as billed, in which case the error is yours to find — billing a code you were not entitled to is recoverable by the ministry later.</p>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+
+        <ul class="sources">
+          <li><a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees">OHIP Schedule of Benefits and fees</a> — Government of Ontario.</li>
+          <li><a href="https://health.gov.on.ca/en/pro/programs/ohip/physician_payment.aspx">Physician payment</a> — Ontario Ministry of Health.</li>
+          <li><a href="https://health.gov.on.ca/en/pro/publications/ohip/mcedt_mn.aspx">Medical Claims Electronic Data Transfer (MCEDT)</a> — Ontario Ministry of Health.</li>
+        </ul>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/guides/mcedt-registration/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>How to register for MCEDT</h3>
+            <p>Step two, in detail: GO Secure, the ministry letter, and the designee screen.</p>
+          </a>
+          <a href="/compare/how-to-choose-ohip-billing-software/" class="rel-card">
+            <span class="rel-kind">Compare</span>
+            <h3>How to choose OHIP billing software</h3>
+            <p>The questions worth asking before you commit to a provider.</p>
+          </a>
+          <a href="/what-is-ohip-billing.html" class="rel-card">
+            <span class="rel-kind">Explainer</span>
+            <h3>What is OHIP billing?</h3>
+            <p>The background, if the whole system is new to you.</p>
+          </a>
+        </div>

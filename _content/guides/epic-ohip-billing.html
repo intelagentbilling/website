@@ -1,0 +1,165 @@
+<!--meta
+{
+  "url": "guides/epic-ohip-billing/",
+  "title": "OHIP Billing When Your Hospital Runs Epic | IntelAGENT",
+  "h1": "OHIP billing when your hospital runs Epic",
+  "breadcrumb": "Epic and OHIP Billing",
+  "eyebrow": "Guide",
+  "description": "Why a hospital EMR does not bill OHIP for you, what SMART on FHIR gives a billing app, and how to stop re-typing patient details between Epic and billing.",
+  "lede": "Epic holds the chart. It does not hold your billing number, and in most Ontario hospitals it does not submit your claims. Those are two different problems with two different owners.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "6 min read",
+  "priority": "0.7",
+  "about": ["Epic EMR", "SMART on FHIR", "OHIP billing", "Hospital billing"],
+  "faq": [
+    {
+      "q": "Does Epic submit OHIP claims for physicians?",
+      "a": "Usually not for the physician's own professional billing. Hospitals run Epic for the clinical record and for the hospital's own institutional billing. Fee-for-service physician claims go to OHIP under the physician's own billing number through MCEDT, and in most Ontario hospitals that is arranged separately by the physician or their group."
+    },
+    {
+      "q": "What is SMART on FHIR?",
+      "a": "A standard that lets an outside application be launched from inside an EMR with the current user and patient already identified, and read agreed clinical data over the FHIR API. For billing it means the patient you have open in Epic can carry over into the billing app without being re-typed."
+    },
+    {
+      "q": "Can billing software read patient demographics from Epic?",
+      "a": "With a SMART on FHIR launch and the hospital's authorisation, yes — the patient in context and the demographics the hospital has approved for release. What is available depends on what that hospital's Epic instance has been configured to share, which varies between sites."
+    },
+    {
+      "q": "Why does the MRN format matter for hospital billing?",
+      "a": "Because the medical record number is how a billing system matches an encounter back to a patient, and hospitals change MRN formats when they change systems. A hospital moving from one EMR to Epic can change both the length and the shape of the number on a specific cut-over date, so records on either side of that date do not match each other."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>A hospital EMR and your OHIP billing are separate systems with separate owners. Epic records the encounter; your professional claim still goes to the ministry under <em>your</em> billing number through MCEDT. The useful connection between the two is <strong>SMART on FHIR</strong> — a standard launch that carries the patient you have open in Epic into a billing app, so demographics are read rather than re-typed.</p>
+          <p class="answer-pitch">IntelAGENT launches from inside Epic over SMART on FHIR and bills under your own number. <a href="#intelagent">See how &rarr;</a></p>
+        </div>
+
+        <p>Physicians moving to a hospital that runs Epic often assume the billing problem has been solved for them. It has been solved for the hospital. The hospital's institutional billing is handled; your fee-for-service claims under your own billing number usually are not.</p>
+
+        <p>This matters most in exactly the settings where billing is hardest to keep up with: emergency departments, hospitalist services, inpatient consultation services — high-volume work, short encounters, and a chart that lives somewhere your billing does not.</p>
+
+        <h2 id="separate">Why the two stay separate</h2>
+
+        <p>Three reasons, and none of them are going away:</p>
+
+        <ul>
+          <li><strong>Different payee.</strong> Hospital billing is institutional. Your claim is personal, tied to your CPSO licence and your ministry billing number.</li>
+          <li><strong>Different channel.</strong> Professional OHIP claims go through MCEDT under your own designation. See <a href="/guides/mcedt-registration/">how to register for MCEDT</a>.</li>
+          <li><strong>Different scope.</strong> You may work at more than one hospital, in a clinic, and on call for a group. No single hospital's EMR covers all of it.</li>
+        </ul>
+
+        <h2 id="retyping">The re-typing problem</h2>
+
+        <p>With the chart in one system and the claim in another, the same patient gets entered twice. That is not just slow; it is where the errors come from.</p>
+
+        <ul>
+          <li>A health number transposed by one digit fails its check digit, or worse, matches the wrong patient.</li>
+          <li>A date of birth typed from memory rather than read produces rejection <code>VH8</code>.</li>
+          <li>An old version code carried from an earlier visit produces <code>EH2</code>.</li>
+        </ul>
+
+        <p>All three are in the <a href="/guides/ohip-claim-rejections/">rejection list</a>, and all three come from the same cause: the data existed correctly in one system and was re-keyed into another.</p>
+
+        <h2 id="smart">What SMART on FHIR gives you</h2>
+
+        <p>SMART on FHIR is the standard that lets an outside application be launched from within an EMR session. Three things come across:</p>
+
+        <ol class="steps">
+          <li>
+            <h3>Who you are</h3>
+            <p>The EMR identifies the logged-in user to the launched app, so the billing app knows which physician is billing without a separate sign-in.</p>
+          </li>
+          <li>
+            <h3>Which patient is open</h3>
+            <p>The patient in context at the moment of launch, rather than a search the physician has to repeat.</p>
+          </li>
+          <li>
+            <h3>The demographics the hospital has approved</h3>
+            <p>Read over the FHIR API, within whatever scope that hospital's Epic instance has been configured to release.</p>
+          </li>
+        </ol>
+
+        <div class="note">
+          <p><b>Scope varies by site.</b> SMART on FHIR is a standard, but what any individual hospital releases through it is a local decision. Two hospitals both running Epic can expose different fields. Assume nothing about a specific site until it has been configured.</p>
+        </div>
+
+        <h2 id="mrn">The MRN trap</h2>
+
+        <p>Hospital billing systems match encounters to patients by medical record number. When a hospital replaces its EMR — a Meditech site moving to Epic, for example — the MRN format can change on a specific cut-over date: a different length, a different prefix, sometimes both.</p>
+
+        <p>The consequence is that the same patient has two different identifiers either side of that date. Anything matching encounters by MRN has to know the cut-over date and apply the right format for the date of service, not for today. Billing for a service rendered before the cut-over using today's format silently fails to match.</p>
+
+        <div class="note note--warn">
+          <p><b>Ask before the cut-over, not after.</b> If your hospital is moving to Epic, find out the MRN format on both sides and the exact date the change takes effect. It is a five-minute question before the transition and a reconciliation project afterwards.</p>
+        </div>
+
+        <h2 id="practical">A practical setup</h2>
+
+        <p>Whatever software you use, the arrangement that works in an Epic hospital looks the same:</p>
+
+        <ul>
+          <li><strong>Bill at the bedside, not from a list.</strong> The chart is in front of you and so is the patient. Everything you need for the premium is still true right now. See <a href="/guides/special-visit-premiums/">special visit premiums</a>.</li>
+          <li><strong>Read demographics, do not re-key them.</strong> Whether through a SMART launch, a card scan, or both.</li>
+          <li><strong>Keep the claim under your own number and your own MCEDT designation.</strong> It follows you between hospitals; the EMR does not.</li>
+          <li><strong>Reconcile against the Remittance Advice, not against the hospital's records.</strong> The hospital knows what you did. Only the ministry knows what you were paid.</li>
+        </ul>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="intelagent">IntelAGENT launches from inside Epic</h2>
+          <p class="pitch-lead">Your hospital EMR records the encounter. IntelAGENT turns it into a claim under your own billing number, without you retyping the patient.</p>
+
+          <p>IntelAGENT supports a SMART on FHIR launch from Epic: the app opens from within the EMR session with the physician identified and the patient in context, and reads the demographics the hospital's instance releases. From there the claim is built in IntelAGENT and submitted to OHIP under your own billing number through your own MCEDT designation.</p>
+
+          <p>For physicians working across more than one site, that keeps a single billing record whether the encounter came from Epic, from the <a href="/mobile.html">mobile app</a> at another hospital, or from a clinic. Group and departmental billing is covered in <a href="/departments-and-groups.html">departments and groups</a>.</p>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>Does Epic submit OHIP claims for physicians?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Usually not for the physician's own professional billing. Hospitals run Epic for the clinical record and for the hospital's own institutional billing. Fee-for-service physician claims go to OHIP under the physician's own billing number through MCEDT, and in most Ontario hospitals that is arranged separately by the physician or their group.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is SMART on FHIR?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>A standard that lets an outside application be launched from inside an EMR with the current user and patient already identified, and read agreed clinical data over the FHIR API. For billing it means the patient you have open in Epic can carry over into the billing app without being re-typed.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can billing software read patient demographics from Epic?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>With a SMART on FHIR launch and the hospital's authorisation, yes — the patient in context and the demographics the hospital has approved for release. What is available depends on what that hospital's Epic instance has been configured to share, which varies between sites.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why does the MRN format matter for hospital billing?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Because the medical record number is how a billing system matches an encounter back to a patient, and hospitals change MRN formats when they change systems. A hospital moving from one EMR to Epic can change both the length and the shape of the number on a specific cut-over date, so records on either side of that date do not match each other.</p>
+        </details>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/departments-and-groups.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>Departments and groups</h3>
+            <p>Group submission, remittance splitting and departmental reporting.</p>
+          </a>
+          <a href="/specialties/emergency-medicine/" class="rel-card">
+            <span class="rel-kind">Specialty</span>
+            <h3>OHIP billing for emergency medicine</h3>
+            <p>The setting where the Epic-to-billing gap costs the most.</p>
+          </a>
+          <a href="/emr-clinic.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>EMR and clinic workflows</h3>
+            <p>How IntelAGENT fits alongside the system your clinic already runs.</p>
+          </a>
+        </div>

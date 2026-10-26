@@ -1,0 +1,184 @@
+<!--meta
+{
+  "url": "compare/how-to-choose-ohip-billing-software/",
+  "title": "How to Choose OHIP Billing Software | IntelAGENT",
+  "h1": "How to choose OHIP billing software",
+  "breadcrumb": "How to Choose",
+  "eyebrow": "Compare",
+  "description": "A checklist for choosing an OHIP billing provider: how percentage fees and caps add up at your volume, what support is included, and the questions to ask first.",
+  "lede": "Most of the differences between OHIP billing providers come down to four things: what the fee costs you at your volume, who fixes rejections, whether group billing is supported, and what happens on day one.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "7 min read",
+  "priority": "0.7",
+  "about": ["Choosing OHIP billing software", "OHIP billing software evaluation"],
+  "faq": [
+    {
+      "q": "What should I look for in OHIP billing software?",
+      "a": "Work out the fee at your own monthly billing volume rather than comparing headline percentages, check whether support for rejections is included or charged hourly, confirm the provider handles your practice shape (hospital, group, clinic), and confirm you can get your data out."
+    },
+    {
+      "q": "Is a percentage fee or a flat fee better?",
+      "a": "A percentage with a monthly cap behaves like a flat fee once you are above the cap, and like a percentage below it. Uncapped percentages keep growing with your billings. Work out both at your actual volume — the answer is arithmetic, not preference."
+    },
+    {
+      "q": "Do I need my own EDT account to use billing software?",
+      "a": "No. You need an OHIP billing number and a GO Secure account, and you designate the provider to submit on your behalf through MCEDT. The provider's EDT infrastructure does the transmitting."
+    },
+    {
+      "q": "How long does it take to start billing with a new provider?",
+      "a": "The gating step is the MCEDT designee change at the ministry, not the software. Allow a few business days for the designation to take effect. Everything on the software side can be set up while you wait."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>Compare on four things: <strong>the fee at your actual monthly volume</strong> (not the headline percentage), <strong>whether rejection help is included or billed hourly</strong>, <strong>whether the provider handles your practice shape</strong> — hospital, group or clinic — and <strong>whether you can export your own data</strong>. Feature lists are mostly the same across providers; these four are where they differ.</p>
+        </div>
+
+        <p>Every OHIP billing provider in Ontario submits through the same ministry channel, under the same Schedule of Benefits, and gets back the same remittance files. The claim either adjudicates or it does not, and no vendor changes that. So the question is not which one bills correctly — it is which one costs the least at your volume and leaves you doing the least work.</p>
+
+        <h2 id="fee">1. Work out the fee at your volume</h2>
+
+        <p>Percentage fees are quoted on paid claims, so a lower percentage is not automatically cheaper. A cap changes the shape of the curve entirely.</p>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>What 0.25% with a $39.99 monthly cap costs against 0.25% uncapped, by monthly paid billings.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Monthly paid claims</th>
+                <th scope="col">0.25% uncapped</th>
+                <th scope="col">0.25% capped at $39.99</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">$8,000</th><td class="num">$20.00</td><td class="num">$20.00</td></tr>
+              <tr><th scope="row">$16,000</th><td class="num">$40.00</td><td class="num">$39.99</td></tr>
+              <tr><th scope="row">$30,000</th><td class="num">$75.00</td><td class="num">$39.99</td></tr>
+              <tr><th scope="row">$60,000</th><td class="num">$150.00</td><td class="num">$39.99</td></tr>
+              <tr><th scope="row">$100,000</th><td class="num">$250.00</td><td class="num">$39.99</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The cap matters above roughly $16,000 a month in paid claims and is irrelevant below it. If you bill $8,000 a month, a provider with no cap and a slightly lower percentage is cheaper; if you bill $60,000 a month, the cap is worth more than any percentage difference on offer. Find your own number on your last Remittance Advice before comparing anything.</p>
+
+        <p>Full published rates, with the arithmetic done at several volumes: <a href="/compare/ohip-billing-software-pricing/">OHIP billing software pricing compared</a>.</p>
+
+        <div class="note note--warn">
+          <p><b>Ask what the percentage is charged on.</b> Paid claims and submitted claims are different numbers — rejections, reductions and reversals sit between them. A fee on submissions costs more than the same fee on payments.</p>
+        </div>
+
+        <h2 id="support">2. Find out who fixes rejections</h2>
+
+        <p>Rejections are the actual work of OHIP billing. Codes get refused for diagnostic-code requirements, premium eligibility, health card version mismatches, service-date conflicts and a long tail of explanatory codes. Somebody has to read the Remittance Advice, understand why, correct the claim and resubmit it inside the submission window.</p>
+
+        <p>Self-service tiers across the market vary in what that somebody costs. Some providers include support in the percentage; at least two publish an hourly rate — $50/hour at the time of writing — for billing-agent assistance on their entry tier. Neither is wrong, but they are not comparable until you know your rejection volume.</p>
+
+        <ul>
+          <li><b>If your rejection rate is low</b> and you are comfortable reading an RA, self-service with included support is the cheap answer.</li>
+          <li><b>If you generate rejections routinely</b> — premiums, group billing, ED shift codes — an hourly rate will not stay small, and a full-service tier with a dedicated billing agent may cost less in total than self-service plus hours.</li>
+        </ul>
+
+        <p>Ask specifically: is correcting and resubmitting a rejected claim included, or billable? Who initiates it — do you have to notice, or do they?</p>
+
+        <p>Background on what you are actually dealing with: <a href="/guides/ohip-claim-rejections/">why OHIP claims get rejected</a> and <a href="/guides/ohip-remittance-advice/">how to read a Remittance Advice</a>.</p>
+
+        <h2 id="shape">3. Match the provider to your practice shape</h2>
+
+        <p>This is where providers genuinely diverge, and where the wrong choice costs the most time.</p>
+
+        <h3>Clinic-based practice</h3>
+        <p>You need EMR integration or a fast manual entry path, health card validation, and recurring patient handling. Most providers cover this well. If your EMR matters, confirm the integration exists today rather than being described as in development.</p>
+
+        <h3>Hospital and shift-based practice</h3>
+        <p>You need the premium structure handled: special visit premiums, after-hours and weekend codes, and the companion rules that go with them. Entering a weekend ED shift as a list of base codes leaves money on the table, and entering premiums that do not qualify produces rejections. Ask whether the system prompts premiums from the service time and place, or expects you to know them. See <a href="/guides/special-visit-premiums/">special visit premiums</a>.</p>
+
+        <h3>Group, department or roster billing</h3>
+        <p>If several physicians bill under a shared group number, or an administrator bills on behalf of a department, ask how remittances are split back to the rendering physician and what the group sees. This is the feature most likely to be missing. <a href="/departments-and-groups.html">How IntelAGENT handles groups and departments</a>.</p>
+
+        <h3>Hospital information system in the mix</h3>
+        <p>If your hospital runs Epic, ask whether the provider launches from inside it or expects duplicate entry. <a href="/guides/epic-ohip-billing/">Epic and OHIP billing</a>.</p>
+
+        <h2 id="practical">4. The practical questions</h2>
+
+        <ol class="steps">
+          <li>
+            <h3>Can you get your data out?</h3>
+            <p>Ask for the export format for claims and remittances before you sign up, not when you leave. A provider that cannot export your billing history is a provider you cannot leave cheaply.</p>
+          </li>
+          <li>
+            <h3>What is the contract term?</h3>
+            <p>Several Ontario providers state no contracts and no minimums. If one does not say so, ask.</p>
+          </li>
+          <li>
+            <h3>Who holds the MCEDT designation?</h3>
+            <p>You designate the provider; the billing number and GO Secure account stay yours. Confirm that, and confirm you can revoke the designation yourself. <a href="/guides/mcedt-registration/">MCEDT registration</a>.</p>
+          </li>
+          <li>
+            <h3>Where is the data hosted?</h3>
+            <p>Patient data under PHIPA. Ask where it is stored and who can see it.</p>
+          </li>
+          <li>
+            <h3>Is there a free trial, and what does it cover?</h3>
+            <p>Several providers offer two or three free months. A trial is only useful if you can submit real claims during it, so confirm that rather than assuming.</p>
+          </li>
+          <li>
+            <h3>What happens on day one?</h3>
+            <p>Who enters your facilities, group numbers and specialty, and who verifies the first submission went through? A provider that hands you a login and leaves is cheaper for a reason.</p>
+          </li>
+        </ol>
+
+        <h2 id="ignore">What not to weigh heavily</h2>
+
+        <p>Three things look like differentiators and mostly are not:</p>
+
+        <ul>
+          <li><b>Code libraries.</b> Every provider has the Schedule of Benefits. The fees are the ministry's, identical everywhere, and change on the same date for everyone — <a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">the Schedule</a> is public.</li>
+          <li><b>Claim counts and physician counts.</b> Useful as a sign a company is established, useless for predicting whether it suits your practice.</li>
+          <li><b>Feature-list length.</b> Health card validation, resubmission and reconciliation appear on everyone's list. What matters is whether they work for your billing pattern, which you find out in the trial.</li>
+        </ul>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>What should I look for in OHIP billing software?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Work out the fee at your own monthly billing volume rather than comparing headline percentages, check whether support for rejections is included or charged hourly, confirm the provider handles your practice shape (hospital, group, clinic), and confirm you can get your data out.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is a percentage fee or a flat fee better?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>A percentage with a monthly cap behaves like a flat fee once you are above the cap, and like a percentage below it. Uncapped percentages keep growing with your billings. Work out both at your actual volume — the answer is arithmetic, not preference.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I need my own EDT account to use billing software?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>No. You need an OHIP billing number and a GO Secure account, and you designate the provider to submit on your behalf through MCEDT. The provider's EDT infrastructure does the transmitting.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long does it take to start billing with a new provider?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>The gating step is the MCEDT designee change at the ministry, not the software. Allow a few business days for the designation to take effect. Everything on the software side can be set up while you wait.</p>
+        </details>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/compare/ohip-billing-software-pricing/" class="rel-card">
+            <span class="rel-kind">Compare</span>
+            <h3>Pricing compared</h3>
+            <p>Published rates from every Ontario provider, with the arithmetic.</p>
+          </a>
+          <a href="/compare/best-ohip-billing-software/" class="rel-card">
+            <span class="rel-kind">Compare</span>
+            <h3>Best OHIP billing software</h3>
+            <p>Which provider suits which kind of practice.</p>
+          </a>
+          <a href="/guides/billing-software-vs-billing-agent/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Software vs a billing agent</h3>
+            <p>What you are actually buying on each tier.</p>
+          </a>
+        </div>
