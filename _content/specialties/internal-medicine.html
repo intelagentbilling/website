@@ -1,0 +1,189 @@
+<!--meta
+{
+  "url": "specialties/internal-medicine/",
+  "title": "OHIP Billing for Internal Medicine | IntelAGENT",
+  "h1": "OHIP billing for internal medicine",
+  "breadcrumb": "Internal Medicine",
+  "eyebrow": "Specialties",
+  "description": "How internists bill OHIP: consultations, most responsible physician premiums, subsequent visit week bands, case conferences and the commonest codes.",
+  "lede": "Internal medicine billing is built around the consultation and what follows it: the MRP designation, the subsequent-visit schedule, and the week-based limits on inpatient care.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "6 min read",
+  "priority": "0.8",
+  "about": ["OHIP billing for internal medicine", "Internal medicine billing codes Ontario"],
+  "faq": [
+    {
+      "q": "Which OHIP codes do internists bill most?",
+      "a": "The consultation codes A135A and A130A, the medical specific assessment A133A, the partial assessment A138A, subsequent visit code C132A, and the most responsible physician premiums E082A and E083A. On the inpatient side, case conference K121A and the after-hours C-prefix codes come up constantly."
+    },
+    {
+      "q": "What are the E082A and E083A premiums?",
+      "a": "They are the most responsible physician premiums — E082A on the admission assessment, E083A on subsequent visits. The Schedule states both as add 30%, so neither has a dollar fee of its own: what they pay depends on the service they attach to, and E082A is payable only once per patient per hospital admission, and only where the admitting physician is the MRP."
+    },
+    {
+      "q": "How do subsequent visit limits work for inpatients?",
+      "a": "Subsequent visit codes are banded by how long the patient has been admitted — the first five weeks use one code, later weeks use others, with per-week limits. Billing the first-five-weeks code into week six is a routine rejection."
+    },
+    {
+      "q": "Can internal medicine bill a consultation and an assessment on the same day?",
+      "a": "Generally not for the same patient and the same problem — the consultation includes the assessment. The Schedule sets out the specific circumstances and companion requirements, and this is one of the most common sources of rejection in the specialty."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>Internal medicine billing is organised around the <strong>consultation</strong> (A135A, or A130A for the comprehensive 75-minute version), what the consultation licenses afterwards, and the <strong>most responsible physician premiums</strong> E082A and E083A. The two things that cause trouble are the week bands on subsequent inpatient visits and the fact that the MRP premiums are percentages rather than fees.</p>
+          <p class="answer-pitch">IntelAGENT computes the subsequent-visit week band from the admission date instead of leaving you to count. <a href="#how">See how &rarr;</a></p>
+        </div>
+
+        <p>The internal medicine claim mix is unusually sensitive to sequence: whether a given visit is a consultation, an assessment or a subsequent visit depends on what came before it, and the Remittance Advice does not know your intent — only whether the combination was allowed.</p>
+
+        <h2 id="codes">The codes and what they pay</h2>
+
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption>Commonly billed internal medicine codes, with fees from the OHIP Schedule of Benefits effective July 1, 2026.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Description</th>
+                <th scope="col">Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="code">A135A</td><td>Consultation</td><td class="num">$192.85</td></tr>
+              <tr><td class="code">A130A</td><td>Comprehensive consultation (75 minutes)</td><td class="num">$342.25</td></tr>
+              <tr><td class="code">A133A</td><td>Medical specific assessment</td><td class="num">$95.95</td></tr>
+              <tr><td class="code">A138A</td><td>Partial assessment</td><td class="num">$44.75</td></tr>
+              <tr><td class="code">G401A</td><td>Subsequent visits, 2nd to 30th day</td><td class="num">$146.45</td></tr>
+              <tr><td class="code">C132A</td><td>Subsequent visits, first five weeks</td><td class="num">$40.05</td></tr>
+              <tr><td class="code">K121A</td><td>Hospital inpatient case conference</td><td class="num">$37.05</td></tr>
+              <tr><td class="code">C997A</td><td>Special visit, nights</td><td class="num">$102.80</td></tr>
+              <tr><td class="code">K997A</td><td>Emergency department special visit, nights</td><td class="num">$102.80</td></tr>
+              <tr><td class="code">C987A</td><td>Additional person seen, Saturday, Sunday or holiday</td><td class="num">$77.10</td></tr>
+              <tr><td class="code">K999A</td><td>Emergency department special visit, weekend</td><td class="num">$77.10</td></tr>
+              <tr><td class="code">C995A</td><td>Special visit, evenings</td><td class="num">$61.70</td></tr>
+              <tr><td class="code">E082A</td><td>Most responsible physician, admission assessment premium</td><td class="num">add 30%</td></tr>
+              <tr><td class="code">E083A</td><td>Most responsible physician, subsequent visit premium</td><td class="num">add 30%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="small muted">Fees are from the OHIP Schedule of Benefits and are the ministry's, not ours. Confirm eligibility conditions, companion requirements and per-week limits against <a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">the current Schedule</a> before billing a code you have not used before. These fees are from the <a href="https://www.ontario.ca/files/2026-08/moh-schedule-benefit-effective-2026-07-01.pdf" rel="nofollow">Schedule effective July 1, 2026</a> (PDF).</p>
+
+        <h2 id="mrp">The MRP premiums are percentages</h2>
+
+        <p>Neither premium has a dollar fee. The Schedule lists E082A as <em>add 30%</em> to the admission assessment and E083A as <em>add 30%</em> to the subsequent visit, so what each one is worth depends entirely on the service it attaches to. That is why you cannot look up “the MRP premium” as an amount, and why a reconciliation built on expected dollar values has to compute them.</p>
+
+        <p>Two conditions do most of the damage. E082A is payable only once per patient per hospital admission, and only when the admitting physician is the MRP — if the MRP did not render the admission assessment, it is not payable at all. It is also not payable on a transfer within the same hospital, for an obstetrical delivery, or for a well newborn. E083A is limited to one of E083A or E084A per patient per day, E084A being the Saturday, Sunday and holiday version.</p>
+
+        <div class="note">
+          <p><b>What to actually check.</b> Whether the MRP designation was accepted, and whether the base service paid at the increased amount. An explanatory code on the premium line is the real signal.</p>
+        </div>
+
+        <h2 id="weeks">Subsequent visit week bands</h2>
+
+        <p>Inpatient subsequent visits are banded by how long the patient has been admitted, with limits on how many can be claimed per week within each band. C132A covers the first five weeks; later weeks use different codes at different fees.</p>
+
+        <p>Two things go wrong:</p>
+
+        <ul>
+          <li><b>Billing past the band.</b> A long-stay patient moves into the next band at a date determined by the admission, not by the calendar month. Continuing with the first-five-weeks code produces a rejection with an explanatory code pointing at the service date.</li>
+          <li><b>Exceeding the weekly limit.</b> Where two physicians in a group both see the patient in a week, the limit applies to the patient, not to each physician. Group practices hit this regularly.</li>
+        </ul>
+
+        <p>This is a bookkeeping problem rather than a clinical one, which is why it is worth having the system track the admission date and count the week. See <a href="/guides/ohip-claim-rejections/">claim rejections</a> for how these come back.</p>
+
+        <h2 id="consult">Consultation versus assessment</h2>
+
+        <p>The consultation code is the highest-value routine claim in internal medicine and the one most often billed in the wrong circumstances. A consultation requires a referral and the work the Schedule describes; a repeat visit for the same problem is an assessment or a subsequent visit, not a second consultation.</p>
+
+        <p>The specific conditions, the referral requirements and the intervals after which a further consultation may be billed are set out in the Schedule and are not worth paraphrasing loosely — get them from the source. What is worth knowing is that the referring physician field matters: a consultation submitted without a valid referring provider number is a routine rejection, and a self-referral where none applies is another.</p>
+
+        <h2 id="missed">What gets missed</h2>
+
+        <ol class="steps">
+          <li>
+            <h3>Case conferences</h3>
+            <p>K121A exists for inpatient multidisciplinary case conferences and is frequently not billed at all, because the conference does not feel like a billable encounter.</p>
+          </li>
+          <li>
+            <h3>MRP premiums never billed at all</h3>
+            <p>A percentage premium has no headline fee to make it look worth claiming, and 30% of an admission assessment is not a small number.</p>
+          </li>
+          <li>
+            <h3>Special visit premiums on after-hours inpatient rounds</h3>
+            <p>C995A, C997A and the weekend equivalents apply when the visit genuinely was a special visit. The eligibility rules matter — <a href="/guides/special-visit-premiums/">how special visit premiums work</a>.</p>
+          </li>
+          <li>
+            <h3>The comprehensive consultation</h3>
+            <p>Where the 75-minute criteria are met and documented, A130A is a materially different fee from A135A. The documentation requirement is the gate, not the clinical difficulty.</p>
+          </li>
+        </ol>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="how">Billing internal medicine in IntelAGENT</h2>
+          <p class="pitch-lead">Inpatient internal medicine is a counting problem: which week of the admission, which visit of the day, which physician is most responsible.</p>
+
+          <ul class="pitch-list">
+            <li><b>Admission-aware subsequent visits.</b> The week band is computed from the admission date rather than left to you to count.</li>
+            <li><b>Percentage premiums priced, not guessed.</b> The expected amount for a 30% premium is computed from the service it attaches to, so the claim view shows what should arrive rather than a blank.</li>
+            <li><b>Referring physician lookup.</b> Referral numbers are validated against the physician directory before submission, which removes one of the two main consultation rejections.</li>
+            <li><b>Group and departmental billing.</b> Where an internal medicine group bills under a shared number, remittances split back to the rendering physician — <a href="/departments-and-groups.html">groups and departments</a>.</li>
+            <li><b>Epic.</b> If your hospital runs Epic, billing launches from inside it — <a href="/guides/epic-ohip-billing/">Epic and OHIP billing</a>.</li>
+          </ul>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>Which OHIP codes do internists bill most?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>The consultation codes A135A and A130A, the medical specific assessment A133A, the partial assessment A138A, subsequent visit code C132A, and the most responsible physician premiums E082A and E083A. On the inpatient side, case conference K121A and the after-hours C-prefix codes come up constantly.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What are the E082A and E083A premiums?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>They are the most responsible physician premiums — E082A on the admission assessment, E083A on subsequent visits. The Schedule states both as add 30%, so neither has a dollar fee of its own: what they pay depends on the service they attach to, and E082A is payable only once per patient per hospital admission, and only where the admitting physician is the MRP.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do subsequent visit limits work for inpatients?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Subsequent visit codes are banded by how long the patient has been admitted — the first five weeks use one code, later weeks use others, with per-week limits. Billing the first-five-weeks code into week six is a routine rejection.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can internal medicine bill a consultation and an assessment on the same day?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Generally not for the same patient and the same problem — the consultation includes the assessment. The Schedule sets out the specific circumstances and companion requirements, and this is one of the most common sources of rejection in the specialty.</p>
+        </details>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/guides/ohip-remittance-advice/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Reading a Remittance Advice</h3>
+            <p>Including how percentage premiums appear once adjudicated.</p>
+          </a>
+          <a href="/guides/special-visit-premiums/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Special visit premiums</h3>
+            <p>When the after-hours premiums actually apply.</p>
+          </a>
+          <a href="/specialties/" class="rel-card">
+            <span class="rel-kind">Specialties</span>
+            <h3>All specialties</h3>
+            <p>Billing patterns by specialty.</p>
+          </a>
+          <a href="/departments-and-groups.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>Departments and groups</h3>
+            <p>Shared group numbers and inpatient billing in IntelAGENT.</p>
+          </a>
+        </div>

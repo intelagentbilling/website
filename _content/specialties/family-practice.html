@@ -1,0 +1,167 @@
+<!--meta
+{
+  "url": "specialties/family-practice/",
+  "title": "OHIP Billing for Family Practice | IntelAGENT",
+  "h1": "OHIP billing for family practice",
+  "breadcrumb": "Family Practice",
+  "eyebrow": "Specialties",
+  "description": "How family physicians bill OHIP: fee-for-service against capitation, rostering and shadow billing, after-hours premiums, and where claims go missing.",
+  "lede": "Family practice is the only specialty where the first question is not which code but which payment model, because the model decides whether a visit is billable at all.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "6 min read",
+  "priority": "0.8",
+  "about": ["OHIP billing for family practice", "Family physician billing Ontario"],
+  "faq": [
+    {
+      "q": "How do family physicians bill OHIP?",
+      "a": "It depends on the payment model. Pure fee-for-service physicians bill every encounter. Physicians in a capitation-based model such as an FHO or FHN receive a per-patient payment for enrolled patients and bill differently for enrolled and non-enrolled visits, with shadow billing for enrolled patients."
+    },
+    {
+      "q": "What is shadow billing?",
+      "a": "Submitting claims for services already covered by a capitation payment so the ministry has a record of the encounter. The claim typically settles at a reduced amount or nothing, which is correct, and the record matters for access bonuses and model calculations."
+    },
+    {
+      "q": "Do family physicians need to bill differently for non-enrolled patients?",
+      "a": "Usually yes. Visits by patients enrolled with another physician, or not enrolled at all, are generally paid differently from visits by your own enrolled patients, and in some models they reduce an access bonus. Which applies is set by your agreement, not by the Schedule alone."
+    },
+    {
+      "q": "What do family physicians most often miss?",
+      "a": "After-hours and special visit premiums, chronic disease and preventive care management codes where the criteria were met, and shadow billing submitted incompletely — which does not reduce today's payment but affects the model calculations that depend on the record."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>Before the codes, the <strong>payment model</strong>. In pure fee-for-service, you bill every encounter. In a capitation model — FHO, FHN and others — you are paid per enrolled patient, you <strong>shadow bill</strong> enrolled visits so the encounter is on record, and non-enrolled visits are handled differently. Getting the model's rules right matters more than any individual code.</p>
+          <p class="answer-pitch">IntelAGENT defaults to the group and facility you last billed in that context, and bills house calls and long-term care rounds from the phone. <a href="#how">See how &rarr;</a></p>
+        </div>
+
+        <p>Family practice is the specialty where billing advice generalises worst, because two family physicians in neighbouring offices can be on entirely different payment arrangements with different rules about what to submit and what it pays.</p>
+
+        <div class="note note--warn">
+          <p><b>Your agreement governs.</b> The Schedule of Benefits defines the codes and fees. What you may bill, what gets reduced, and how an access bonus is calculated come from your payment model agreement. Nothing on this page overrides that — if the two appear to conflict, your agreement and the ministry's model documentation are what matter.</p>
+        </div>
+
+        <h2 id="models">The model decides the question</h2>
+
+        <p>The practical split:</p>
+
+        <ul>
+          <li><b>Fee-for-service.</b> Every eligible encounter is a claim, paid at the Schedule amount. The billing problem is completeness — did every visit get submitted, with the right premium where one applied.</li>
+          <li><b>Capitation-based models.</b> A per-patient payment for enrolled patients, with claims still submitted for the encounters. The billing problem is different: the claims largely do not pay directly, but they are the record on which the model's calculations rest.</li>
+        </ul>
+
+        <p>If you are in a capitation model and treat billing as unimportant because the claims pay little, the consequences arrive later and indirectly — in the figures used to calculate what the model pays you. That is the single most common misunderstanding in the specialty.</p>
+
+        <h2 id="shadow">Shadow billing</h2>
+
+        <p>Shadow billing means submitting a claim for a service that is already covered by your capitation payment. The claim settles at a reduced amount or at nothing, which is correct and expected, and the record exists so the encounter is counted.</p>
+
+        <p>Two failure modes:</p>
+
+        <ul>
+          <li><b>Not shadow billing at all.</b> No immediate financial signal, because the capitation payment arrives either way. The effect shows up in the encounter data.</li>
+          <li><b>Treating reduced settlements as rejections.</b> A shadow-billed claim paying less than the Schedule amount is the system working. Reading those lines as failures and investigating them wastes a lot of time — see <a href="/guides/ohip-remittance-advice/">reading a Remittance Advice</a>.</li>
+        </ul>
+
+        <h2 id="enrolment">Enrolled, non-enrolled, and other people's patients</h2>
+
+        <p>In a capitation model, who the patient is enrolled with changes what the visit is worth. Your own enrolled patients, patients enrolled with a colleague in your group, patients enrolled elsewhere and patients not enrolled at all are generally treated differently, and in some models seeing another physician's enrolled patients affects an access bonus.</p>
+
+        <p>This is a data problem more than a billing one. The enrolment status has to be known at the time of the visit, and it changes — patients move, de-roster and re-enrol. Billing on a stale roster produces claims that are correct as submitted and wrong as paid.</p>
+
+        <p>Related: <a href="/guides/health-card-validation/">health card validation</a>, which is how you confirm eligibility and version before the visit rather than after the rejection.</p>
+
+        <h2 id="premiums">Premiums, after-hours and special visits</h2>
+
+        <p>Family practice generates a lot of after-hours work that is premium-eligible and routinely unbilled: evening and weekend clinic sessions, on-call coverage, house calls, long-term care visits and patients attended outside the office.</p>
+
+        <p>The premium mechanism is the same one the hospital specialties use, and the eligibility conditions are specific — whether you travelled, whether you were present anyway, how many patients were seen on the visit. We have written the structure up separately rather than publishing a premium code table, because the conditions decide whether the premium pays: <a href="/guides/special-visit-premiums/">how special visit premiums work</a>.</p>
+
+        <h2 id="management">Chronic disease and preventive care</h2>
+
+        <p>The Schedule contains management and incentive codes for chronic disease care, preventive care and specific populations, each with its own criteria and claiming frequency. These are a standing source of unbilled work in family practice for two reasons: the criteria are detailed, and the work is spread over months so no single visit feels like the trigger.</p>
+
+        <p>There is no shortcut here. The codes and their conditions have to be read in <a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">the Schedule</a> and matched against what your practice actually does. What a billing system can do is remind you when a patient meets a criterion you have told it to watch — it cannot tell you which codes you should be claiming in the first place.</p>
+
+        <h2 id="locum">Walk-in, locum and coverage work</h2>
+
+        <p>If you do walk-in sessions, locum coverage or cross-coverage alongside your own practice, you are billing under more than one arrangement at once. Common problems:</p>
+
+        <ol class="steps">
+          <li>
+            <h3>The wrong group number</h3>
+            <p>Claims submitted under your main practice's group number for work done elsewhere, or the reverse. This misattributes the work and is tedious to unwind after the fact.</p>
+          </li>
+          <li>
+            <h3>The wrong facility</h3>
+            <p>The facility affects premium eligibility. A claim for a hospital or long-term care visit submitted against your office is both wrong and, where a premium depended on it, an under-claim.</p>
+          </li>
+          <li>
+            <h3>Locum billing entered late</h3>
+            <p>A week of coverage reconstructed from memory loses encounters outright. This is the strongest argument for entering claims at the point of care.</p>
+          </li>
+        </ol>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="how">Billing a family practice in IntelAGENT</h2>
+          <p class="pitch-lead">Family practice bills the widest mix of anyone — office, home, long-term care, after hours — and each setting changes what is billable.</p>
+
+          <ul class="pitch-list">
+            <li><b>Last-used group and facility defaults.</b> Claims default to the group and facility you last billed under in that context rather than to a single fixed default, which is what causes misattribution when you work in more than one place.</li>
+            <li><b>Health card validation before submission.</b> Version codes and eligibility checked up front — <a href="/guides/health-card-validation/">how validation works</a>.</li>
+            <li><b>Patient rosters.</b> A roster you can carry, so a day's patients are entered once rather than re-keyed per claim.</li>
+            <li><b>Reduced settlements shown as settled.</b> Shadow-billed claims paying less than the Schedule amount read as correct, not as problems to chase.</li>
+            <li><b>EMR and clinic workflow.</b> <a href="/emr-clinic.html">How IntelAGENT fits a clinic</a>.</li>
+            <li><b>Mobile entry.</b> House calls, long-term care rounds and after-hours work billed where they happen — <a href="/mobile.html">the phone app</a>.</li>
+          </ul>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>How do family physicians bill OHIP?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>It depends on the payment model. Pure fee-for-service physicians bill every encounter. Physicians in a capitation-based model such as an FHO or FHN receive a per-patient payment for enrolled patients and bill differently for enrolled and non-enrolled visits, with shadow billing for enrolled patients.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is shadow billing?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Submitting claims for services already covered by a capitation payment so the ministry has a record of the encounter. The claim typically settles at a reduced amount or nothing, which is correct, and the record matters for access bonuses and model calculations.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do family physicians need to bill differently for non-enrolled patients?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Usually yes. Visits by patients enrolled with another physician, or not enrolled at all, are generally paid differently from visits by your own enrolled patients, and in some models they reduce an access bonus. Which applies is set by your agreement, not by the Schedule alone.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What do family physicians most often miss?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>After-hours and special visit premiums, chronic disease and preventive care management codes where the criteria were met, and shadow billing submitted incompletely — which does not reduce today's payment but affects the model calculations that depend on the record.</p>
+        </details>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/guides/health-card-validation/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Health card validation</h3>
+            <p>Checking eligibility before the visit, not after the rejection.</p>
+          </a>
+          <a href="/emr-clinic.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>Clinics and EMRs</h3>
+            <p>How IntelAGENT fits an office workflow.</p>
+          </a>
+          <a href="/specialties/" class="rel-card">
+            <span class="rel-kind">Specialties</span>
+            <h3>All specialties</h3>
+            <p>Billing patterns by specialty.</p>
+          </a>
+        </div>

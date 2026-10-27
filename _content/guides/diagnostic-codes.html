@@ -1,0 +1,181 @@
+<!--meta
+{
+  "url": "guides/ohip-diagnostic-codes/",
+  "title": "OHIP Diagnostic Codes: How They Work | IntelAGENT",
+  "h1": "OHIP diagnostic codes, and why claims fail without them",
+  "breadcrumb": "Diagnostic Codes",
+  "eyebrow": "Guide",
+  "description": "What an OHIP diagnostic code is, which fee codes require one, the leading-zero problem that silently drops codes, and how a wrong code changes what you are paid.",
+  "lede": "The diagnostic code is the smallest field on a claim and one of the most common reasons a claim comes back.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "7 min read",
+  "priority": "0.7",
+  "about": ["OHIP diagnostic codes", "OHIP claim submission"],
+  "faq": [
+    {
+      "q": "What is an OHIP diagnostic code?",
+      "a": "It is a short numeric code, three or four characters, identifying the condition treated. OHIP uses its own list in the Schedule of Benefits rather than ICD-10, so a code from a hospital chart will not necessarily be valid on a claim."
+    },
+    {
+      "q": "Do all OHIP claims need a diagnostic code?",
+      "a": "No, but the large majority of fee codes require one, and the requirement is set per fee code. Some premiums and procedural codes do not take a diagnostic code at all, and sending one where it is not expected can itself cause a problem."
+    },
+    {
+      "q": "Does the diagnostic code affect how much I am paid?",
+      "a": "For most ordinary visits it does not change the fee. For some premiums it is the condition that makes the premium payable at all, so a wrong or missing code means a lower payment even though the visit code was correct."
+    },
+    {
+      "q": "Why would a diagnostic code be dropped from a claim?",
+      "a": "Usually a leading zero. If a code is stored or transmitted without the zero padding the ministry expects, it may not match a valid code and the claim arrives as though no diagnosis were given."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>OHIP has its own list of short numeric diagnostic codes — a few hundred of them, three or four characters long — and it is not ICD-10. The large majority of fee codes require one. Where a code is required and missing, the claim is refused. Where it is required and wrong, the claim may still be paid but at a lower amount, which is harder to notice.</p>
+          <p class="answer-pitch">IntelAGENT knows which fee codes require a diagnosis and preserves the leading zero that silently drops elsewhere. <a href="#how">See how &rarr;</a></p>
+        </div>
+
+        <h2 id="what">What the code is</h2>
+
+        <p>A diagnostic code tells the ministry what condition you treated. It is short — something like <code>7159</code> for osteo-degenerative arthritis, or <code>300</code> for anxiety and depression — and it comes from a list published in the Schedule of Benefits.</p>
+
+        <p>Two things about that list trip people up:</p>
+
+        <ul>
+          <li><b>It is not ICD-10 and not ICD-9.</b> The codes look familiar because they derive from an older ICD revision, but the OHIP list is its own thing, is much smaller, and does not accept codes from a hospital coding system. A diagnosis pulled from an Epic problem list is a clinical diagnosis, not an OHIP diagnostic code.</li>
+          <li><b>It is coarse.</b> A few hundred codes cover all of medicine, so most of them are broader than the clinical picture. Picking the closest available category is correct and expected, not a compromise.</li>
+        </ul>
+
+        <h2 id="required">Which fee codes require one</h2>
+
+        <p>The requirement is attached to the fee code, not to the visit. The large majority of codes in the Schedule require a diagnostic code; a minority do not take one at all. Three practical consequences:</p>
+
+        <ol class="steps">
+          <li>
+            <h3>You cannot guess from the kind of service</h3>
+            <p>Assessments almost always require one. Premiums are mixed — some require a code and some do not. Procedural codes vary. The only reliable answer is what the Schedule says for that specific code, which is why a billing system that knows the requirement per code is more useful than a rule of thumb.</p>
+          </li>
+          <li>
+            <h3>Sending one where it is not expected is also a problem</h3>
+            <p>It is not usually fatal, but on some codes a diagnosis field that should be empty causes a refusal, so "always fill it in" is not a safe default either.</p>
+          </li>
+          <li>
+            <h3>Some combinations are constrained</h3>
+            <p>A handful of fee codes are only payable with particular diagnoses. The Schedule states these where they apply. If a claim is refused and the fee code and diagnosis both look individually valid, a combination rule is the thing to check.</p>
+          </li>
+        </ol>
+
+        <div class="note">
+          <p><b>Where to look it up.</b> The diagnostic code list and the per-code requirements are both in the <a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">OHIP Schedule of Benefits</a>. There is no shorter authoritative source.</p>
+        </div>
+
+        <h2 id="padding">The leading-zero problem</h2>
+
+        <p>This is worth its own section because it fails silently and it is not obvious.</p>
+
+        <p>Some diagnostic codes are three characters and some are four. A three-character code sent in a four-character field has to be padded the way the ministry expects. If a code is stored as a number somewhere in the chain rather than as text, the leading zero disappears — <code>009</code> becomes <code>9</code> — and the code no longer matches anything in the list.</p>
+
+        <p>What you see when this happens is not an error about padding. You see a claim refused as though no diagnosis had been given, or a premium that should have been payable quietly not paid. Nothing in the rejection says "leading zero".</p>
+
+        <div class="note note--warn">
+          <p><b>If you are building anything that handles these codes:</b> keep them as strings end to end, and be careful with zero-padding helpers in languages where a leading zero makes a numeric literal octal. <code>010</code> parsed as octal is 8, not 10. This has bitten real billing systems, ours included.</p>
+        </div>
+
+        <h2 id="money">When the code changes the money</h2>
+
+        <p>For a routine assessment, the diagnostic code does not change the fee. Where it does matter is on premiums and special-case codes whose eligibility depends on the condition treated.</p>
+
+        <p>The pattern to understand: the visit code is correct, the claim is accepted, the payment is lower than you expected, and nothing on the Remittance Advice says why in plain language. The premium simply was not applied. That is a diagnosis-dependent premium that did not qualify, and the usual cause is a diagnostic code that was defensible clinically but not the one the premium requires.</p>
+
+        <p>Two examples of the shape, without quoting rules that change:</p>
+
+        <ul>
+          <li>Chronic-disease and complexity premiums in several specialties are payable only for a defined set of conditions. The code you submit is what the adjudication sees.</li>
+          <li>Some consultation and procedure combinations require a specific diagnosis, so a near-miss code produces a refusal rather than a reduction.</li>
+        </ul>
+
+        <p>Both are checkable against the Schedule in advance, and neither is visible after the fact without comparing what you expected to what was paid. <a href="/guides/ohip-remittance-advice/">Reading the Remittance Advice</a> covers how to spot the gap.</p>
+
+        <h2 id="practice">Choosing codes in practice</h2>
+
+        <p>A few habits that reduce the error rate:</p>
+
+        <ul>
+          <li><b>Pick the code for the reason you billed the visit</b>, not the patient's most serious diagnosis. A diabetic patient seen for a laceration is a laceration visit.</li>
+          <li><b>Build a short list per specialty.</b> Most physicians use a dozen or two codes for the overwhelming majority of claims. Having those at hand beats searching a list of several hundred each time.</li>
+          <li><b>Set a sensible default where the work is repetitive.</b> A clinic or roster where nearly every patient has the same presenting problem is better served by a default that is occasionally overridden than by an empty field that is occasionally forgotten.</li>
+          <li><b>Treat a refused claim as information about the code.</b> If one diagnosis-and-fee-code pair fails repeatedly, the pair is wrong; fixing it once fixes every future claim of that shape.</li>
+        </ul>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="how">Diagnostic codes you do not have to remember</h2>
+          <p class="pitch-lead">A diagnostic code is either required or it is not, and the leading zero is either preserved or it is not. Neither should depend on who entered the claim.</p>
+
+          <ul class="pitch-list">
+            <li><b>Requirement known per fee code.</b> The app knows which codes require a diagnosis and prompts only where one is needed.</li>
+            <li><b>Codes kept as text.</b> Padding is preserved end to end, so the leading-zero failure does not occur.</li>
+            <li><b>Per-specialty shortlists and roster defaults.</b> The codes you actually use are to hand, and repetitive work can carry a default.</li>
+            <li><b>Written diagnoses mapped to codes.</b> Where an import carries a diagnosis as text rather than a code, the text is matched against the OHIP list rather than discarded.</li>
+          </ul>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>What is an OHIP diagnostic code?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>It is a short numeric code, three or four characters, identifying the condition treated. OHIP uses its own list in the Schedule of Benefits rather than ICD-10, so a code from a hospital chart will not necessarily be valid on a claim.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do all OHIP claims need a diagnostic code?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>No, but the large majority of fee codes require one, and the requirement is set per fee code. Some premiums and procedural codes do not take a diagnostic code at all, and sending one where it is not expected can itself cause a problem.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does the diagnostic code affect how much I am paid?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>For most ordinary visits it does not change the fee. For some premiums it is the condition that makes the premium payable at all, so a wrong or missing code means a lower payment even though the visit code was correct.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why would a diagnostic code be dropped from a claim?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>Usually a leading zero. If a code is stored or transmitted without the zero padding the ministry expects, it may not match a valid code and the claim arrives as though no diagnosis were given.</p>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+
+        <ul class="sources">
+          <li><a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees" rel="nofollow">OHIP Schedule of Benefits and Fees</a> — the diagnostic code list and per-code requirements.</li>
+        </ul>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/guides/ohip-claim-rejections/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Why claims get rejected</h3>
+            <p>The explanatory codes, including the diagnosis family.</p>
+          </a>
+          <a href="/guides/special-visit-premiums/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Special visit premiums</h3>
+            <p>Where eligibility depends on more than the visit code.</p>
+          </a>
+          <a href="/guides/ohip-remittance-advice/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Reading a Remittance Advice</h3>
+            <p>How to spot a premium that quietly was not paid.</p>
+          </a>
+          <a href="/web.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>The IntelAGENT web portal</h3>
+            <p>Diagnosis prompted only where the fee code needs one.</p>
+          </a>
+        </div>

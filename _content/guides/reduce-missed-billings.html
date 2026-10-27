@@ -1,0 +1,206 @@
+<!--meta
+{
+  "url": "guides/reduce-missed-ohip-billings/",
+  "title": "How to Reduce Missed OHIP Billings | IntelAGENT",
+  "h1": "How to reduce missed OHIP billings",
+  "breadcrumb": "Reduce Missed Billings",
+  "eyebrow": "Guide",
+  "description": "The six places OHIP revenue leaks — unbilled encounters, unread rejections, unclaimed premiums, stale-dated claims, remittances and group splits.",
+  "lede": "Missed billings are rarely a coding problem. They are an attention problem, and they happen in six predictable places.",
+  "published": "2026-10-11",
+  "updated": "2026-10-11",
+  "readingTime": "8 min read",
+  "priority": "0.8",
+  "about": ["Medical billing", "OHIP revenue", "Billing reconciliation"],
+  "faq": [
+    {
+      "q": "What is the most common reason OHIP claims go unpaid?",
+      "a": "The encounter was never billed at all. Everything downstream — rejections, reductions, reconciliation — only applies to claims that exist. A patient seen on a busy shift and never entered produces no rejection, no remittance line and no alert of any kind, which is exactly what makes it the hardest category to find."
+    },
+    {
+      "q": "How far back can I bill an OHIP claim?",
+      "a": "A service rendered on or after April 1, 2023 has to reach OHIP within three months of the service date. Later than that and the claim is rejected as VJ7, stale dated, and getting paid stops being a resubmission and becomes a documented request to the ministry. That is why the cadence of your reconciliation matters more than its depth."
+    },
+    {
+      "q": "Does billing software actually increase what I get paid?",
+      "a": "It changes which errors are possible, not which codes exist. Software catches invalid codes before submission, retrieves rejection reports automatically, and reconciles remittances against what you sent. Whether that increases your income depends entirely on how much was leaking from those three places before."
+    },
+    {
+      "q": "Should I review my own claims or hire a billing agent?",
+      "a": "It depends on volume and on how much of the work is pattern-matching versus judgement. Validation, rejection chasing and reconciliation are mechanical and are better done by software. Fee-code selection for complex or unusual services is judgement, and that is where an experienced billing agent earns the percentage."
+    }
+  ]
+}
+-->
+        <div class="answer">
+          <span class="answer-label">In short</span>
+          <p>OHIP revenue leaks in six places: encounters that were never billed, rejection reports nobody read, premiums nobody claimed, claims that aged past the submission deadline, remittances nobody reconciled, and group submissions that never got split back to the right physician. Five of the six are findable with a report. The first one is not, which is why it is the largest.</p>
+          <p class="answer-pitch">IntelAGENT closes the first three leaks directly — point-of-care capture, automatic report retrieval, and reconciliation per line. <a href="#intelagent">See how &rarr;</a></p>
+        </div>
+
+        <p>Physicians usually look for missed revenue in the fee codes — am I using the right code, am I under-coding, should I have billed the consultation instead of the assessment. That is a real question, but it is not where most of the money goes.</p>
+
+        <p>Most of it goes somewhere much more boring: work that was done, was billable, and was never turned into a claim, or was turned into a claim that quietly failed.</p>
+
+        <h2 id="unbilled">1. Encounters that were never billed</h2>
+
+        <p>The biggest category and the only invisible one. A rejected claim produces an error report. A reduced claim produces a remittance line. An unbilled encounter produces nothing at all.</p>
+
+        <p>It happens for structural reasons, not careless ones:</p>
+
+        <ul>
+          <li>A patient seen at the end of a shift, when the billing is deferred to "later" and later never arrives.</li>
+          <li>A consult done as a favour on a ward you do not normally cover, with no list to bill from.</li>
+          <li>A locum or coverage period where the encounters sat with whoever was covering.</li>
+          <li>A procedure recorded in the chart but not on the billing sheet, because the two are different systems.</li>
+        </ul>
+
+        <div class="note note--check">
+          <p><b>The only reliable fix is to bill at the point of care.</b> Not the same day — the same minute. Every hour between the encounter and the claim is an opportunity for the encounter to be forgotten, and the loss is total rather than partial.</p>
+        </div>
+
+        <p>This is the single strongest argument for billing from a phone rather than from a desk. Not convenience — completeness.</p>
+
+        <h2 id="rejections">2. Rejection reports nobody read</h2>
+
+        <p>Claims that fail the ministry's file validation never reach adjudication. They come back on a <strong>claims error report</strong> within a day or two of submission, and then they sit there.</p>
+
+        <p>A rejection nobody sees is worse than an unpaid claim: it is an unknown one. And the submission clock keeps running the whole time it sits there.</p>
+
+        <p>The fix is mechanical: every submitted batch has a matching error report, and every error report has to be opened. Software with MCEDT access does this automatically. Done by hand it is a standing daily job that is easy to skip on a busy week and hard to catch up on after a quiet month. See <a href="/guides/ohip-claim-rejections/">common OHIP claim rejections</a>.</p>
+
+        <h2 id="premiums">3. Premiums nobody claimed</h2>
+
+        <p>Special visit premiums, after-hours premiums and specialty premiums are additions to a service you already billed. Missing one does not fail anything — the base claim pays, the premium simply never existed.</p>
+
+        <p>Premiums are under-claimed for a specific reason: claiming one requires facts that are only available at the time of the encounter. When you were called, when you arrived, whether you were already on site, which patient was first on the trip. Billing a week later from a list of names, none of that is recoverable, so the premium gets dropped rather than guessed.</p>
+
+        <p>See <a href="/guides/special-visit-premiums/">OHIP special visit premiums, explained</a>.</p>
+
+        <h2 id="stale">4. Claims that aged past the deadline</h2>
+
+        <p>The submission period is three months from the date of service for services rendered on or after April 1, 2023. Miss it and the claim comes back as <code>VJ7</code>, stale dated. There is a route after that — documented, slow, and refused for anything that looks like an office oversight — which is covered in <a href="/guides/ohip-claim-rejections/#stale">the rejections guide</a>.</p>
+
+        <p>Every other category on this list becomes this one if left long enough. A rejection found in week two is a five-minute fix. The same rejection found in month seven is a write-off.</p>
+
+        <div class="note note--warn">
+          <p><b>Cadence beats depth.</b> A shallow reconciliation done every month catches more money than a thorough one done twice a year, because the thorough one keeps finding claims it can no longer do anything about.</p>
+        </div>
+
+        <h2 id="reconciliation">5. Remittances nobody reconciled</h2>
+
+        <p>The Remittance Advice is the only document that says what OHIP actually paid. Reconciling it against what you submitted answers the question nothing else answers: <em>which claims did not come back at all?</em></p>
+
+        <p>A claim that is neither paid, nor reduced, nor on an error report is a claim that was never submitted. That gap is invisible from either end on its own, and visible immediately when the two sides are matched.</p>
+
+        <p>The other thing reconciliation catches is the deduction with no matching payment — code <code>55</code> without its partner <code>57</code> — which is money clawed back from a cycle you already banked. See <a href="/guides/ohip-remittance-advice/">how to read an OHIP Remittance Advice</a>.</p>
+
+        <h2 id="groups">6. Group submissions that were never split</h2>
+
+        <p>Physicians who bill under a ministry group number — emergency groups, hospitalist services, academic departments — have an extra failure mode. The remittance comes back to the group, and somebody has to attribute each line to the physician who rendered the service.</p>
+
+        <p>Done in a spreadsheet, this is where the errors live: a line attributed to the wrong physician, a line attributed to nobody, a reversal applied against the wrong person's month. None of it changes what the group received, so none of it shows up as a shortfall in the group's total. It shows up as an individual physician being quietly short.</p>
+
+        <p>See <a href="/departments-and-groups.html">departments and groups</a>.</p>
+
+        <h2 id="order">The order worth fixing them in</h2>
+
+        <ol class="steps">
+          <li>
+            <h3>Bill at the point of care</h3>
+            <p>Removes category 1, which is the largest and the only one you cannot audit your way out of.</p>
+          </li>
+          <li>
+            <h3>Automate rejection retrieval</h3>
+            <p>Removes category 2 entirely, and most of category 4 as a consequence.</p>
+          </li>
+          <li>
+            <h3>Reconcile every remittance against what you submitted</h3>
+            <p>Catches categories 5 and 6, and tells you whether 1 and 2 are actually fixed.</p>
+          </li>
+          <li>
+            <h3>Then, and only then, look at coding</h3>
+            <p>Premiums and code selection are real money, but tuning them while the first three leaks are open is polishing a bucket with a hole in it.</p>
+          </li>
+        </ol>
+
+        <section class="pitch">
+          <span class="pitch-eyebrow">IntelAGENT</span>
+          <h2 id="intelagent">What IntelAGENT does about each leak</h2>
+          <p class="pitch-lead">The six leaks above are not equally expensive, and they are not equally hard to close. Here is where each one is addressed.</p>
+
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <caption>Where each leak is addressed in IntelAGENT.</caption>
+              <thead>
+                <tr><th scope="col">Leak</th><th scope="col">What the software does</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Unbilled encounters</th><td>Billing from the <a href="/mobile.html">mobile app</a> at the bedside, with a patient roster carried between shifts so nobody falls off the list.</td></tr>
+                <tr><th scope="row">Unread rejections</th><td>Claims error reports are downloaded from MCEDT automatically and surfaced as work, not as files.</td></tr>
+                <tr><th scope="row">Unclaimed premiums</th><td>Premium eligibility is checked against the Schedule when the claim is built, while the facts are still fresh.</td></tr>
+                <tr><th scope="row">Stale-dated claims</th><td>Anything unresolved is visible against the submission window rather than discovered after it.</td></tr>
+                <tr><th scope="row">Unreconciled remittances</th><td>Each remittance line is matched back to the claim that produced it, so the gap between submitted and settled is a list rather than an exercise.</td></tr>
+                <tr><th scope="row">Group splits</th><td>Group remittances are split back to the rendering physician automatically, including reversals.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        <div class="pitch-cta">
+          <a href="https://app.intelagent.ca/register" class="btn btn--brand btn--lg">Start free trial</a>
+          <p class="pitch-note"><b>Three months free</b>, then 0.25% of paid claims, capped at $39.99 a month. IntelAGENT has submitted OHIP claims since 2016 for more than 2,000 Ontario physicians.</p>
+        </div>
+        </section>
+
+        <h2 id="faq">Frequently asked questions</h2>
+
+        <details class="faq-item">
+          <summary>What is the most common reason OHIP claims go unpaid?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>The encounter was never billed at all. Everything downstream — rejections, reductions, reconciliation — only applies to claims that exist. A patient seen on a busy shift and never entered produces no rejection, no remittance line and no alert of any kind, which is exactly what makes it the hardest category to find.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How far back can I bill an OHIP claim?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>A service rendered on or after April 1, 2023 has to reach OHIP within three months of the service date. Later than that and the claim is rejected as VJ7, stale dated, and getting paid stops being a resubmission and becomes a documented request to the ministry. That is why the cadence of your reconciliation matters more than its depth.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does billing software actually increase what I get paid?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>It changes which errors are possible, not which codes exist. Software catches invalid codes before submission, retrieves rejection reports automatically, and reconciles remittances against what you sent. Whether that increases your income depends entirely on how much was leaking from those three places before.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Should I review my own claims or hire a billing agent?<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+          <p>It depends on volume and on how much of the work is pattern-matching versus judgement. Validation, rejection chasing and reconciliation are mechanical and are better done by software. Fee-code selection for complex or unusual services is judgement, and that is where an experienced billing agent earns the percentage.</p>
+        </details>
+
+        <h2 id="sources">Sources</h2>
+
+        <ul class="sources">
+          <li><a href="https://www.ontario.ca/page/ohip-schedule-benefits-and-fees">OHIP Schedule of Benefits and fees</a> — Government of Ontario.</li>
+          <li><a href="https://health.gov.on.ca/en/pro/publications/ohip/mcedt_mn.aspx">Medical Claims Electronic Data Transfer (MCEDT)</a> — Ontario Ministry of Health.</li>
+        </ul>
+
+        <h2 id="related">Related reading</h2>
+
+        <div class="rel-grid full">
+          <a href="/guides/billing-software-vs-billing-agent/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Billing software vs a billing agent</h3>
+            <p>Which parts of the job are mechanical, and which are judgement.</p>
+          </a>
+          <a href="/guides/ohip-claim-rejections/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>Common OHIP claim rejections</h3>
+            <p>The codes behind leak number two.</p>
+          </a>
+          <a href="/guides/ohip-remittance-advice/" class="rel-card">
+            <span class="rel-kind">Guide</span>
+            <h3>How to read an OHIP Remittance Advice</h3>
+            <p>The document that makes leaks five and six visible.</p>
+          </a>
+          <a href="/mobile.html" class="rel-card">
+            <span class="rel-kind">Product</span>
+            <h3>IntelAGENT on mobile</h3>
+            <p>Point-of-care capture, which is the largest leak of the six.</p>
+          </a>
+        </div>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compare OHIP Billing Software — IntelAGENT vs Dr-Bill, MDBilling, CAB.md, MedConcierge</title>
-    <meta name="description" content="How IntelAGENT compares to other Ontario OHIP billing software: track record since 2016, 2,000+ physicians, mobile app, health card scanning, cross-client billing intelligence, and dedicated billing agents.">
+    <title>Compare OHIP Billing Software — IntelAGENT vs Dr-Bill, MDBilling and CAB.md</title>
+    <meta name="description" content="How IntelAGENT compares to other Ontario OHIP billing software: track record since 2016, 2,000+ physicians, a real mobile app, and dedicated billing agents.">
     <meta name="keywords" content="OHIP billing software comparison, IntelAGENT vs Dr-Bill, IntelAGENT vs MDBilling, best OHIP billing software Ontario">
     <link rel="canonical" href="https://www.intelagent.ca/compare.html" />
 
@@ -109,21 +109,6 @@
                         "All specialties supported"
                     ]
                 }
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "item": {
-                    "@type": "SoftwareApplication",
-                    "name": "MedConcierge",
-                    "applicationCategory": "BusinessApplication",
-                    "applicationSubCategory": "Medical Billing Software",
-                    "operatingSystem": "Web",
-                    "offers": { "@type": "Offer", "priceCurrency": "CAD", "description": "0.25% of paid claims, capped at $40/month" },
-                    "featureList": [
-                        "RAI and eSubmit (remittance inquiry and electronic claim submission to OHIP)"
-                    ]
-                }
             }
         ]
     }
@@ -141,6 +126,143 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y9xfe4yo1l");
     </script>
+
+    <style>
+    /* ---- compare.html only: the feature table is this page's centrepiece ---- */
+    .cmp-stage { position: relative; padding: 30px 0 10px; }
+    .cmp-wrap--feature {
+      border: 1px solid var(--line); border-radius: var(--radius-lg);
+      background: var(--bg); padding: 22px 24px 24px; overflow: visible;
+    }
+    @media (max-width: 1000px) {
+      /* Horizontal padding would let the scrolling columns show beside the
+         pinned label column, so the inset moves onto the cells themselves. */
+      .cmp-wrap--feature { overflow-x: auto; padding-left: 0; padding-right: 0; }
+      .cmp--feature thead th:first-child,
+      .cmp--feature tbody th { padding-left: 20px; box-shadow: 1px 0 0 var(--line); }
+      .cmp--feature thead th:last-child,
+      .cmp--feature tbody td:last-child { padding-right: 20px; }
+    }
+
+    .cmp--feature { min-width: 740px; border-collapse: separate; border-spacing: 0; }
+    .cmp--feature th, .cmp--feature td { border-bottom: 0; }
+
+    /* Row label column */
+    .cmp--feature tbody th {
+      text-align: left; padding: 20px 26px 20px 4px; font-weight: 600;
+      color: var(--ink); font-size: 14.5px; line-height: 1.35; width: 27%;
+      border-top: 1px solid var(--line);
+    }
+    .cmp--feature tbody th .small { display: block; margin-top: 4px; font-size: 12.5px; color: var(--muted-2); }
+    .cmp--feature tbody tr:first-child th, .cmp--feature tbody tr:first-child td { border-top: 0; }
+
+    /* Competitor columns: quiet */
+    .cmp--feature tbody td { padding: 20px 14px; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    .cmp--feature thead th { padding: 0 14px 16px; font-size: 13.5px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); vertical-align: bottom; }
+    .cmp--feature thead th:first-child { text-align: left; padding-left: 4px; }
+
+    /* Our column: a raised panel running the full height of the table */
+    .cmp--feature .col-us { background: var(--brand-soft); border-top: 0; }
+    .cmp--feature thead th.col-us {
+      color: var(--brand-ink); font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
+      padding: 18px 14px; border-bottom: 1px solid rgba(79,96,225,0.22);
+      border-radius: var(--radius) var(--radius) 0 0; vertical-align: middle;
+    }
+    .cmp--feature tbody td.col-us { color: var(--brand-ink); font-weight: 650; border-top: 1px solid rgba(79,96,225,0.16); }
+    .cmp--feature tbody tr:last-child td.col-us { border-radius: 0 0 var(--radius) var(--radius); padding-bottom: 26px; }
+    .cmp--feature .cmp-badge {
+      display: inline-block; margin-top: 8px; padding: 4px 10px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff; background: var(--brand); border-radius: 999px;
+    }
+
+    /* Marks */
+    .cmp--feature .tick { width: 30px; height: 30px; }
+    .cmp--feature .tick--no { background: transparent; color: var(--muted-2); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+    .cmp--feature .mono { font-size: 13.5px; letter-spacing: -0.01em; }
+    .cmp--feature .neg { color: #c0392b; font-weight: 600; }
+
+    /* Footnote: a quiet rule, not a grey slab */
+    .cmp-foot { display: grid; gap: 10px; max-width: 70ch; margin: 34px auto 0; padding-top: 20px; border-top: 1px solid var(--line-2); text-align: center; }
+    .cmp-foot .cmp-note { margin: 0; font-size: 12.5px; color: var(--muted-2); line-height: 1.55; }
+
+    /* The three proof cards get a brand rule so they read as a set, not filler */
+    .why-card { padding: 28px 26px; border-top: 3px solid var(--brand); }
+    .why-card h3 { margin: 0 0 10px; }
+
+    /* Our column reads as an outlined panel, not just a tint */
+    .cmp--feature thead th.col-us,
+    .cmp--feature tbody td.col-us {
+      border-left: 1px solid rgba(79,96,225,0.18);
+      border-right: 1px solid rgba(79,96,225,0.18);
+    }
+    .cmp--feature tbody tr:last-child td.col-us { border-bottom: 1px solid rgba(79,96,225,0.18); }
+
+    /* Row labels stay put while the table scrolls sideways */
+    .cmp--feature thead th:first-child,
+    .cmp--feature tbody th { position: sticky; left: 0; z-index: 2; background: var(--bg); }
+
+    /* Hover the whole row, so five columns can be read across */
+    .cmp--feature tbody tr:hover > th,
+    .cmp--feature tbody tr:hover > td { background: var(--bg-2); }
+    .cmp--feature tbody tr:hover > td.col-us { background: #e3e7fb; }
+
+    @media (max-width: 820px) {
+      .cmp--feature tbody th { width: auto; padding-right: 18px; }
+      .cmp-stage { padding-top: 22px; }
+    }
+    /* ---- The cap: what percentage pricing costs as billings grow ---- */
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 880px) { .cap-grid { grid-template-columns: 1fr; } }
+
+    .cap-card {
+      display: flex; flex-direction: column; background: #fff;
+      border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .cap-head {
+      padding: 20px 24px 16px; border-bottom: 1px solid var(--line-2);
+    }
+    .cap-head .cap-eyebrow {
+      display: block; margin-bottom: 4px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted-2);
+    }
+    .cap-head .cap-level {
+      margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--ink); font-variant-numeric: tabular-nums;
+    }
+    .cap-body { padding: 6px 24px 18px; flex: 1; }
+    .cap-row {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 14px; padding: 13px 0; border-top: 1px solid var(--line-2);
+    }
+    .cap-row:first-child { border-top: 0; }
+    .cap-name { font-size: 13.5px; color: var(--muted); line-height: 1.35; }
+    .cap-price {
+      font-size: 19px; font-weight: 650; letter-spacing: -0.015em;
+      color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .cap-row--us .cap-name { color: var(--brand-ink); font-weight: 650; }
+    .cap-row--us .cap-price { color: var(--brand-ink); font-weight: 750; }
+    .cap-foot {
+      display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+      padding: 16px 24px; background: var(--brand-soft);
+      border-top: 1px solid rgba(79,96,225,0.18); color: var(--brand-ink);
+    }
+    .cap-save {
+      font-size: 26px; font-weight: 750; letter-spacing: -0.025em;
+      font-variant-numeric: tabular-nums; line-height: 1;
+    }
+    .cap-save-label { font-size: 13px; line-height: 1.3; }
+
+    /* ---- Next step, under the table ---- */
+    .next-step {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap; margin-top: 34px; padding: 22px 26px;
+      background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    }
+    .next-step p { margin: 0; font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+    .next-step p strong { color: var(--ink); font-weight: 650; }
+    </style>
 </head>
 <body>
 
@@ -187,6 +309,13 @@
                                         <div class="small muted">Managed billing &amp; EMR</div>
                                     </div>
                                 </a>
+                                <a href="full-service-billing.html" class="dropdown-item">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" style="color:var(--brand);flex:none"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <div>
+                                        <div style="font-weight:600;color:var(--ink);font-size:15px">Full-Service Billing</div>
+                                        <div class="small muted">Dedicated billing agent</div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -206,6 +335,7 @@
                 <a href="web.html" class="nav-link" style="display:block;padding:8px 0">Web Portal</a>
                 <a href="departments-and-groups.html" class="nav-link" style="display:block;padding:8px 0">Departments &amp; Groups</a>
                 <a href="clinics.html" class="nav-link" style="display:block;padding:8px 0">Clinics</a>
+                <a href="full-service-billing.html" class="nav-link" style="display:block;padding:8px 0">Full-Service Billing</a>
                 <a href="pricing.html" class="nav-link" style="display:block;padding:8px 0">Pricing</a>
                 <a href="referrals.html" class="nav-link" style="display:block;padding:8px 0">Referrals</a>
                 <a href="https://docs.intelagent.ca" class="nav-link" style="display:block;padding:8px 0">Documentation</a>
@@ -223,7 +353,7 @@
                 <span class="eyebrow">Compare</span>
                 <h1 class="h1">How IntelAGENT <span class="serif">compares</span></h1>
                 <p class="lede" style="max-width:52ch">
-                    Ontario physicians have real choices for OHIP billing. Here's an honest look at how IntelAGENT lines up against Dr. Bill, MDBilling.ca, CAB.md, and MedConcierge — built on nearly a decade of billing for physicians across the province.
+                    IntelAGENT has billed OHIP and nothing else since 2016, now for more than 2,000 Ontario physicians. Here is how that lines up against Dr. Bill, MDBilling.ca, CAB.md and the newer billing sites.
                 </p>
                 <div class="row">
                     <a href="https://app.intelagent.ca/register" class="btn btn--primary btn--lg">
@@ -236,29 +366,21 @@
         </div>
     </section>
 
-    <!-- Value highlights -->
-    <section class="section--tight" style="padding-bottom:0">
+    <!-- Proof bar -->
+    <section class="section--ink" style="padding:52px 0">
         <div class="container">
-            <div class="quad">
-                <div class="card" style="padding:26px">
-                    <span class="feat-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15l3-3 3 3 5-6"/></svg></span>
-                    <h3 class="h3">Billing analytics</h3>
-                    <p class="muted small" style="margin:0">IntelAGENT references billing patterns across 2,000+ physicians and $1B+ in processed claims to surface what you'd otherwise miss.</p>
+            <div class="stat-grid stat-grid--3">
+                <div class="stat">
+                    <div class="stat-num">2,000<span class="serif">+</span></div>
+                    <div class="stat-label">Ontario physicians billing through IntelAGENT</div>
                 </div>
-                <div class="card" style="padding:26px">
-                    <span class="feat-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></span>
-                    <h3 class="h3">A real billing agent</h3>
-                    <p class="muted small" style="margin:0">Premium users get a dedicated human billing agent when a claim gets complicated — not a help article.</p>
+                <div class="stat">
+                    <div class="stat-num">2016</div>
+                    <div class="stat-label">Billing OHIP, and only OHIP, ever since</div>
                 </div>
-                <div class="card" style="padding:26px">
-                    <span class="feat-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></span>
-                    <h3 class="h3">Proven since 2016</h3>
-                    <p class="muted small" style="margin:0">Nearly a decade billing OHIP for Ontario physicians, through every fee-schedule change since — not a brand-new launch.</p>
-                </div>
-                <div class="card" style="padding:26px">
-                    <span class="feat-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span>
-                    <h3 class="h3">Bill anywhere</h3>
-                    <p class="muted small" style="margin:0">A native iOS and Android app with health-card scanning, so you can bill at the bedside — where MedConcierge has no app.</p>
+                <div class="stat">
+                    <div class="stat-num">0.25<span class="serif">%</span></div>
+                    <div class="stat-label">Self-Service, capped at $39.99 a month</div>
                 </div>
             </div>
         </div>
@@ -270,112 +392,187 @@
             <div style="margin-bottom:32px;max-width:680px">
                 <span class="eyebrow">At a glance</span>
                 <h2 class="h2">Feature <span class="serif">comparison</span></h2>
-                <p class="lede" style="margin-bottom:0">IntelAGENT gives Ontario physicians a native mobile app, RAI and eSubmit, billing pattern analytics across thousands of physicians, dedicated billing-agent support, and a database of referring physicians — backed by 10+ years of OHIP billing. MedConcierge, a mid-2026 entrant, offers none of these and has no mobile app. Here's the full breakdown.</p>
+                <p class="lede" style="margin-bottom:0">IntelAGENT gives Ontario physicians a native mobile app, RAI and eSubmit, billing pattern analytics across thousands of physicians, dedicated billing-agent support, and a database of referring physicians — backed by 10+ years of OHIP billing. Several AI-generated billing sites launched in 2026. We have included them for completeness, though there is not yet much to go on: no Ontario billing history, no published client base, and no record of how they hold up when the ministry changes a rule mid-year. Here is the full breakdown.</p>
             </div>
 
-            <div class="cmp-wrap">
-                <table class="cmp">
-                    <caption class="sr-only">Feature comparison of Ontario OHIP billing software: IntelAGENT versus Dr. Bill, MDBilling.ca, CAB.md, and MedConcierge.</caption>
+            <div class="cmp-stage">
+            <div class="cmp-wrap cmp-wrap--feature">
+                <table class="cmp cmp--feature">
+                    <caption class="sr-only">Feature comparison of Ontario OHIP billing software: IntelAGENT versus Dr. Bill and MDBilling.ca, CAB.md, and AI-generated sites.</caption>
                     <thead>
                         <tr>
                             <th scope="col">Capability</th>
                             <th scope="col" class="col-us">IntelAGENT<br><span class="cmp-badge">Best choice</span></th>
-                            <th scope="col">Dr. Bill</th>
-                            <th scope="col">MDBilling.ca</th>
+                            <th scope="col">Dr.&nbsp;Bill&thinsp;/&thinsp;MDBilling.ca</th>
                             <th scope="col">CAB.md</th>
-                            <th scope="col">MedConcierge</th>
+                            <th scope="col">AI-generated sites</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">Track record</th>
                             <td class="col-us">10+ years</td>
-                            <td data-c="drbill">10+ years</td>
-                            <td data-c="mdb">10+ years</td>
+                            <td data-c="rbc">10+ years</td>
                             <td data-c="cab">10+ years</td>
                             <td data-c="mc"><span class="no">Mid-2026</span></td>
                         </tr>
                         <tr>
                             <th scope="row">Specialty coverage</th>
                             <td class="col-us">All specialties</td>
-                            <td data-c="drbill">All specialties</td>
-                            <td data-c="mdb">All specialties</td>
+                            <td data-c="rbc">All specialties</td>
                             <td data-c="cab">All specialties</td>
                             <td data-c="mc"><span class="no">Limited</span></td>
                         </tr>
                         <tr>
                             <th scope="row">Pricing</th>
                             <td class="col-us mono">0.25% · cap $39.99/mo</td>
-                            <td class="mono" data-c="drbill">0.25% · <span class="neg">no cap</span></td>
-                            <td class="mono" data-c="mdb">0.25% · <span class="neg">no cap</span></td>
+                            <td class="mono" data-c="rbc">0.25% · <span class="neg">no cap</span></td>
                             <td class="mono" data-c="cab">$40/month</td>
                             <td class="mono" data-c="mc">0.25% · cap $40/mo</td>
                         </tr>
                         <tr>
                             <th scope="row">Billing Agent Support</th>
                             <td class="col-us"><span class="tick tick--yes on-us"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="drbill"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="mdb"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
+                            <td data-c="rbc"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                             <td data-c="cab"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                             <td data-c="mc"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span><span class="tick-cap">Self-serve</span></td>
                         </tr>
                         <tr>
                             <th scope="row">Mobile app</th>
                             <td class="col-us"><span class="tick tick--yes on-us"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="drbill"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="mdb"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
+                            <td data-c="rbc"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                             <td data-c="cab"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                             <td data-c="mc"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
                         </tr>
                         <tr>
                             <th scope="row">Referring Physician Database</th>
                             <td class="col-us"><span class="tick tick--yes on-us"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="drbill"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="mdb"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
+                            <td data-c="rbc"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                             <td data-c="cab"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                             <td data-c="mc"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
                         </tr>
                         <tr>
                             <th scope="row">Billing Analytics<br><span class="small muted" style="font-weight:400">Insight into similar billing patterns within your specialty</span></th>
                             <td class="col-us"><span class="tick tick--yes on-us"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="drbill"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
-                            <td data-c="mdb"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
+                            <td data-c="rbc"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
                             <td data-c="cab"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
                             <td data-c="mc"><span class="tick tick--no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg></span><span class="sr-only">No</span></td>
                         </tr>
                         <tr>
                             <th scope="row">RAI &amp; eSubmit<br><span class="small muted" style="font-weight:400">Remittance inquiry + electronic submission to OHIP</span></th>
                             <td class="col-us"><span class="tick tick--yes on-us"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
-                            <td data-c="drbill">—</td>
-                            <td data-c="mdb">—</td>
-                            <td data-c="cab">—</td>
+                            <td data-c="rbc"><span class="tick-cap">Not stated</span></td>
+                            <td data-c="cab"><span class="tick-cap">Not stated</span></td>
                             <td data-c="mc"><span class="tick tick--yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span class="sr-only">Yes</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="cmp-note">Comparison based on publicly available information as of mid-2026. A dash (—) means we could not confirm the capability from public sources, not that it is necessarily absent. Competitor offerings and pricing may change — verify current details with each vendor. IntelAGENT figures reflect our own platform and client base.</p>
+            </div>
+            <div class="next-step">
+                <p><strong>Still deciding?</strong> Read the five things worth comparing before you pick &mdash; track record, whether the price is capped, a real mobile app, features built from practice, and who answers a rejection.</p>
+                <a href="/guides/best-ohip-billing-software/" class="btn btn--ghost">
+                    How to choose OHIP billing software
+                    <svg class="arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7-7 7M21 12H3"/></svg>
+                </a>
+            </div>
+            <div class="cmp-foot" style="max-width:none;text-align:left;margin-top:26px">
+                <p class="cmp-note">Comparison based on publicly available information as of mid-2026. &ldquo;Not stated&rdquo; means we could not confirm the capability from public sources, not that it is necessarily absent. Competitor offerings and pricing may change &mdash; verify current details with each vendor. IntelAGENT figures reflect our own platform and client base. The &ldquo;AI-generated sites&rdquo; column describes a category rather than a single vendor; those sites launched in 2026, and what they list here is taken from their own launch material, with no billing record behind it yet. Looking at full-service tiers rather than software? See <a href="full-service-billing.html">what full-service medical billing includes</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The cap -->
+    <section class="section section--paper">
+        <div class="container">
+            <div style="margin-bottom:34px;max-width:660px">
+                <span class="eyebrow">The cap</span>
+                <h2 class="h2">Percentage pricing <span class="serif">follows you up</span></h2>
+                <p class="lede" style="margin-bottom:0">The Pricing row above is the one that compounds. Most OHIP billing software takes a percentage of everything you are paid, so a good year costs you more. IntelAGENT Self-Service is 0.25% too &mdash; but it stops at $39.99 a month and never moves again.</p>
+            </div>
+
+            <div class="cap-grid">
+                <div class="cap-card">
+                    <div class="cap-head">
+                        <span class="cap-eyebrow">Paid billings</span>
+                        <p class="cap-level">$25,000<span style="font-size:14px;font-weight:500;color:var(--muted-2)"> / month</span></p>
+                    </div>
+                    <div class="cap-body">
+                        <div class="cap-row cap-row--us">
+                            <span class="cap-name">IntelAGENT Self-Service</span>
+                            <span class="cap-price">$39.99</span>
+                        </div>
+                        <div class="cap-row">
+                            <span class="cap-name">0.25%, no cap</span>
+                            <span class="cap-price">$62.50</span>
+                        </div>
+                    </div>
+                    <div class="cap-foot"><span class="cap-save">$270</span><span class="cap-save-label">stays with you, every year</span></div>
+                </div>
+
+                <div class="cap-card">
+                    <div class="cap-head">
+                        <span class="cap-eyebrow">Paid billings</span>
+                        <p class="cap-level">$60,000<span style="font-size:14px;font-weight:500;color:var(--muted-2)"> / month</span></p>
+                    </div>
+                    <div class="cap-body">
+                        <div class="cap-row cap-row--us">
+                            <span class="cap-name">IntelAGENT Self-Service</span>
+                            <span class="cap-price">$39.99</span>
+                        </div>
+                        <div class="cap-row">
+                            <span class="cap-name">0.25%, no cap</span>
+                            <span class="cap-price">$150.00</span>
+                        </div>
+                    </div>
+                    <div class="cap-foot"><span class="cap-save">$1,320</span><span class="cap-save-label">stays with you, every year</span></div>
+                </div>
+
+                <div class="cap-card">
+                    <div class="cap-head">
+                        <span class="cap-eyebrow">Paid billings</span>
+                        <p class="cap-level">$100,000<span style="font-size:14px;font-weight:500;color:var(--muted-2)"> / month</span></p>
+                    </div>
+                    <div class="cap-body">
+                        <div class="cap-row cap-row--us">
+                            <span class="cap-name">IntelAGENT Self-Service</span>
+                            <span class="cap-price">$39.99</span>
+                        </div>
+                        <div class="cap-row">
+                            <span class="cap-name">0.25%, no cap</span>
+                            <span class="cap-price">$250.00</span>
+                        </div>
+                    </div>
+                    <div class="cap-foot"><span class="cap-save">$2,520</span><span class="cap-save-label">stays with you, every year</span></div>
+                </div>
+            </div>
+
+            <p class="small muted" style="margin:20px 0 0;max-width:72ch">$39.99 is 0.25% of $15,996, so the cap takes effect at roughly $16,000 in monthly paid billings. Below that, both cost the same. Premium (full-service, with a dedicated billing agent) is 2% of paid claims. <a href="pricing.html">See full pricing</a>.</p>
         </div>
     </section>
 
     <!-- Why it matters -->
-    <section class="section section--paper">
+    <section class="section">
         <div class="container">
             <div style="margin-bottom:40px;max-width:620px">
                 <span class="eyebrow">Why it matters</span>
                 <h2 class="h2">What a decade of billing <span class="serif">actually buys you</span></h2>
                 <p class="lede" style="margin-bottom:0">Newer tools can copy a screen. They can't copy a track record — or the data and support that come with it.</p>
             </div>
-            <div class="trio">
-                <div class="card" style="padding:26px">
+            <div class="quad">
+                <div class="card why-card">
                     <h3 class="h3">Billing intelligence, not guesswork</h3>
-                    <p class="muted small" style="margin:0">Because IntelAGENT has processed over a billion dollars in claims across 2,000+ physicians, it can surface reference billing patterns and catch what you'd otherwise miss. A brand-new platform has no history to learn from.</p>
+                    <p class="muted small" style="margin:0">Because IntelAGENT has processed over a billion dollars in claims across more than 2,000 physicians, it can surface reference billing patterns and catch what you'd otherwise miss. A brand-new platform has no history to learn from.</p>
                 </div>
-                <div class="card" style="padding:26px">
+                <div class="card why-card">
                     <h3 class="h3">A real billing agent</h3>
-                    <p class="muted small" style="margin:0">When a claim gets complicated, Premium users get a dedicated human billing agent — not a help article. That's the difference between software and a billing partner.</p>
+                    <p class="muted small" style="margin:0">When a claim gets complicated, Premium users get a dedicated human billing agent &mdash; not a help article. That's the difference between software and a billing partner.</p>
                 </div>
-                <div class="card" style="padding:26px">
+                <div class="card why-card">
+                    <h3 class="h3">Bill at the bedside</h3>
+                    <p class="muted small" style="margin:0">A native iOS and Android app with health-card scanning, so the claim goes in where you saw the patient. Most of the newer billing sites never built one.</p>
+                </div>
+                <div class="card why-card">
                     <h3 class="h3">Proven, not promised</h3>
                     <p class="muted small" style="margin:0">IntelAGENT has billed OHIP for Ontario physicians since 2016, through every fee-schedule change since. Track record is the one feature a launch can't ship with.</p>
                 </div>
@@ -384,16 +581,16 @@
     </section>
 
     <!-- CTA -->
-    <section class="section">
+    <section class="section section--ink">
         <div class="container center narrow">
-            <h2 class="h2">See the difference yourself</h2>
-            <p class="lede">Start your 3-month free trial and put IntelAGENT next to anything else you're considering.</p>
+            <h2 class="h2" style="color:#fff">See the difference <span class="serif" style="color:var(--brand-fill)">yourself</span></h2>
+            <p class="lede" style="color:rgba(255,255,255,0.72)">Start your 3-month free trial and put IntelAGENT next to anything else you're considering.</p>
             <div class="row" style="justify-content:center">
                 <a href="https://app.intelagent.ca/register" class="btn btn--primary btn--lg">
                     Start your free trial
                     <svg class="arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7-7 7M21 12H3"/></svg>
                 </a>
-                <a href="contact.html" class="btn btn--ghost btn--lg">Ask us anything</a>
+                <a href="contact.html" class="btn btn--lg" style="background:transparent;color:#fff;border-color:rgba(255,255,255,0.34)">Ask us anything</a>
             </div>
         </div>
     </section>
@@ -413,12 +610,15 @@
                         <li><a href="web.html">Web Portal</a></li>
                         <li><a href="departments-and-groups.html">Departments &amp; Groups</a></li>
                         <li><a href="clinics.html">Clinics</a></li>
+                        <li><a href="full-service-billing.html">Full-Service Billing</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Resources</h4>
                     <ul style="list-style:none;padding:0;margin:0;display:grid;gap:9px" class="small">
                         <li><a href="what-is-ohip-billing.html">What is OHIP Billing?</a></li>
+                        <li><a href="/guides/">OHIP Billing Guides</a></li>
+                        <li><a href="/specialties/">Billing by Specialty</a></li>
                         <li><a href="referrals.html">Referral Program</a></li>
                         <li><a href="compare.html">Compare Billing Software</a></li>
                         <li><a href="https://docs.intelagent.ca">Documentation</a></li>
